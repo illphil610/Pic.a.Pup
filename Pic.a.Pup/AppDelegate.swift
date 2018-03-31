@@ -1,12 +1,16 @@
 //
 //  AppDelegate.swift
-//  Pic.a.Pup
+//  Pic-a-Pup
 //
-//  Created by Philip on 3/30/18.
+//  Created by Philip on 3/13/18.
 //  Copyright © 2018 Philip. All rights reserved.
 //
 
 import UIKit
+import Firebase
+
+let primaryColor = UIColor(red: 30/255, green: 129/255, blue: 150/255, alpha: 1)
+let secondaryColor = UIColor(red: 85/255, green: 16/255, blue: 83/255, alpha: 1)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        FirebaseApp.configure()
         return true
     }
 
@@ -40,7 +44,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 

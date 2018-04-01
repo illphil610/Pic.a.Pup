@@ -19,10 +19,11 @@ class NetworkManager: NSObject {
     
     func sendPostToServer(parameters: Dictionary<String, Any>) {
         Alamofire.request("http://18.188.145.20", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
-            .responseJSON{ response in
+            .responseJSON { response in
                 switch response.result {
                 case .success:
                     if let result = response.result.value {
+                        //print("\(result)")
                         self.delegate?.sendResponseJSONData(result)
                     }
                     break

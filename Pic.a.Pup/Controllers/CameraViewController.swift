@@ -127,11 +127,11 @@ class CameraViewController : UIViewController, UIImagePickerControllerDelegate, 
         
         // parse for data, and send avail data to firebase manager to
         // finish creating DogSearchResult and send to Firebase.
-        print("\(json)")
+        //print("\(json)")
+        
+        print(json)
         breedTypeLabel.text = json["breed"].string
         breedInfoTextField.text = json["breed_info"].string
-        //let breedType = json["breed"].string
-        //let breedInfo = json["breed_info"].string
         
         //if let location = currentUserCoordinateLocation {
           //  if let url = downloableUrlFromFirebase {

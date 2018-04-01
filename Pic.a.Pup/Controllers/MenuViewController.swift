@@ -29,7 +29,6 @@ class MenuViewController: UIViewController {
         if Auth.auth().currentUser != nil {
             self.performSegue(withIdentifier: "toMainScreen", sender: self)
         }
-    
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -22,7 +22,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBAction func handleLogOut(_ sender: UIButton) {
         try! Auth.auth().signOut()
-        self.dismiss(animated: false, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
+        self.present(initialViewController, animated: false)
+
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

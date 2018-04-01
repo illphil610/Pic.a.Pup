@@ -35,7 +35,6 @@ class CameraQRViewController: UIViewController {
         camera.trackMetadata = true
         camera.resolution = .highest
         submitButton.isHidden = true
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -22,23 +22,22 @@ class CameraQRViewController: UIViewController {
         //self.tabBarController?.delegate = self
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add those colorz
-        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
+        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         view.backgroundColor = UIColor.black
-        //self.tabBarController?.hidesBottomBarWhenPushed = true
-        //self.tabBarController?.delegate = self'
         
         camera.delegate = self
         camera.trackMetadata = true
         camera.resolution = .highest
-        submitButton.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        submitButton.isHidden = true
+        pupPreviewImageView.isHidden = false
+        submitButton.isHidden = true
     }
     
     func setupCamera() {
@@ -48,6 +47,13 @@ class CameraQRViewController: UIViewController {
     @IBAction func submitPhotoForAnalysis(_ sender: Any) {
         let loadingView = RSLoadingView()
         loadingView.show(on: view)
+        
+        // make network call and wait for response to update UI
+        
+        // Hide existing views to make more for new analysis data
+        pupPreviewImageView.isHidden = true
+        submitButton.isHidden = true
+        loadingView.hide()
     }
 }
 
@@ -57,6 +63,7 @@ extension CameraQRViewController: LuminaDelegate {
     
     func dismissed(controller: LuminaViewController) {
         controller.dismiss(animated: false, completion: nil)
+        tabBarController?.selectedIndex = 0
     }
     
     func detected(metadata: [Any], from controller: LuminaViewController) {

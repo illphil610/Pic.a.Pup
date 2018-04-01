@@ -7,18 +7,25 @@
 //
 
 import Foundation
+import AVFoundation
+import Lumina
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
+    @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        get { return .lightContent }
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get { return .lightContent }
+    }    
 }
 
 

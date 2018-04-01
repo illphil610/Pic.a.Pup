@@ -41,6 +41,7 @@
 		D443EF44206EDC3B000C58CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D443EF42206EDC3B000C58CB /* LaunchScreen.storyboard */; };
 		D443EF4F206EDC3B000C58CB /* Pic_a_PupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443EF4E206EDC3B000C58CB /* Pic_a_PupTests.swift */; };
 		D443EF5A206EDC3B000C58CB /* Pic_a_PupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443EF59206EDC3B000C58CB /* Pic_a_PupUITests.swift */; };
+		D493DE432070BE9600BF54FC /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D493DE422070BE3B00BF54FC /* Pacifico-Regular.ttf */; };
 		D4DA86E1206F6E1F003FA0CD /* PupTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA86E0206F6E1F003FA0CD /* PupTabBarController.swift */; };
 		E601A299EDF4A53602A6B536 /* Pods_Pic_a_Pup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3F85AE260C2EC9384EB81D /* Pods_Pic_a_Pup.framework */; };
 /* End PBXBuildFile section */
@@ -106,6 +107,7 @@
 		D443EF55206EDC3B000C58CB /* Pic.a.PupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Pic.a.PupUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D443EF59206EDC3B000C58CB /* Pic_a_PupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pic_a_PupUITests.swift; sourceTree = "<group>"; };
 		D443EF5B206EDC3B000C58CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D493DE422070BE3B00BF54FC /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		D4DA86E0206F6E1F003FA0CD /* PupTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupTabBarController.swift; sourceTree = "<group>"; };
 		DD3F85AE260C2EC9384EB81D /* Pods_Pic_a_Pup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pic_a_Pup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76A0AA9D1C003F40D21D09D /* Pods-Pic.a.PupUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pic.a.PupUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pic.a.PupUITests/Pods-Pic.a.PupUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 		D443EF38206EDC3B000C58CB /* Pic.a.Pup */ = {
 			isa = PBXGroup;
 			children = (
+				D493DE422070BE3B00BF54FC /* Pacifico-Regular.ttf */,
 				D42D4913206EEEE4002A0E34 /* Utilities */,
 				D42D4912206EEECE002A0E34 /* Model */,
 				D42D4911206EEEAE002A0E34 /* Extensions */,
@@ -391,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D493DE432070BE9600BF54FC /* Pacifico-Regular.ttf in Resources */,
 				D443EF44206EDC3B000C58CB /* LaunchScreen.storyboard in Resources */,
 				D42D4940206EF089002A0E34 /* ViewUtilities in Resources */,
 				D42D4915206EEFBE002A0E34 /* GoogleService-Info.plist in Resources */,

@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04D-Ss-cgp" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1705" y="113"/>
+            <point key="canvasLocation" x="1702" y="135"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Jne-cs-3BV">
@@ -228,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ufs-E8-RWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2644" y="-281.10944527736132"/>
+            <point key="canvasLocation" x="2638" y="-338"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="5Nx-wD-Ayk">
@@ -400,21 +400,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afK-aQ-BLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2644" y="529"/>
+            <point key="canvasLocation" x="2638" y="627"/>
         </scene>
-        <!--Item-->
+        <!--Camera-->
         <scene sceneID="nbB-7Z-KNb">
             <objects>
-                <viewController id="kbW-uQ-hGi" customClass="CameraQRViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kbW-uQ-hGi" userLabel="Camera" customClass="CameraQRViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TVB-Oa-IvF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RmI-2u-nCU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RmI-2u-nCU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXF-Tu-PHv">
-                                <rect key="frame" x="282" y="652" width="64" height="64"/>
+                                <rect key="frame" x="295" y="657" width="64" height="64"/>
                                 <state key="normal" backgroundImage="icons8-checkmark-yes-64"/>
                                 <connections>
                                     <action selector="submitPhotoForAnalysis:" destination="kbW-uQ-hGi" eventType="touchUpInside" id="LO2-R1-kvF"/>
@@ -423,18 +424,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gXF-Tu-PHv" firstAttribute="top" secondItem="0ec-4l-UJG" secondAttribute="top" constant="608" id="7fG-dY-8LX"/>
-                            <constraint firstItem="RmI-2u-nCU" firstAttribute="leading" secondItem="0ec-4l-UJG" secondAttribute="leading" id="Inf-jP-TFJ"/>
-                            <constraint firstItem="0ec-4l-UJG" firstAttribute="bottom" secondItem="RmI-2u-nCU" secondAttribute="bottom" id="NQu-42-52X"/>
-                            <constraint firstItem="0ec-4l-UJG" firstAttribute="bottom" secondItem="gXF-Tu-PHv" secondAttribute="bottom" constant="13" id="W13-6J-I1H"/>
-                            <constraint firstItem="gXF-Tu-PHv" firstAttribute="leading" secondItem="0ec-4l-UJG" secondAttribute="leading" constant="282" id="Xrm-ao-mB8"/>
-                            <constraint firstItem="0ec-4l-UJG" firstAttribute="trailing" secondItem="gXF-Tu-PHv" secondAttribute="trailing" constant="29" id="hVW-Dp-4NH"/>
-                            <constraint firstItem="RmI-2u-nCU" firstAttribute="top" secondItem="TVB-Oa-IvF" secondAttribute="top" id="tNL-Pq-56y"/>
-                            <constraint firstItem="RmI-2u-nCU" firstAttribute="trailing" secondItem="0ec-4l-UJG" secondAttribute="trailing" id="yP1-4b-bwR"/>
+                            <constraint firstItem="0ec-4l-UJG" firstAttribute="trailing" secondItem="gXF-Tu-PHv" secondAttribute="trailing" constant="16" id="3FA-XH-yph"/>
+                            <constraint firstItem="0ec-4l-UJG" firstAttribute="bottom" secondItem="gXF-Tu-PHv" secondAttribute="bottom" constant="8" id="BP2-7j-QwS"/>
+                            <constraint firstItem="gXF-Tu-PHv" firstAttribute="leading" secondItem="0ec-4l-UJG" secondAttribute="leading" constant="295" id="DHA-sF-DVZ"/>
+                            <constraint firstItem="gXF-Tu-PHv" firstAttribute="top" secondItem="0ec-4l-UJG" secondAttribute="top" constant="613" id="glA-eP-wjo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0ec-4l-UJG"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="qvE-Ly-GdD"/>
+                    <tabBarItem key="tabBarItem" title="Camera" image="icons8-camera-50" id="qvE-Ly-GdD"/>
                     <connections>
                         <outlet property="pupPreviewImageView" destination="RmI-2u-nCU" id="cWf-r3-Axf"/>
                         <outlet property="submitButton" destination="gXF-Tu-PHv" id="ush-1L-3B7"/>
@@ -442,12 +439,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pPa-6j-x7V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3797.5999999999999" y="1441.6256157635469"/>
+            <point key="canvasLocation" x="4024.8000000000002" y="1369.2118226600985"/>
         </scene>
         <!--Home-->
         <scene sceneID="CVd-i9-1lE">
             <objects>
-                <viewController id="vnq-hK-RH0" userLabel="Home" customClass="HomeViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="vnq-hK-RH0" userLabel="Home" customClass="HomeViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sFM-pe-jJN"/>
                         <viewControllerLayoutGuide type="bottom" id="4Oh-CU-K6n"/>
@@ -461,15 +458,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="30" id="a8s-e5-VVh">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="25" minimumInteritemSpacing="30" id="a8s-e5-VVh">
                                     <size key="itemSize" width="320" height="338"/>
-                                    <size key="headerReferenceSize" width="50" height="55"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="10" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pupCollectionViewCell" id="zQf-Wy-DTX" customClass="PupCollectionViewCell" customModule="Pic_a_Pup" customModuleProvider="target">
-                                        <rect key="frame" x="54" y="75" width="267" height="299"/>
+                                        <rect key="frame" x="54" y="20" width="267" height="299"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="267" height="299"/>
@@ -494,27 +491,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SectionHeader" id="muy-fk-dEw" customClass="SectionHeaderCollectionReusableView" customModule="Pic_a_Pup" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pic-a-Pups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Td-5T-P9T">
-                                            <rect key="frame" x="22" y="8" width="225" height="47"/>
-                                            <fontDescription key="fontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="38"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="8Td-5T-P9T" firstAttribute="leading" secondItem="muy-fk-dEw" secondAttribute="leading" constant="22" id="Sei-nt-bav"/>
-                                        <constraint firstAttribute="trailing" secondItem="8Td-5T-P9T" secondAttribute="trailing" constant="128" id="eOs-Ev-S5c"/>
-                                        <constraint firstAttribute="bottom" secondItem="8Td-5T-P9T" secondAttribute="bottom" id="ko3-zl-hxv"/>
-                                        <constraint firstItem="8Td-5T-P9T" firstAttribute="top" secondItem="muy-fk-dEw" secondAttribute="top" constant="8" id="xqP-3J-oeW"/>
-                                    </constraints>
-                                    <connections>
-                                        <outlet property="headerLabel" destination="8Td-5T-P9T" id="uLr-Sm-Hn3"/>
-                                    </connections>
-                                </collectionReusableView>
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6X8-KN-whk">
                                     <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -535,19 +511,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="LLN-Pp-W04"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="icons8-dog-house-26" id="gSx-kL-En9"/>
+                    <navigationItem key="navigationItem" title="Pic-a-Pup" id="KY1-Vz-eUZ"/>
                     <connections>
                         <outlet property="recentSearchCollectionView" destination="CmI-8D-pdA" id="HAz-0N-11r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nE-Wg-ciN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6462" y="-717"/>
+            <point key="canvasLocation" x="6253.6000000000004" y="-337.6847290640394"/>
         </scene>
         <!--Profile-->
         <scene sceneID="nsj-Zq-UZU">
             <objects>
-                <viewController id="qBQ-dH-AGt" userLabel="Profile" customClass="ProfileViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Profile" id="qBQ-dH-AGt" userLabel="Profile" customClass="ProfileViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4mf-h9-snS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -558,7 +534,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnA-Q3-wu4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6462" y="112"/>
+            <point key="canvasLocation" x="5312" y="628"/>
         </scene>
         <!--Breed-->
         <scene sceneID="TWp-tF-jiL">
@@ -569,7 +545,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEp-q2-UHC">
-                                <rect key="frame" x="0.0" y="685" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="729" width="375" height="49"/>
                                 <items>
                                     <barButtonItem title="Photo Library" width="197.66666666666666" id="3EM-c0-sax">
                                         <connections>
@@ -587,7 +563,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="307"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcn-UY-GOY">
-                                <rect key="frame" x="146" y="655" width="82" height="30"/>
+                                <rect key="frame" x="146" y="699" width="82" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="BRz-9W-l3f"/>
                                 </constraints>
@@ -647,7 +623,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKa-Yd-HF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6241" y="1663"/>
+            <point key="canvasLocation" x="7359" y="1608"/>
         </scene>
         <!--Pup Tab Bar Controller-->
         <scene sceneID="nTL-Qf-JKX">
@@ -660,16 +636,14 @@
                         <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="vnq-hK-RH0" kind="relationship" relationship="viewControllers" id="TIw-hA-RfA"/>
-                        <segue destination="Fd8-Tg-zDh" kind="relationship" relationship="viewControllers" id="PdZ-ns-zbo"/>
-                        <segue destination="hT6-p3-v4P" kind="relationship" relationship="viewControllers" id="s1v-Yq-eLc"/>
-                        <segue destination="qBQ-dH-AGt" kind="relationship" relationship="viewControllers" id="F27-XF-sZL"/>
+                        <segue destination="jF9-3w-XsY" kind="relationship" relationship="viewControllers" id="TIw-hA-RfA"/>
                         <segue destination="kbW-uQ-hGi" kind="relationship" relationship="viewControllers" id="OKE-RL-Qez"/>
+                        <segue destination="qBQ-dH-AGt" kind="relationship" relationship="viewControllers" id="F27-XF-sZL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vun-Wf-x6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4025" y="113"/>
+            <point key="canvasLocation" x="4025" y="112"/>
         </scene>
         <!--Collar-->
         <scene sceneID="Xrr-qz-hFr">
@@ -697,7 +671,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No QR code is detected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3U-c5-sli">
-                                <rect key="frame" x="0.0" y="689" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="738" width="375" height="40"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eSA-g0-n20"/>
@@ -726,11 +700,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JMN-8z-BQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6462" y="869"/>
+            <point key="canvasLocation" x="7331" y="668"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="gBD-aI-aP3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jF9-3w-XsY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="icons8-dog-house-26" id="gSx-kL-En9"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q4V-Wf-DGJ">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="23"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="23"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vnq-hK-RH0" kind="relationship" relationship="rootViewController" id="Cbt-IV-gP1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ify-k7-BnV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5311.1999999999998" y="-337.6847290640394"/>
         </scene>
     </scenes>
     <resources>
         <image name="backArrow" width="33" height="33"/>
+        <image name="icons8-camera-50" width="25" height="25"/>
         <image name="icons8-checkmark-yes-64" width="64" height="64"/>
         <image name="icons8-dog-house-26" width="26" height="26"/>
         <image name="icons8-dog-paw-filled" width="25" height="25"/>

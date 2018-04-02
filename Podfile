@@ -15,6 +15,7 @@ pod 'Firebase/Database'
 pod 'Firebase/Messaging'
 pod 'Alamofire', '~> 4.7'
 pod 'RSLoadingView'
+pod 'Material', '~> 2.0'
 
 
   target 'Pic.a.PupTests' do

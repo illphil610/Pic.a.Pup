@@ -552,7 +552,7 @@
             </objects>
             <point key="canvasLocation" x="5311" y="494"/>
         </scene>
-        <!--Breed-->
+        <!--Map-->
         <scene sceneID="TWp-tF-jiL">
             <objects>
                 <viewController id="Fd8-Tg-zDh" customClass="CameraViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
@@ -561,7 +561,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEp-q2-UHC">
-                                <rect key="frame" x="0.0" y="729" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="685" width="375" height="44"/>
                                 <items>
                                     <barButtonItem title="Photo Library" width="197.66666666666666" id="3EM-c0-sax">
                                         <connections>
@@ -579,7 +579,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="307"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcn-UY-GOY">
-                                <rect key="frame" x="146" y="699" width="82" height="30"/>
+                                <rect key="frame" x="146" y="655" width="82" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="BRz-9W-l3f"/>
                                 </constraints>
@@ -630,7 +630,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ndP-f7-20h"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Breed" image="icons8-house-stark-27" id="xdy-2P-j72"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="icons8-house-stark-27" id="xdy-2P-j72"/>
                     <connections>
                         <outlet property="breedInfoTextField" destination="L3H-DA-icw" id="WGP-RK-Ew4"/>
                         <outlet property="breedTypeLabel" destination="UJW-3o-9bz" id="dJN-I1-C0d"/>
@@ -645,16 +645,18 @@
         <scene sceneID="nTL-Qf-JKX">
             <objects>
                 <tabBarController id="e6a-4X-0i1" customClass="PupTabBarController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fef-Ly-7UH">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="fef-Ly-7UH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.85804803939999996" green="0.75236108530000001" blue="0.94834481370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="jF9-3w-XsY" kind="relationship" relationship="viewControllers" id="TIw-hA-RfA"/>
-                        <segue destination="kbW-uQ-hGi" kind="relationship" relationship="viewControllers" id="OKE-RL-Qez"/>
                         <segue destination="AIk-av-mJM" kind="relationship" relationship="viewControllers" id="CEL-Em-a5y"/>
+                        <segue destination="kbW-uQ-hGi" kind="relationship" relationship="viewControllers" id="OKE-RL-Qez"/>
+                        <segue destination="Fd8-Tg-zDh" kind="relationship" relationship="viewControllers" id="L9D-RC-XdH"/>
                         <segue destination="qBQ-dH-AGt" kind="relationship" relationship="viewControllers" id="F27-XF-sZL"/>
                     </connections>
                 </tabBarController>

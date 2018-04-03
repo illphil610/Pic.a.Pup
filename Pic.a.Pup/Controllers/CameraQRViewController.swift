@@ -50,6 +50,9 @@ class CameraQRViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         //self.tabBarController?.delegate = self
+        tabBarController?.tabBar.isHidden = false
+        pupPreviewImageView.image = nil
+        
     }
     
     override func viewDidLoad() {
@@ -84,6 +87,7 @@ class CameraQRViewController: UIViewController {
     }
     
     func setupCamera() {
+        tabBarController?.tabBar.isHidden = true
         present(camera, animated: true, completion: nil)
     }
     
@@ -178,10 +182,12 @@ extension CameraQRViewController: LuminaDelegate {
             // still images always come back through this function, but live photos and depth data are returned here as well for a given still image
             // depth data must be manually cast to AVDepthData, as AVDepthData is only available in iOS 11.0 or higher.
             
-            DispatchQueue.main.async(execute: {
-                self.pupPreviewImageView.image = stillImage
-                self.submitButton.isHidden = false
-            })
+            //if let window = UIApplication.shared.keyWindow {
+              //  self.pupPreviewImageView.frame = window.frame
+            //}
+            self.pupPreviewImageView.image = stillImage
+            self.submitButton.isHidden = false
+            
         }
     }
     
@@ -241,7 +247,7 @@ extension CameraQRViewController {
         card.contentView = contentView
         card.contentViewEdgeInsetsPreset = .square3
         view.layout(card).horizontally(left: 10, right: 10)
-        view.layout(card).vertically(top: 40, bottom: 100)
+        view.layout(card).vertically(top: 50, bottom: 100)
     }
 }
 

@@ -42,7 +42,7 @@ class CameraQRViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
         pupPreviewImageView.image = nil
         submitButton.isHidden = true
-        breedNameLabel.isHidden = true
+        //breedNameLabel.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -123,6 +123,7 @@ extension CameraQRViewController: NetworkProtocolDelegate {
         let breedInfo = responseJSON["breed_info"].string
         print(responseJSON)
         print(breed ?? "nah")
+        breedNameLabel.isHidden = false
         
         
         if let breedNameAsString = breed {
@@ -172,6 +173,7 @@ extension CameraQRViewController: LuminaDelegate {
     
     func captured(stillImage: UIImage, livePhotoAt: URL?, depthData: Any?, from controller: LuminaViewController) {
         view.backgroundColor = UIColor.black
+        breedNameLabel.isHidden = true
         if self.card != nil {
             self.card.isHidden = true
         }

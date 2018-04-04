@@ -170,19 +170,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D401DAD3207446BC00A5441C /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				D42D491C206EF061002A0E34 /* ScannerViewController.swift */,
+				D42D4917206EF061002A0E34 /* CameraViewController.swift */,
+				D42D4916206EF061002A0E34 /* CameraQRViewController.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		D401DAD4207446CF00A5441C /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D42D4918206EF061002A0E34 /* MenuViewController.swift */,
+				D42D491D206EF061002A0E34 /* SignUpViewController.swift */,
+				D42D491B206EF061002A0E34 /* LoginViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		D42D4910206EEE6F002A0E34 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D42D4916206EF061002A0E34 /* CameraQRViewController.swift */,
-				D42D4917206EF061002A0E34 /* CameraViewController.swift */,
-				D42D491A206EF061002A0E34 /* HomeViewController.swift */,
-				D42D491B206EF061002A0E34 /* LoginViewController.swift */,
-				D42D4918206EF061002A0E34 /* MenuViewController.swift */,
-				D42D4919206EF061002A0E34 /* ProfileViewController.swift */,
-				D42D491C206EF061002A0E34 /* ScannerViewController.swift */,
-				D42D491D206EF061002A0E34 /* SignUpViewController.swift */,
-				D4DA86E0206F6E1F003FA0CD /* PupTabBarController.swift */,
+				D401DAD3207446BC00A5441C /* Camera */,
+				D401DAD4207446CF00A5441C /* Auth */,
 				D493DE442071804E00BF54FC /* CollarViewController.swift */,
+				D42D491A206EF061002A0E34 /* HomeViewController.swift */,
+				D42D4919206EF061002A0E34 /* ProfileViewController.swift */,
+				D4DA86E0206F6E1F003FA0CD /* PupTabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

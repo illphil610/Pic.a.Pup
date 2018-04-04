@@ -11,6 +11,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pacifico-Regular.ttf">
+            <string>Pacifico-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Menu View Controller-->
         <scene sceneID="yeX-DY-fXr">
@@ -410,7 +415,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RmI-2u-nCU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RmI-2u-nCU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -421,25 +426,35 @@
                                     <action selector="submitPhotoForAnalysis:" destination="kbW-uQ-hGi" eventType="touchUpInside" id="LO2-R1-kvF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bP5-4R-OSe">
+                                <rect key="frame" x="16" y="44" width="343" height="70"/>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="29"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0ec-4l-UJG" firstAttribute="trailing" secondItem="gXF-Tu-PHv" secondAttribute="trailing" constant="16" id="3FA-XH-yph"/>
                             <constraint firstItem="0ec-4l-UJG" firstAttribute="bottom" secondItem="gXF-Tu-PHv" secondAttribute="bottom" constant="8" id="BP2-7j-QwS"/>
+                            <constraint firstItem="gXF-Tu-PHv" firstAttribute="top" secondItem="bP5-4R-OSe" secondAttribute="bottom" constant="543" id="Cs1-yU-Lrd"/>
                             <constraint firstItem="gXF-Tu-PHv" firstAttribute="leading" secondItem="0ec-4l-UJG" secondAttribute="leading" constant="295" id="DHA-sF-DVZ"/>
+                            <constraint firstItem="bP5-4R-OSe" firstAttribute="leading" secondItem="0ec-4l-UJG" secondAttribute="leading" constant="16" id="N5e-MF-9Pj"/>
+                            <constraint firstItem="0ec-4l-UJG" firstAttribute="trailing" secondItem="bP5-4R-OSe" secondAttribute="trailing" constant="16" id="Q5j-Kn-61T"/>
+                            <constraint firstItem="bP5-4R-OSe" firstAttribute="top" secondItem="0ec-4l-UJG" secondAttribute="top" id="dQM-2b-yRp"/>
                             <constraint firstItem="gXF-Tu-PHv" firstAttribute="top" secondItem="0ec-4l-UJG" secondAttribute="top" constant="613" id="glA-eP-wjo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0ec-4l-UJG"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Camera" image="icons8-camera-50" id="qvE-Ly-GdD"/>
                     <connections>
+                        <outlet property="breedNameLabel" destination="bP5-4R-OSe" id="WmK-ow-fJh"/>
                         <outlet property="pupPreviewImageView" destination="RmI-2u-nCU" id="cWf-r3-Axf"/>
                         <outlet property="submitButton" destination="gXF-Tu-PHv" id="ush-1L-3B7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pPa-6j-x7V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3407" y="1368"/>
+            <point key="canvasLocation" x="3405.5999999999999" y="1367.7339901477833"/>
         </scene>
         <!--Collar-->
         <scene sceneID="NyG-ka-gww">
@@ -552,6 +567,21 @@
             </objects>
             <point key="canvasLocation" x="5311" y="494"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="nVR-Bg-kFf">
+            <objects>
+                <viewController storyboardIdentifier="CardContent" id="8XY-DV-36M" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MPX-NV-FS1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Kqg-Ne-S7A"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WzS-MN-Jvo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6687" y="1624"/>
+        </scene>
         <!--Map-->
         <scene sceneID="TWp-tF-jiL">
             <objects>
@@ -639,7 +669,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKa-Yd-HF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7359" y="1608"/>
+            <point key="canvasLocation" x="8487" y="1213"/>
         </scene>
         <!--Pup Tab Bar Controller-->
         <scene sceneID="nTL-Qf-JKX">

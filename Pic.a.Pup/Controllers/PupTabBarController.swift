@@ -16,11 +16,9 @@ class PupTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
         if let cameraVC = viewController as? CameraQRViewController {
             cameraVC.setupCamera()
         }

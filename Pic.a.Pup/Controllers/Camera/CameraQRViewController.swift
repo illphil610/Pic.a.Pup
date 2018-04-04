@@ -13,25 +13,15 @@ import RSLoadingView
 import CoreLocation
 import SwiftyJSON
 import Material
+import Cards
 
 class CameraQRViewController: UIViewController {
     
-    fileprivate var card: PresenterCard!
+    @IBOutlet weak var resultsCard: CardHighlight!
     
-    /// Conent area.
-    fileprivate var presenterView: UIImageView!
-    fileprivate var contentView: UILabel!
+    @IBOutlet weak var breedNameLabel: UILabel!
     
-    /// Bottom Bar views.
-    fileprivate var bottomBar: Bar!
-    fileprivate var dateFormatter: DateFormatter!
-    fileprivate var dateLabel: UILabel!
-    fileprivate var favoriteButton: IconButton!
-    fileprivate var shareButton: IconButton!
-    
-    /// Toolbar views.
-    fileprivate var toolbar: Toolbar!
-    fileprivate var moreButton: IconButton!
+    var card: CardHighlight!
     
     @IBOutlet weak var pupPreviewImageView: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
@@ -49,17 +39,17 @@ class CameraQRViewController: UIViewController {
     var downloableUrlFromFirebase: URL?
     
     override func viewWillAppear(_ animated: Bool) {
-        //self.tabBarController?.delegate = self
         tabBarController?.tabBar.isHidden = false
         pupPreviewImageView.image = nil
-        
+        submitButton.isHidden = true
+        breedNameLabel.isHidden = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add those colorz
-        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         view.backgroundColor = UIColor.black
+        breedNameLabel.isHidden = true
         
         utility.delegate = self
         networkManager.delegate = self
@@ -76,19 +66,21 @@ class CameraQRViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //locationManager.delegate = utility
-        //locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        //locationManager.requestWhenInUseAuthorization()
-        //locationManager.startUpdatingLocation()
+        locationManager.delegate = utility
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
+        print("viewDidAppear")
         submitButton.isHidden = true
         pupPreviewImageView.isHidden = false
-        submitButton.isHidden = true
+        tabBarController?.tabBar.isHidden = false
     }
     
     func setupCamera() {
         tabBarController?.tabBar.isHidden = true
         present(camera, animated: true, completion: nil)
+        //tabBarController?.tabBar.isHidden = false
     }
     
     @IBAction func submitPhotoForAnalysis(_ sender: Any) {
@@ -132,20 +124,20 @@ extension CameraQRViewController: NetworkProtocolDelegate {
         print(responseJSON)
         print(breed ?? "nah")
         
-        // Hide existing views to make more for new analysis data
-        view.backgroundColor = UIColor.darkGray
-        pupPreviewImageView.isHidden = true
-        submitButton.isHidden = true
         
         if let breedNameAsString = breed {
             if let breedInfoAsString = breedInfo {
-                preparePresenterView()
-                prepareDateFormatter()
-                prepareDateLabel()
-                prepareMoreButton()
-                prepareToolbar(breedName: breedNameAsString)
-                prepareContentView(breedInfo: breedInfoAsString)
-                preparePresenterCard()
+                
+                // Hide existing views to make more for new analysis data
+                view.backgroundColor = UIColor.white
+                pupPreviewImageView.isHidden = true
+                submitButton.isHidden = true
+                breedNameLabel.isHidden = false
+                breedNameLabel.text = breedNameAsString
+                
+                // create card to display results
+                card = createCardForTheHoes(title: breedNameAsString, image: (pupPreviewImageView?.image)!)
+                view.addSubview(card)
                 
                 // hide the animation
                 loadingView.hide()
@@ -160,6 +152,7 @@ extension CameraQRViewController: LuminaDelegate {
     
     func dismissed(controller: LuminaViewController) {
         controller.dismiss(animated: false, completion: nil)
+        tabBarController?.tabBar.isHidden = false
         tabBarController?.selectedIndex = 0
     }
     
@@ -178,76 +171,33 @@ extension CameraQRViewController: LuminaDelegate {
     }
     
     func captured(stillImage: UIImage, livePhotoAt: URL?, depthData: Any?, from controller: LuminaViewController) {
+        view.backgroundColor = UIColor.black
+        if self.card != nil {
+            self.card.isHidden = true
+        }
         controller.dismiss(animated: false) {
-            // still images always come back through this function, but live photos and depth data are returned here as well for a given still image
-            // depth data must be manually cast to AVDepthData, as AVDepthData is only available in iOS 11.0 or higher.
-            
-            //if let window = UIApplication.shared.keyWindow {
-              //  self.pupPreviewImageView.frame = window.frame
-            //}
             self.pupPreviewImageView.image = stillImage
             self.submitButton.isHidden = false
-            
         }
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        get { return .lightContent }
     }
 }
 
 extension CameraQRViewController {
-    fileprivate func preparePresenterView() {
-        presenterView = UIImageView()
-        presenterView.image = pupPreviewImageView.image?.resize(toWidth: view.frame.width)
-        presenterView.image = presenterView.image?.resize(toHeight: 550)
-        //presenterView.image = UIImage(named: "pattern")?.resize(toWidth: view.width)
-        presenterView.contentMode = .scaleAspectFill
-    }
-    
-    fileprivate func prepareDateFormatter() {
-        dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-    }
-    fileprivate func prepareDateLabel() {
-        dateLabel = UILabel()
-        dateLabel.font = RobotoFont.regular(with: 12)
-        dateLabel.textColor = Color.blueGrey.base
-        dateLabel.textAlignment = .center
-        dateLabel.text = dateFormatter.string(from: Date.distantFuture)
-    }
-    
-    fileprivate func prepareToolbar(breedName: String) {
-        toolbar = Toolbar(rightViews: [moreButton])
-        toolbar.title = breedName
-        toolbar.titleLabel.textAlignment = .left
-        toolbar.titleLabel.font = UIFont.init(name: "Pacifico-Regular", size: 20)
-        //toolbar.detail = breedInfo
-        //toolbar.detailLabel.textAlignment = .left
-        //toolbar.detailLabel.textColor = Color.blueGrey.base
-    }
-    
-    fileprivate func prepareMoreButton() {
-        moreButton = IconButton(image: Icon.cm.moreHorizontal, tintColor: Color.blueGrey.base)
-    }
-    
-    fileprivate func prepareContentView(breedInfo: String) {
-        contentView = UILabel()
-        contentView.numberOfLines = 2
-        contentView.text = breedInfo
-        contentView.font = RobotoFont.regular(with: 14)
-    }
-    
-    fileprivate func preparePresenterCard() {
-        card = PresenterCard()
-        card.toolbar = toolbar
-        card.toolbarEdgeInsetsPreset = .wideRectangle2
-        card.presenterView = presenterView
-        card.contentView = contentView
-        card.contentViewEdgeInsetsPreset = .square3
-        view.layout(card).horizontally(left: 10, right: 10)
-        view.layout(card).vertically(top: 50, bottom: 100)
+    private func createCardForTheHoes(title: String, image: UIImage) -> CardHighlight {
+        let card = CardHighlight(frame: CGRect(x: 10, y: 110, width: 350, height: 600))
+        card.backgroundColor = UIColor(red: 0, green: 94/255, blue: 112/255, alpha: 1)
+        card.shadowColor = UIColor.gray
+        card.backgroundImage = image
+        card.itemTitle = ""
+        card.title = ""
+        card.itemSubtitle = ""
+        card.buttonText = "Details"
+        card.textColor = UIColor.white
+        card.hasParallax = true
+        
+        let cardContentVC = storyboard!.instantiateViewController(withIdentifier: "CardContent")
+        card.shouldPresent(cardContentVC, from: self, fullscreen: true)
+        return card
     }
 }
 

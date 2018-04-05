@@ -27,7 +27,7 @@ class CameraQRViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     
     let locationManager = CLLocationManager()
-    let camera = LuminaViewController()
+    //let camera = LuminaViewController()
     let firebaseManager = FirebaseManager()
     let networkManager = NetworkManager()
     let utility = Utility()
@@ -42,8 +42,13 @@ class CameraQRViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
         pupPreviewImageView.image = nil
         submitButton.isHidden = true
+        
+        //card?.isHidden = true
+        //breedNameLabel.text = ""
+        //view.backgroundColor = UIColor.black
         //breedNameLabel.isHidden = true
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,11 +56,13 @@ class CameraQRViewController: UIViewController {
         view.backgroundColor = UIColor.black
         breedNameLabel.isHidden = true
         
+        card?.isHidden = true
+        
         utility.delegate = self
         networkManager.delegate = self
-        camera.delegate = self
-        camera.trackMetadata = true
-        camera.resolution = .highest
+        //camera.delegate = self
+        //camera.trackMetadata = true
+        //camera.resolution = .highest
         
         locationManager.delegate = utility
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -77,7 +84,20 @@ class CameraQRViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
+    
     func setupCamera() {
+        
+        // Hide views so you just see black when camera launches
+        card?.isHidden = true
+        pupPreviewImageView.isHidden = true
+        submitButton.isHidden = true
+        
+        // Launch Lumina
+        let camera = LuminaViewController()
+        camera.delegate = self
+        camera.trackMetadata = true
+        camera.resolution = .highest
+        
         tabBarController?.tabBar.isHidden = true
         present(camera, animated: true, completion: nil)
         //tabBarController?.tabBar.isHidden = false
@@ -85,7 +105,6 @@ class CameraQRViewController: UIViewController {
     
     @IBAction func submitPhotoForAnalysis(_ sender: Any) {
         loadingView.show(on: view)
-        
         if let dogPictureTakenFromCamera = pupPreviewImageView.image {
             firebaseManager.uploadImageToFirebase(dogPictureTakenFromCamera, completionBlock: { (fileUrl, errorMessage) in
                 if let url = fileUrl {

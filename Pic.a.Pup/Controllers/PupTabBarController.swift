@@ -20,6 +20,7 @@ class PupTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if let cameraVC = viewController as? CameraQRViewController {
+            cameraVC.view.backgroundColor = UIColor.black
             cameraVC.setupCamera()
         }
     }

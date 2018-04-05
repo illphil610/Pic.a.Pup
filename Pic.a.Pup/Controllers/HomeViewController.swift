@@ -17,7 +17,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
+        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
+        view.backgroundColor = UIColor.white
     }
     
     @IBAction func handleLogOut(_ sender: UIButton) {

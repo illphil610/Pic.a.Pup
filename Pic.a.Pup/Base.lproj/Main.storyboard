@@ -427,8 +427,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bP5-4R-OSe">
-                                <rect key="frame" x="16" y="44" width="343" height="70"/>
-                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="29"/>
+                                <rect key="frame" x="16" y="44" width="343" height="63"/>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="35"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -436,7 +436,7 @@
                         <constraints>
                             <constraint firstItem="0ec-4l-UJG" firstAttribute="trailing" secondItem="gXF-Tu-PHv" secondAttribute="trailing" constant="16" id="3FA-XH-yph"/>
                             <constraint firstItem="0ec-4l-UJG" firstAttribute="bottom" secondItem="gXF-Tu-PHv" secondAttribute="bottom" constant="8" id="BP2-7j-QwS"/>
-                            <constraint firstItem="gXF-Tu-PHv" firstAttribute="top" secondItem="bP5-4R-OSe" secondAttribute="bottom" constant="543" id="Cs1-yU-Lrd"/>
+                            <constraint firstItem="gXF-Tu-PHv" firstAttribute="top" secondItem="bP5-4R-OSe" secondAttribute="bottom" constant="550" id="Cs1-yU-Lrd"/>
                             <constraint firstItem="gXF-Tu-PHv" firstAttribute="leading" secondItem="0ec-4l-UJG" secondAttribute="leading" constant="295" id="DHA-sF-DVZ"/>
                             <constraint firstItem="bP5-4R-OSe" firstAttribute="leading" secondItem="0ec-4l-UJG" secondAttribute="leading" constant="16" id="N5e-MF-9Pj"/>
                             <constraint firstItem="0ec-4l-UJG" firstAttribute="trailing" secondItem="bP5-4R-OSe" secondAttribute="trailing" constant="16" id="Q5j-Kn-61T"/>

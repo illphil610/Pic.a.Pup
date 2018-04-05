@@ -52,6 +52,7 @@ class CameraQRViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Add those colorz
         view.backgroundColor = UIColor.black
         breedNameLabel.isHidden = true
@@ -150,6 +151,7 @@ extension CameraQRViewController: NetworkProtocolDelegate {
                 
                 // Hide existing views to make more for new analysis data
                 view.backgroundColor = UIColor.white
+
                 pupPreviewImageView.isHidden = true
                 submitButton.isHidden = true
                 breedNameLabel.isHidden = false
@@ -205,8 +207,8 @@ extension CameraQRViewController: LuminaDelegate {
 
 extension CameraQRViewController {
     private func createCardForTheHoes(title: String, image: UIImage) -> CardHighlight {
-        let card = CardHighlight(frame: CGRect(x: 10, y: 110, width: 350, height: 600))
-        card.backgroundColor = UIColor(red: 0, green: 94/255, blue: 112/255, alpha: 1)
+        let card = CardHighlight(frame: CGRect(x: 10, y: 112, width: 355, height: 595))
+        //card.backgroundColor = UIColor(red: 0, green: 94/255, blue: 112/255, alpha: 1)
         card.shadowColor = UIColor.gray
         card.backgroundImage = image
         card.itemTitle = ""
@@ -214,7 +216,9 @@ extension CameraQRViewController {
         card.itemSubtitle = ""
         card.buttonText = "Details"
         card.textColor = UIColor.white
-        card.hasParallax = true
+        card.hasParallax = false
+        
+        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
         let cardContentVC = storyboard!.instantiateViewController(withIdentifier: "CardContent")
         card.shouldPresent(cardContentVC, from: self, fullscreen: true)

@@ -10,6 +10,7 @@ import Foundation
 import AVFoundation
 import Lumina
 import UIKit
+import Firebase
 
 class ProfileViewController: UIViewController {
     
@@ -25,7 +26,15 @@ class ProfileViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         get { return .lightContent }
-    }    
+    }
+    
+    
+    @IBAction func handleSignOut(_ sender: UIButton) {
+        try! Auth.auth().signOut()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
+        self.present(initialViewController, animated: false)
+    }
 }
 
 

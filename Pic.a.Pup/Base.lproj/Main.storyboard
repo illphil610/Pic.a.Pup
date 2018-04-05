@@ -530,14 +530,6 @@
                                     <outlet property="dataSource" destination="vnq-hK-RH0" id="7hz-Bn-sOT"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqc-WK-hwz">
-                                <rect key="frame" x="304" y="26" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log Out"/>
-                                <connections>
-                                    <action selector="handleLogOut:" destination="vnq-hK-RH0" eventType="touchUpInside" id="nMG-9q-AGK"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="LLN-Pp-W04"/>
@@ -558,14 +550,32 @@
                     <view key="view" contentMode="scaleToFill" id="4mf-h9-snS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smE-fM-U36">
+                                <rect key="frame" x="0.0" y="678" width="375" height="51"/>
+                                <color key="backgroundColor" red="0.85804803939999996" green="0.75236108530000001" blue="0.94834481370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="22"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleSignOut:" destination="qBQ-dH-AGt" eventType="touchUpInside" id="XpV-6J-gdQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="smE-fM-U36" firstAttribute="trailing" secondItem="zIv-Yh-2QZ" secondAttribute="trailing" id="512-Ek-ab8"/>
+                            <constraint firstItem="smE-fM-U36" firstAttribute="leading" secondItem="zIv-Yh-2QZ" secondAttribute="leading" id="CQu-rv-fYY"/>
+                            <constraint firstItem="smE-fM-U36" firstAttribute="bottom" secondItem="zIv-Yh-2QZ" secondAttribute="bottom" id="eKZ-K9-9aY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zIv-Yh-2QZ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="icons8-dog-paw-filled" id="QjG-Mh-f3L"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnA-Q3-wu4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5311" y="494"/>
+            <point key="canvasLocation" x="5309.6000000000004" y="493.5960591133005"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="nVR-Bg-kFf">

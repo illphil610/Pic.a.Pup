@@ -45,6 +45,9 @@
 		D493DE452071804E00BF54FC /* CollarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493DE442071804E00BF54FC /* CollarViewController.swift */; };
 		D493DE472071848900BF54FC /* CameraQRExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493DE462071848900BF54FC /* CameraQRExtension.swift */; };
 		D4DA86E1206F6E1F003FA0CD /* PupTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA86E0206F6E1F003FA0CD /* PupTabBarController.swift */; };
+		D4E9256220770D6C00F95D90 /* LostPup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E9256120770D6C00F95D90 /* LostPup.swift */; };
+		D4E925642077412100F95D90 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E925632077412100F95D90 /* SideMenuTableViewController.swift */; };
+		D4E925662077580900F95D90 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E925652077580900F95D90 /* MapViewController.swift */; };
 		E601A299EDF4A53602A6B536 /* Pods_Pic_a_Pup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3F85AE260C2EC9384EB81D /* Pods_Pic_a_Pup.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +116,9 @@
 		D493DE442071804E00BF54FC /* CollarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollarViewController.swift; sourceTree = "<group>"; };
 		D493DE462071848900BF54FC /* CameraQRExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraQRExtension.swift; sourceTree = "<group>"; };
 		D4DA86E0206F6E1F003FA0CD /* PupTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupTabBarController.swift; sourceTree = "<group>"; };
+		D4E9256120770D6C00F95D90 /* LostPup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPup.swift; sourceTree = "<group>"; };
+		D4E925632077412100F95D90 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
+		D4E925652077580900F95D90 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DD3F85AE260C2EC9384EB81D /* Pods_Pic_a_Pup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pic_a_Pup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76A0AA9D1C003F40D21D09D /* Pods-Pic.a.PupUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pic.a.PupUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pic.a.PupUITests/Pods-Pic.a.PupUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E7C82C1F267265692EE2F90E /* Pods_Pic_a_PupTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pic_a_PupTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +205,7 @@
 				D42D491A206EF061002A0E34 /* HomeViewController.swift */,
 				D42D4919206EF061002A0E34 /* ProfileViewController.swift */,
 				D4DA86E0206F6E1F003FA0CD /* PupTabBarController.swift */,
+				D4E925652077580900F95D90 /* MapViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -222,6 +229,7 @@
 				D42D492C206EF07C002A0E34 /* Lovable.swift */,
 				D42D492A206EF07C002A0E34 /* ModelSearchRequest.swift */,
 				D42D492D206EF07C002A0E34 /* User.swift */,
+				D4E9256120770D6C00F95D90 /* LostPup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -238,6 +246,7 @@
 				D42D4944206EF0F3002A0E34 /* PupCollectionViewCell.swift */,
 				D42D4946206EF0F5002A0E34 /* SectionHeaderCollectionReusableView.swift */,
 				D42D493A206EF089002A0E34 /* ViewUtilities */,
+				D4E925632077412100F95D90 /* SideMenuTableViewController.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -555,6 +564,7 @@
 				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RSLoadingView/RSLoadingView.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -571,6 +581,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSLoadingView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -620,6 +631,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4E925662077580900F95D90 /* MapViewController.swift in Sources */,
 				D42D493E206EF089002A0E34 /* Utility.swift in Sources */,
 				D42D4923206EF062002A0E34 /* LoginViewController.swift in Sources */,
 				D42D4945206EF0F3002A0E34 /* PupCollectionViewCell.swift in Sources */,
@@ -634,10 +646,12 @@
 				D443EF3A206EDC3B000C58CB /* AppDelegate.swift in Sources */,
 				D42D4921206EF062002A0E34 /* ProfileViewController.swift in Sources */,
 				D493DE452071804E00BF54FC /* CollarViewController.swift in Sources */,
+				D4E9256220770D6C00F95D90 /* LostPup.swift in Sources */,
 				D42D4941206EF089002A0E34 /* CameraManager.swift in Sources */,
 				D42D4931206EF07C002A0E34 /* ModelSearchRequest.swift in Sources */,
 				D42D493D206EF089002A0E34 /* FirebaseManager.swift in Sources */,
 				D42D4947206EF0F5002A0E34 /* SectionHeaderCollectionReusableView.swift in Sources */,
+				D4E925642077412100F95D90 /* SideMenuTableViewController.swift in Sources */,
 				D42D4935206EF07C002A0E34 /* Dog.swift in Sources */,
 				D42D491F206EF062002A0E34 /* CameraViewController.swift in Sources */,
 				D42D493C206EF089002A0E34 /* RoundedWhiteButton.swift in Sources */,

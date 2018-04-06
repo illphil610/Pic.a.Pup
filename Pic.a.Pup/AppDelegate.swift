@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.makeKeyAndVisible()
         }
         
-        UINavigationBar.appearance().barStyle = .blackOpaque
+        //UINavigationBar.appearance().barStyle = .blackOpaque
         return true
     }
 

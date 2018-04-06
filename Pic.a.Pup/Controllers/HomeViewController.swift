@@ -17,8 +17,35 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
+        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         //view.backgroundColor = UIColor.white
+        
+        if let navFrame = self.navigationController?.navigationBar.frame {
+            
+            //HERE
+            //Create a new frame with the default offset of the status bar
+            let newframe = CGRect(origin: .zero, size: CGSize(width: navFrame.width, height: (navFrame.height + UIApplication.shared.statusBarFrame.height) ))
+            
+            //let image = gradientWithFrametoImage(frame: newframe, colors: [primaryColor.cgColor , //secondaryColor.cgColor])!
+            
+            //self.navigationController?.navigationBar.barTintColor = UIColor(patternImage: image)
+            self.navigationController?.navigationBar.clipsToBounds = false
+            self.navigationController?.navigationBar.layer.shadowOffset.height = 5
+            self.navigationController?.navigationBar.layer.shadowOpacity = 0.25
+            
+        }
+        
+    }
+    
+    func gradientWithFrametoImage(frame: CGRect, colors: [CGColor]) -> UIImage? {
+        let gradient: CAGradientLayer  = CAGradientLayer(layer: self.view.layer)
+        gradient.frame = frame
+        gradient.colors = colors
+        UIGraphicsBeginImageContext(frame.size)
+        gradient.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
     
     @IBAction func handleLogOut(_ sender: UIButton) {

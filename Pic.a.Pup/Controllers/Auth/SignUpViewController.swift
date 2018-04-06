@@ -103,6 +103,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         guard let email = emailField.text else { return }
         guard let password = passwordField.text else { return }
         
+        // create a user object and save that shit to firebase
+        
+        
+        let owner = DogLover(name: username, email: email, fcm_id: "fuck")
+        
         Auth.auth().createUser(withEmail: email, password: password) { user, error in
             if error == nil && user != nil {
                 print("User created")
@@ -111,7 +116,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 changeRequest?.commitChanges { error in
                     if error == nil {
                         print("User display name changed")
-                        self.dismiss(animated: false, completion: nil)
+                        
+                        // Save the DogLover to our shit so we can use it later
+                        let resultFromSaving = self.saveDogLover(dogLover: owner)
+                        if (resultFromSaving) {
+                            self.dismiss(animated: false, completion: nil)
+                        }
                     }
                 }
             } else {
@@ -166,6 +176,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     override open var shouldAutorotate: Bool {
+        return false
+    }
+    
+    private func saveDogLover(dogLover: DogLover) -> Bool {
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(dogLover), forKey:"owner")
+        if let data = UserDefaults.standard.value(forKey:"owner") as? Data {
+            let owner2 = try? PropertyListDecoder().decode(DogLover.self, from: data)
+            if owner2 != nil {
+                return true
+            }
+        }
         return false
     }
 }

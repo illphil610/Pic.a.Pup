@@ -52,7 +52,6 @@ class CameraQRViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Add those colorz
         view.backgroundColor = UIColor.black
         breedNameLabel.isHidden = true

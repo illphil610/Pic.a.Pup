@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct Dog: Codable {
+    var name: String
+    var pupcode: String
+}

@@ -13,4 +13,9 @@ class CollarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func dismiss(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

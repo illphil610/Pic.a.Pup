@@ -8,12 +8,8 @@
 
 import Foundation
 
-class DogLover {
+struct DogLover: Codable {
     var name: String
     var email: String
-    
-    init(name: String, email: String) {
-        self.name = name
-        self.email = email
-    }
+    var fcm_id: String
 }

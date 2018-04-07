@@ -21,17 +21,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         //view.backgroundColor = UIColor.white
         
         if let navFrame = self.navigationController?.navigationBar.frame {
+            let newframe = CGRect(origin: .zero, size: CGSize(width: navFrame.width, height: (navFrame.height + UIApplication.shared.statusBarFrame.height)))
             
-            //HERE
-            //Create a new frame with the default offset of the status bar
-            let newframe = CGRect(origin: .zero, size: CGSize(width: navFrame.width, height: (navFrame.height + UIApplication.shared.statusBarFrame.height) ))
+            let image = gradientWithFrametoImage(frame: newframe, colors: [primaryColor.cgColor , secondaryColor.cgColor])!
             
-            //let image = gradientWithFrametoImage(frame: newframe, colors: [primaryColor.cgColor , //secondaryColor.cgColor])!
-            
-            //self.navigationController?.navigationBar.barTintColor = UIColor(patternImage: image)
+            self.navigationController?.navigationBar.barTintColor = UIColor(patternImage: image)
             self.navigationController?.navigationBar.clipsToBounds = false
-            self.navigationController?.navigationBar.layer.shadowOffset.height = 5
+            self.navigationController?.navigationBar.layer.shadowOffset.height = 1
             self.navigationController?.navigationBar.layer.shadowOpacity = 0.25
+            self.navigationController?.navigationBar.isTranslucent = true
             
         }
         
@@ -66,6 +64,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = recentSearchCollectionView.dequeueReusableCell(withReuseIdentifier: "pupCollectionViewCell", for: indexPath) as! PupCollectionViewCell
+        //cell.layer.backgroundColor = UIColor.black.cgColor
         cell.layer.cornerRadius = 20
         cell.layer.cornerRadius = 20
         cell.layer.masksToBounds = true

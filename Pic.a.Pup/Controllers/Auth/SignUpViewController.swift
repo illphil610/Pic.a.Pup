@@ -106,7 +106,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         // create a user object and save that shit to firebase
         
         
-        let owner = DogLover(name: username, email: email, fcm_id: "fuck")
+        let owner = DogLover(name: username, phoneNumber: "", fcm_id: "fuck")
         
         Auth.auth().createUser(withEmail: email, password: password) { user, error in
             if error == nil && user != nil {

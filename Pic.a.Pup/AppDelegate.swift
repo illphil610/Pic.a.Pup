@@ -9,14 +9,16 @@
 import UIKit
 import Firebase
 
+//let primaryColor = UIColor(red: 30/255, green: 129/255, blue: 150/255, alpha: 1)
+//let primaryColor = UIColor(red: 110/255, green: 129/255, blue: 241/255, alpha: 1)
+//let secondaryColor = UIColor(red: 85/255, green: 16/255, blue: 83/255, alpha: 1)
+//let secondaryColor = UIColor(red: 81/255, green: 74/255, blue: 225/255, alpha: 1)
 let primaryColor = UIColor(red: 30/255, green: 129/255, blue: 150/255, alpha: 1)
 let secondaryColor = UIColor(red: 85/255, green: 16/255, blue: 83/255, alpha: 1)
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()

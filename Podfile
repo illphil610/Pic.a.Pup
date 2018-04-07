@@ -18,6 +18,7 @@ pod 'RSLoadingView'
 pod 'Material', '~> 2.0'
 pod 'Cards'
 pod 'SideMenu'
+pod 'Eureka'
 
 
   target 'Pic.a.PupTests' do

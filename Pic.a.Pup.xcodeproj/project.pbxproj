@@ -48,6 +48,7 @@
 		D4E9256220770D6C00F95D90 /* LostPup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E9256120770D6C00F95D90 /* LostPup.swift */; };
 		D4E925642077412100F95D90 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E925632077412100F95D90 /* SideMenuTableViewController.swift */; };
 		D4E925662077580900F95D90 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E925652077580900F95D90 /* MapViewController.swift */; };
+		D4ED24D720782DB30066DA8A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4ED24D620782DB30066DA8A /* EditProfileViewController.swift */; };
 		E601A299EDF4A53602A6B536 /* Pods_Pic_a_Pup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3F85AE260C2EC9384EB81D /* Pods_Pic_a_Pup.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		D4E9256120770D6C00F95D90 /* LostPup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPup.swift; sourceTree = "<group>"; };
 		D4E925632077412100F95D90 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		D4E925652077580900F95D90 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D4ED24D620782DB30066DA8A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		DD3F85AE260C2EC9384EB81D /* Pods_Pic_a_Pup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pic_a_Pup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76A0AA9D1C003F40D21D09D /* Pods-Pic.a.PupUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pic.a.PupUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pic.a.PupUITests/Pods-Pic.a.PupUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E7C82C1F267265692EE2F90E /* Pods_Pic_a_PupTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pic_a_PupTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,11 +201,11 @@
 		D42D4910206EEE6F002A0E34 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D4ED24D520782D960066DA8A /* UserProfile */,
 				D401DAD3207446BC00A5441C /* Camera */,
 				D401DAD4207446CF00A5441C /* Auth */,
 				D493DE442071804E00BF54FC /* CollarViewController.swift */,
 				D42D491A206EF061002A0E34 /* HomeViewController.swift */,
-				D42D4919206EF061002A0E34 /* ProfileViewController.swift */,
 				D4DA86E0206F6E1F003FA0CD /* PupTabBarController.swift */,
 				D4E925652077580900F95D90 /* MapViewController.swift */,
 			);
@@ -307,6 +309,15 @@
 				D443EF5B206EDC3B000C58CB /* Info.plist */,
 			);
 			path = Pic.a.PupUITests;
+			sourceTree = "<group>";
+		};
+		D4ED24D520782D960066DA8A /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D42D4919206EF061002A0E34 /* ProfileViewController.swift */,
+				D4ED24D620782DB30066DA8A /* EditProfileViewController.swift */,
+			);
+			path = UserProfile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -556,6 +567,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Pic.a.Pup/Pods-Pic.a.Pup-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Cards/Cards.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Lumina/Lumina.framework",
@@ -573,6 +585,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cards.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lumina.framework",
@@ -647,6 +660,7 @@
 				D42D4921206EF062002A0E34 /* ProfileViewController.swift in Sources */,
 				D493DE452071804E00BF54FC /* CollarViewController.swift in Sources */,
 				D4E9256220770D6C00F95D90 /* LostPup.swift in Sources */,
+				D4ED24D720782DB30066DA8A /* EditProfileViewController.swift in Sources */,
 				D42D4941206EF089002A0E34 /* CameraManager.swift in Sources */,
 				D42D4931206EF07C002A0E34 /* ModelSearchRequest.swift in Sources */,
 				D42D493D206EF089002A0E34 /* FirebaseManager.swift in Sources */,

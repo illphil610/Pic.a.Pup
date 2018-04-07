@@ -10,6 +10,6 @@ import Foundation
 
 struct DogLover: Codable {
     var name: String
-    var email: String
+    var phoneNumber: String
     var fcm_id: String
 }

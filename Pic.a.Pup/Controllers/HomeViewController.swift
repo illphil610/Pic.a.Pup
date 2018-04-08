@@ -20,21 +20,21 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         //view.backgroundColor = UIColor.white
         
-        if let navFrame = self.navigationController?.navigationBar.frame {
-            let newframe = CGRect(origin: .zero, size: CGSize(width: navFrame.width, height: (navFrame.height + UIApplication.shared.statusBarFrame.height)))
+        //if let navFrame = self.navigationController?.navigationBar.frame {
+          //  let newframe = CGRect(origin: .zero, size: CGSize(width: navFrame.width, /height: (navFrame.height + UIApplication.shared.statusBarFrame.height)))
             
-            let image = gradientWithFrametoImage(frame: newframe, colors: [primaryColor.cgColor , secondaryColor.cgColor])!
+            //let image = gradientWithFrametoImage(frame: newframe, colors: [primaryColor.cgColor , //secondaryColor.cgColor])!
             
-            self.navigationController?.navigationBar.barTintColor = UIColor(patternImage: image)
-            self.navigationController?.navigationBar.clipsToBounds = false
-            self.navigationController?.navigationBar.layer.shadowOffset.height = 1
-            self.navigationController?.navigationBar.layer.shadowOpacity = 0.25
-            self.navigationController?.navigationBar.isTranslucent = true
-            
-        }
-        
+            //self.navigationController?.navigationBar.barTintColor = UIColor(patternImage: image)
+            //self.navigationController?.navigationBar.clipsToBounds = false
+            //self.navigationController?.navigationBar.layer.shadowOffset.height = 1
+            //self.navigationController?.navigationBar.layer.shadowOpacity = 0.25
+        self.navigationController?.navigationBar.isTranslucent = true
     }
+        
     
+
+/*
     func gradientWithFrametoImage(frame: CGRect, colors: [CGColor]) -> UIImage? {
         let gradient: CAGradientLayer  = CAGradientLayer(layer: self.view.layer)
         gradient.frame = frame
@@ -45,6 +45,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         UIGraphicsEndImageContext()
         return image
     }
+ */
     
     @IBAction func handleLogOut(_ sender: UIButton) {
         try! Auth.auth().signOut()
@@ -68,7 +69,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.layer.cornerRadius = 20
         cell.layer.cornerRadius = 20
         cell.layer.masksToBounds = true
-        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowColor = UIColor.gray.cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         cell.layer.shadowRadius = 8.0
         cell.layer.shadowOpacity = 1.0

@@ -14,18 +14,16 @@ import CoreLocation
 import SwiftyJSON
 import Material
 import Cards
+import Firebase
 
 class CameraQRViewController: UIViewController {
     
     @IBOutlet weak var resultsCard: CardHighlight!
-    
     @IBOutlet weak var breedNameLabel: UILabel!
-    
-    var card: CardHighlight!
-    
     @IBOutlet weak var pupPreviewImageView: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     
+    var card: CardHighlight!
     let locationManager = CLLocationManager()
     //let camera = LuminaViewController()
     let firebaseManager = FirebaseManager()
@@ -142,15 +140,12 @@ extension CameraQRViewController: NetworkProtocolDelegate {
         let breedInfo = responseJSON["breed_info"].string
         print(responseJSON)
         print(breed ?? "nah")
-        breedNameLabel.isHidden = false
-        
+        breedNameLabel.isHidden = true
         
         if let breedNameAsString = breed {
             if let breedInfoAsString = breedInfo {
-                
-                // Hide existing views to make more for new analysis data
-                view.backgroundColor = UIColor.white
 
+                view.backgroundColor = UIColor.white
                 pupPreviewImageView.isHidden = true
                 submitButton.isHidden = true
                 breedNameLabel.isHidden = false
@@ -163,6 +158,16 @@ extension CameraQRViewController: NetworkProtocolDelegate {
                 // hide the animation
                 loadingView.hide()
             }
+        }
+        
+        if (breedInfo == nil) {
+            let alert = UIAlertController(title: "Not able to identify breed", message: "Press OK below to retake the picture", preferredStyle: .actionSheet)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                self.loadingView.hide()
+                self.setupCamera()
+            }))
+            self.present(alert, animated: true)
         }
     }
 }
@@ -185,7 +190,14 @@ extension CameraQRViewController: LuminaDelegate {
                     print(metadataString)
                     dismiss(animated: false, completion: nil)
                     
-                    // go to collar activity with QR data
+                    
+                    let formattedMetadata = String(metadataString.filter { !" \n\t\r".contains($0) })
+                    
+                    let ref = Database.database().reference(withPath: "LostPups")
+                        .child(formattedMetadata)
+                    ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                        print("\(snapshot)")
+                        })
                 }
             }
         }

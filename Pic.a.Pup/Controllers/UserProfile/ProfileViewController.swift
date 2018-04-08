@@ -31,21 +31,18 @@ class ProfileViewController: UIViewController {
         SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
         
         SideMenuManager.default.menuAnimationBackgroundColor = UIColor.black
-        SideMenuManager.default.menuPresentMode = .menuDissolveIn
-        //SideMenuManager.default.menuBlurEffectStyle = .light
+        SideMenuManager.default.menuPresentMode = .menuSlideIn
+        //SideMenuManager.default.menuBlurEffectStyle = .dark
         SideMenuManager.default.menuFadeStatusBar = false
         
         
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         lostDogToggle.isOn = false
-        
         if let data = UserDefaults.standard.value(forKey:"owner") as? Data {
             let owner2 = try? PropertyListDecoder().decode(DogLover.self, from: data)
             nameLabel.text = owner2?.name
@@ -76,25 +73,23 @@ class ProfileViewController: UIViewController {
         // create LostPup object and save to firebase
         
         var owner: DogLover
-        var dog: Dog
+        //var dog: Dog
         
         if let data = UserDefaults.standard.value(forKey:"owner") as? Data {
             let tempOwner = try! PropertyListDecoder().decode(DogLover.self, from: data)
             owner = tempOwner
-            
-            
-            
             if let dogData = UserDefaults.standard.value(forKey: "dog") as? Data {
-                let tempDog = try! PropertyListDecoder().decode(Dog.self, from: dogData)
-                dog = tempDog
-                
+                var dog = try! PropertyListDecoder().decode(Dog.self, from: dogData)
                 let lostPup = try? LostPup(dogName: dog.name, owner: owner).asDictionary()
-                
-                //let databaseReference = Database.database().reference().child("LostPups")
-                //let key = databaseReference.child("\(dog.pupcode)")
-                //databaseReference.child(key).setValue(lostPup)
                 let databaseReference = Database.database().reference().child("LostPups")
-                databaseReference.child(dog.pupcode).setValue(lostPup)
+                databaseReference.child("insert_pupcode_here").setValue(lostPup)
+                
+                
+                let alert = UIAlertController(title: "Lost Dog", message: "You just reported your dog is lost", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(alert, animated: true)
             }
         }
     }

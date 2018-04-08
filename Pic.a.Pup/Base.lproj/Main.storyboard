@@ -445,7 +445,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0ec-4l-UJG"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Camera" image="icons8-camera-50" selectedImage="cm_photo_camera_white" id="qvE-Ly-GdD"/>
+                    <tabBarItem key="tabBarItem" title="Camera" image="icons8-camera-50" selectedImage="icons8-camera-50" id="qvE-Ly-GdD"/>
                     <connections>
                         <outlet property="breedNameLabel" destination="bP5-4R-OSe" id="WmK-ow-fJh"/>
                         <outlet property="pupPreviewImageView" destination="RmI-2u-nCU" id="cWf-r3-Axf"/>
@@ -541,7 +541,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="LLN-Pp-W04"/>
                     </view>
                     <navigationItem key="navigationItem" title="Pic-a-Pup" id="KY1-Vz-eUZ"/>
@@ -765,7 +765,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="24"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="23"/>
@@ -966,7 +966,6 @@
     </scenes>
     <resources>
         <image name="backArrow" width="33" height="33"/>
-        <image name="cm_photo_camera_white" width="24" height="24"/>
         <image name="icons8-camera-50" width="25" height="25"/>
         <image name="icons8-checkmark-yes-64" width="64" height="64"/>
         <image name="icons8-dog-house-26" width="26" height="26"/>

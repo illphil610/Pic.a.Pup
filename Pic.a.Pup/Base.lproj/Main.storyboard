@@ -61,6 +61,7 @@
                                 <rect key="frame" x="-66" y="-8" width="506" height="468"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Tyw-Hd-i8c" secondAttribute="height" multiplier="1:1" constant="38" id="1nc-ly-1wW"/>
+                                    <constraint firstAttribute="width" secondItem="Tyw-Hd-i8c" secondAttribute="height" multiplier="253:234" id="pAb-Nn-Y1w"/>
                                     <constraint firstAttribute="height" constant="468" id="xTU-jQ-BwF"/>
                                 </constraints>
                             </imageView>
@@ -494,9 +495,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CmI-8D-pdA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CmI-8D-pdA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="25" minimumInteritemSpacing="30" id="a8s-e5-VVh">
@@ -514,7 +514,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="screen-shot-2017-09-17-at-10-14-47-pm" translatesAutoresizingMaskIntoConstraints="NO" id="bAL-1h-4NF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="267" height="298"/>
+                                                    <rect key="frame" x="0.0" y="1" width="267" height="298"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -542,9 +542,24 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="CmI-8D-pdA" secondAttribute="bottom" id="4Ga-b4-kCa"/>
+                            <constraint firstItem="CmI-8D-pdA" firstAttribute="centerX" secondItem="B5y-uX-wWw" secondAttribute="centerX" id="S8o-4o-zkZ"/>
+                            <constraint firstItem="CmI-8D-pdA" firstAttribute="leading" secondItem="LLN-Pp-W04" secondAttribute="leading" id="XSR-ZJ-VWD"/>
+                            <constraint firstItem="CmI-8D-pdA" firstAttribute="centerY" secondItem="B5y-uX-wWw" secondAttribute="centerY" id="hTR-IE-zN5"/>
+                            <constraint firstItem="CmI-8D-pdA" firstAttribute="trailing" secondItem="LLN-Pp-W04" secondAttribute="trailing" id="rhY-3b-gAu"/>
+                            <constraint firstItem="CmI-8D-pdA" firstAttribute="top" secondItem="B5y-uX-wWw" secondAttribute="top" id="sUl-fo-bNH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LLN-Pp-W04"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Pic-a-Pup" id="KY1-Vz-eUZ"/>
+                    <navigationItem key="navigationItem" title="Pic-a-Pup" id="KY1-Vz-eUZ">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="icons8-menu-24" id="KwS-Os-B9j">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="ffj-ZH-6uV" kind="presentation" id="fsB-YL-TFT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="recentSearchCollectionView" destination="CmI-8D-pdA" id="HAz-0N-11r"/>
                     </connections>
@@ -738,11 +753,11 @@
         <scene sceneID="nTL-Qf-JKX">
             <objects>
                 <tabBarController id="e6a-4X-0i1" customClass="PupTabBarController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fef-Ly-7UH">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="fef-Ly-7UH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.70980392156862748" green="0.5490196078431373" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="jF9-3w-XsY" kind="relationship" relationship="viewControllers" id="TIw-hA-RfA"/>
@@ -763,6 +778,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q4V-Wf-DGJ">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.13333333333333333" green="0.74901960784313726" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="24"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -948,20 +964,51 @@
             </objects>
             <point key="canvasLocation" x="8504" y="489"/>
         </scene>
-        <!--View Controller-->
+        <!--Card Content View Controller-->
         <scene sceneID="tYg-hs-mMa">
             <objects>
-                <viewController storyboardIdentifier="CardContent" id="tw6-9R-05A" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardContent" id="tw6-9R-05A" customClass="CardContentViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QeQ-l1-caF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwG-Mg-8RC">
+                                <rect key="frame" x="16" y="44" width="343" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="P8S-Na-0GS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nv0-rU-MaE">
+                                <rect key="frame" x="16" y="171" width="343" height="230"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HwG-Mg-8RC" firstAttribute="trailing" secondItem="nv0-rU-MaE" secondAttribute="trailing" id="0M8-A9-O6w"/>
+                            <constraint firstItem="HwG-Mg-8RC" firstAttribute="leading" secondItem="nv0-rU-MaE" secondAttribute="leading" id="2AZ-Qw-NsC"/>
+                            <constraint firstItem="gCz-tg-LSw" firstAttribute="bottom" secondItem="nv0-rU-MaE" secondAttribute="bottom" constant="377" id="E6l-6l-ESb"/>
+                            <constraint firstItem="HwG-Mg-8RC" firstAttribute="trailing" secondItem="QeQ-l1-caF" secondAttribute="trailingMargin" id="Kmy-Dv-7Ad"/>
+                            <constraint firstItem="nv0-rU-MaE" firstAttribute="top" secondItem="HwG-Mg-8RC" secondAttribute="bottom" constant="52" id="Wda-Xg-pSl"/>
+                            <constraint firstItem="HwG-Mg-8RC" firstAttribute="leading" secondItem="QeQ-l1-caF" secondAttribute="leadingMargin" id="but-Pa-MWi"/>
+                            <constraint firstItem="nv0-rU-MaE" firstAttribute="top" secondItem="HwG-Mg-8RC" secondAttribute="bottom" constant="52" id="jBw-pb-yXx"/>
+                            <constraint firstItem="HwG-Mg-8RC" firstAttribute="top" secondItem="gCz-tg-LSw" secondAttribute="top" id="zQM-HH-6ri"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gCz-tg-LSw"/>
                     </view>
+                    <connections>
+                        <outlet property="breedInfoLabel" destination="nv0-rU-MaE" id="taR-qa-bNs"/>
+                        <outlet property="breedNameLabel" destination="HwG-Mg-8RC" id="M4s-V1-ot7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8D-5D-tIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4025" y="1786"/>
+            <point key="canvasLocation" x="4024.8000000000002" y="1785.960591133005"/>
         </scene>
     </scenes>
     <resources>
@@ -971,11 +1018,13 @@
         <image name="icons8-dog-house-26" width="26" height="26"/>
         <image name="icons8-dog-paw-filled" width="25" height="25"/>
         <image name="icons8-house-stark-27" width="27" height="27"/>
+        <image name="icons8-menu-24" width="24" height="24"/>
         <image name="icons8-qr-code-24 2" width="24" height="24"/>
         <image name="pap_gradient_text" width="1066" height="1066"/>
         <image name="screen-shot-2017-09-17-at-10-14-47-pm" width="638" height="517"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="fsB-YL-TFT"/>
         <segue reference="MOY-Xf-Yrh"/>
     </inferredMetricsTieBreakers>
 </document>

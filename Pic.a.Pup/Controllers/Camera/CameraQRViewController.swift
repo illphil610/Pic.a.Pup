@@ -31,6 +31,9 @@ class CameraQRViewController: UIViewController {
     let utility = Utility()
     let loadingView = RSLoadingView()
     
+    var breedInfoGlobal: String = "test"
+    var breedNameGlobal: String = "test"
+    
     // Location info to be updated by utility delegate **should maybe change utility to LocationUtility haha
     var currentUserCoordinateLocation: CLLocation?
     var currentUserPlacemark: CLPlacemark?
@@ -144,6 +147,9 @@ extension CameraQRViewController: NetworkProtocolDelegate {
         
         if let breedNameAsString = breed {
             if let breedInfoAsString = breedInfo {
+                
+                breedInfoGlobal = breedInfoAsString
+                breedNameGlobal = breedNameAsString
 
                 view.backgroundColor = UIColor.white
                 pupPreviewImageView.isHidden = true
@@ -190,14 +196,23 @@ extension CameraQRViewController: LuminaDelegate {
                     print(metadataString)
                     dismiss(animated: false, completion: nil)
                     
-                    
                     let formattedMetadata = String(metadataString.filter { !" \n\t\r".contains($0) })
                     
-                    let ref = Database.database().reference(withPath: "LostPups")
-                        .child(formattedMetadata)
+                    let ref = Database.database().reference(withPath: "LostPups").child(formattedMetadata)
                     ref.observeSingleEvent(of: .value, with: { (snapshot) in
                         print("\(snapshot)")
-                        })
+                        
+                        if (!snapshot.exists()) {
+                            print("This dog has not been reported lost.")
+                            let alert = UIAlertController(title: "Dog is not lost", message: "This dog has not been reported lost by its owner", preferredStyle: .actionSheet)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            self.present(alert, animated: true)
+                        } else {
+                            let alert = UIAlertController(title: "Lost dog found!", message: "Your location has been sent to the owner. Would you like to send a message?", preferredStyle: .actionSheet)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            self.present(alert, animated: true)
+                        }
+                    })
                 }
             }
         }
@@ -231,7 +246,10 @@ extension CameraQRViewController {
         
         //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
-        let cardContentVC = storyboard!.instantiateViewController(withIdentifier: "CardContent")
+        let cardContentVC = storyboard!.instantiateViewController(withIdentifier: "CardContent") as! CardContentViewController
+        cardContentVC.breedInfoDetails = breedInfoGlobal
+        cardContentVC.breedNameSent = breedNameGlobal
+        print(breedInfoGlobal)
         card.shouldPresent(cardContentVC, from: self, fullscreen: true)
         return card
     }

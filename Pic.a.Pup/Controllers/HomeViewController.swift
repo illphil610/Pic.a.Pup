@@ -10,6 +10,7 @@ import Foundation
 import FirebaseAuth
 import Firebase
 import UIKit
+import SideMenu
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -30,6 +31,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             //self.navigationController?.navigationBar.layer.shadowOffset.height = 1
             //self.navigationController?.navigationBar.layer.shadowOpacity = 0.25
         self.navigationController?.navigationBar.isTranslucent = true
+        
+        SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
+        
+        SideMenuManager.default.menuAnimationBackgroundColor = UIColor.black
+        SideMenuManager.default.menuPresentMode = .menuSlideIn
+        //SideMenuManager.default.menuBlurEffectStyle = .light
+        //SideMenuManager.default.menuFadeStatusBar = false
+        
+        
+        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
     }
         
     

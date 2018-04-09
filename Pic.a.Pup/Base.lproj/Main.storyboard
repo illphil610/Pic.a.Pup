@@ -611,6 +611,13 @@
                                 <color key="textColor" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaB-ce-hrG">
+                                <rect key="frame" x="16" y="282" width="343" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="29"/>
+                                <color key="textColor" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Doggos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9r-h4-fQn">
                                 <rect key="frame" x="16" y="360" width="84" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -646,28 +653,14 @@
                                 <color key="textColor" red="0.1450980392" green="0.43921568630000002" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DogLover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8O-TN-XuT">
-                                <rect key="frame" x="118" y="88" width="139" height="57"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="32"/>
-                                <color key="textColor" red="0.1450980392" green="0.43921568630000002" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="picture-767-1518386325" translatesAutoresizingMaskIntoConstraints="NO" id="7Ae-8y-aEk">
-                                <rect key="frame" x="118" y="153" width="139" height="129"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="insert_pupcode_here" translatesAutoresizingMaskIntoConstraints="NO" id="2tc-ho-zGe">
-                                <rect key="frame" x="82" y="463" width="210" height="171"/>
+                                <rect key="frame" x="88" y="463" width="199" height="171"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaB-ce-hrG">
-                                <rect key="frame" x="16" y="282" width="343" height="51"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="picture-767-1518386325" translatesAutoresizingMaskIntoConstraints="NO" id="7Ae-8y-aEk">
+                                <rect key="frame" x="103" y="105" width="169" height="177"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="29"/>
-                                <color key="textColor" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -677,15 +670,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zIv-Yh-2QZ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Ee9-WN-5TJ">
+                    <navigationItem key="navigationItem" title="User Profile" id="Ee9-WN-5TJ">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="icons8-qr-code-24 2" id="GEs-nj-EQs">
-                            <color key="tintColor" red="0.45098039220000002" green="0.63921568630000003" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.1333333333" green="0.74901960779999999" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="ffj-ZH-6uV" kind="presentation" id="6BZ-oJ-jqc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="3WP-Yv-dOW">
-                            <color key="tintColor" red="0.45098039220000002" green="0.63921568630000003" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.1333333333" green="0.74901960779999999" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="fhP-AL-hrJ" kind="show" id="pa0-Td-R2A"/>
                             </connections>
@@ -824,6 +817,10 @@
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <userDefinedRuntimeAttributes>

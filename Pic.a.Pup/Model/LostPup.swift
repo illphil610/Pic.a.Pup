@@ -10,5 +10,5 @@ import Foundation
 
 struct LostPup: Codable {
     var dogName: String
-    var owner: DogLover
+    var dogLover: DogLover
 }

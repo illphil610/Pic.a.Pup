@@ -72,15 +72,15 @@ class ProfileViewController: UIViewController {
         
         // create LostPup object and save to firebase
         
-        var owner: DogLover
+        var dogLover: DogLover
         //var dog: Dog
         
         if let data = UserDefaults.standard.value(forKey:"owner") as? Data {
             let tempOwner = try! PropertyListDecoder().decode(DogLover.self, from: data)
-            owner = tempOwner
+            dogLover = tempOwner
             if let dogData = UserDefaults.standard.value(forKey: "dog") as? Data {
                 var dog = try! PropertyListDecoder().decode(Dog.self, from: dogData)
-                let lostPup = try? LostPup(dogName: dog.name, owner: owner).asDictionary()
+                let lostPup = try? LostPup(dogName: dog.name, dogLover: dogLover).asDictionary()
                 let databaseReference = Database.database().reference().child("LostPups")
                 databaseReference.child("insert_pupcode_here").setValue(lostPup)
                 

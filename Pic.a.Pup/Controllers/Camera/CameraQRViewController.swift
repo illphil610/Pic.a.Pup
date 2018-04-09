@@ -204,11 +204,17 @@ extension CameraQRViewController: LuminaDelegate {
                         
                         if (!snapshot.exists()) {
                             print("This dog has not been reported lost.")
-                            let alert = UIAlertController(title: "Dog is not lost", message: "This dog has not been reported lost by its owner", preferredStyle: .actionSheet)
+                            let alert = UIAlertController(title: "Dog is not lost", message: "This dog has not been reported lost by its owner", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(alert, animated: true)
                         } else {
-                            let alert = UIAlertController(title: "Lost dog found!", message: "Your location has been sent to the owner. Would you like to send a message?", preferredStyle: .actionSheet)
+                            //let dogName = "dogName"
+                            
+                            let dick = snapshot.value as! [String : Any]
+                            let dogName = dick["dogName"] as! String
+                            print(dogName)
+                            
+                            let alert = UIAlertController(title: "You've found, \(dogName)!", message: "Your location has been sent to the owner. Would you like to send a message?", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(alert, animated: true)
                         }
@@ -243,8 +249,6 @@ extension CameraQRViewController {
         card.buttonText = "Details"
         card.textColor = UIColor.white
         card.hasParallax = false
-        
-        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
         let cardContentVC = storyboard!.instantiateViewController(withIdentifier: "CardContent") as! CardContentViewController
         cardContentVC.breedInfoDetails = breedInfoGlobal

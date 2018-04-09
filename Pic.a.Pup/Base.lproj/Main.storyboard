@@ -416,7 +416,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RmI-2u-nCU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RmI-2u-nCU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -757,7 +757,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="0.70980392156862748" green="0.5490196078431373" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.1333333333" green="0.74901960779999999" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="jF9-3w-XsY" kind="relationship" relationship="viewControllers" id="TIw-hA-RfA"/>
@@ -778,10 +778,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q4V-Wf-DGJ">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.13333333333333333" green="0.74901960784313726" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="24"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="23"/>
@@ -973,31 +973,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwG-Mg-8RC">
-                                <rect key="frame" x="16" y="44" width="343" height="75"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="64"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="P8S-Na-0GS"/>
+                                    <constraint firstAttribute="height" constant="64" id="P8S-Na-0GS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nv0-rU-MaE">
-                                <rect key="frame" x="16" y="171" width="343" height="230"/>
+                                <rect key="frame" x="16" y="72" width="343" height="246"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Hca-zO-Qwp">
+                                <rect key="frame" x="0.0" y="349" width="375" height="463"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HwG-Mg-8RC" firstAttribute="trailing" secondItem="nv0-rU-MaE" secondAttribute="trailing" id="0M8-A9-O6w"/>
                             <constraint firstItem="HwG-Mg-8RC" firstAttribute="leading" secondItem="nv0-rU-MaE" secondAttribute="leading" id="2AZ-Qw-NsC"/>
-                            <constraint firstItem="gCz-tg-LSw" firstAttribute="bottom" secondItem="nv0-rU-MaE" secondAttribute="bottom" constant="377" id="E6l-6l-ESb"/>
+                            <constraint firstItem="gCz-tg-LSw" firstAttribute="bottom" secondItem="nv0-rU-MaE" secondAttribute="bottom" constant="460" id="E6l-6l-ESb"/>
                             <constraint firstItem="HwG-Mg-8RC" firstAttribute="trailing" secondItem="QeQ-l1-caF" secondAttribute="trailingMargin" id="Kmy-Dv-7Ad"/>
-                            <constraint firstItem="nv0-rU-MaE" firstAttribute="top" secondItem="HwG-Mg-8RC" secondAttribute="bottom" constant="52" id="Wda-Xg-pSl"/>
+                            <constraint firstItem="nv0-rU-MaE" firstAttribute="top" secondItem="HwG-Mg-8RC" secondAttribute="bottom" constant="8" id="Wda-Xg-pSl"/>
                             <constraint firstItem="HwG-Mg-8RC" firstAttribute="leading" secondItem="QeQ-l1-caF" secondAttribute="leadingMargin" id="but-Pa-MWi"/>
-                            <constraint firstItem="nv0-rU-MaE" firstAttribute="top" secondItem="HwG-Mg-8RC" secondAttribute="bottom" constant="52" id="jBw-pb-yXx"/>
-                            <constraint firstItem="HwG-Mg-8RC" firstAttribute="top" secondItem="gCz-tg-LSw" secondAttribute="top" id="zQM-HH-6ri"/>
+                            <constraint firstItem="Hca-zO-Qwp" firstAttribute="trailing" secondItem="gCz-tg-LSw" secondAttribute="trailing" id="cKD-eQ-QPQ"/>
+                            <constraint firstItem="Hca-zO-Qwp" firstAttribute="leading" secondItem="gCz-tg-LSw" secondAttribute="leading" id="fVA-EA-9XP"/>
+                            <constraint firstItem="Hca-zO-Qwp" firstAttribute="top" secondItem="nv0-rU-MaE" secondAttribute="bottom" constant="31" id="hv0-9m-h1Y"/>
+                            <constraint firstAttribute="bottom" secondItem="Hca-zO-Qwp" secondAttribute="bottom" id="ihb-9D-16c"/>
+                            <constraint firstItem="nv0-rU-MaE" firstAttribute="top" secondItem="HwG-Mg-8RC" secondAttribute="bottom" constant="8" id="jBw-pb-yXx"/>
+                            <constraint firstItem="HwG-Mg-8RC" firstAttribute="top" secondItem="gCz-tg-LSw" secondAttribute="top" constant="-44" id="zQM-HH-6ri"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gCz-tg-LSw"/>
                     </view>

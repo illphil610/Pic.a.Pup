@@ -16,21 +16,23 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBOutlet weak var recentSearchCollectionView: UICollectionView!
     
+    @IBAction func launchGalleryForPhotos(_ sender: UIBarButtonItem) {
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        picker.modalPresentationStyle = .popover
+        present(picker, animated: true, completion: nil)
+        picker.popoverPresentationController?.barButtonItem = sender
+    }
+    
+    let picker = UIImagePickerController()
+    let camera = CameraQRViewController()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
-        //view.backgroundColor = UIColor.white
-        
-        //if let navFrame = self.navigationController?.navigationBar.frame {
-          //  let newframe = CGRect(origin: .zero, size: CGSize(width: navFrame.width, /height: (navFrame.height + UIApplication.shared.statusBarFrame.height)))
-            
-            //let image = gradientWithFrametoImage(frame: newframe, colors: [primaryColor.cgColor , //secondaryColor.cgColor])!
-            
-            //self.navigationController?.navigationBar.barTintColor = UIColor(patternImage: image)
-            //self.navigationController?.navigationBar.clipsToBounds = false
-            //self.navigationController?.navigationBar.layer.shadowOffset.height = 1
-            //self.navigationController?.navigationBar.layer.shadowOpacity = 0.25
         self.navigationController?.navigationBar.isTranslucent = true
+        //picker.delegate = camera
         
         SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
         
@@ -42,6 +44,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        
+        
     }
         
     

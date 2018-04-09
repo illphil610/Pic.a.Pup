@@ -432,6 +432,12 @@
                                 <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="35"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press the camera below to take a picture!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y64-nW-02o">
+                                <rect key="frame" x="31" y="275" width="312" height="179.33333333333337"/>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -439,16 +445,21 @@
                             <constraint firstItem="0ec-4l-UJG" firstAttribute="bottom" secondItem="gXF-Tu-PHv" secondAttribute="bottom" constant="8" id="BP2-7j-QwS"/>
                             <constraint firstItem="gXF-Tu-PHv" firstAttribute="top" secondItem="bP5-4R-OSe" secondAttribute="bottom" constant="550" id="Cs1-yU-Lrd"/>
                             <constraint firstItem="gXF-Tu-PHv" firstAttribute="leading" secondItem="0ec-4l-UJG" secondAttribute="leading" constant="295" id="DHA-sF-DVZ"/>
+                            <constraint firstItem="Y64-nW-02o" firstAttribute="leading" secondItem="0ec-4l-UJG" secondAttribute="leading" constant="31" id="GDc-BI-kOP"/>
                             <constraint firstItem="bP5-4R-OSe" firstAttribute="leading" secondItem="0ec-4l-UJG" secondAttribute="leading" constant="16" id="N5e-MF-9Pj"/>
+                            <constraint firstItem="0ec-4l-UJG" firstAttribute="trailing" secondItem="Y64-nW-02o" secondAttribute="trailing" constant="32" id="OUZ-Bz-gRD"/>
                             <constraint firstItem="0ec-4l-UJG" firstAttribute="trailing" secondItem="bP5-4R-OSe" secondAttribute="trailing" constant="16" id="Q5j-Kn-61T"/>
                             <constraint firstItem="bP5-4R-OSe" firstAttribute="top" secondItem="0ec-4l-UJG" secondAttribute="top" id="dQM-2b-yRp"/>
                             <constraint firstItem="gXF-Tu-PHv" firstAttribute="top" secondItem="0ec-4l-UJG" secondAttribute="top" constant="613" id="glA-eP-wjo"/>
+                            <constraint firstItem="gXF-Tu-PHv" firstAttribute="top" secondItem="Y64-nW-02o" secondAttribute="bottom" constant="202.66999999999999" id="qnI-7E-pCC"/>
+                            <constraint firstItem="Y64-nW-02o" firstAttribute="top" secondItem="bP5-4R-OSe" secondAttribute="bottom" constant="168" id="zTZ-pe-aPU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0ec-4l-UJG"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Camera" image="icons8-camera-50" selectedImage="icons8-camera-50" id="qvE-Ly-GdD"/>
                     <connections>
                         <outlet property="breedNameLabel" destination="bP5-4R-OSe" id="WmK-ow-fJh"/>
+                        <outlet property="defaultMessageForUser" destination="Y64-nW-02o" id="1rp-ty-HuL"/>
                         <outlet property="pupPreviewImageView" destination="RmI-2u-nCU" id="cWf-r3-Axf"/>
                         <outlet property="submitButton" destination="gXF-Tu-PHv" id="ush-1L-3B7"/>
                     </connections>
@@ -554,9 +565,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Pic-a-Pup" id="KY1-Vz-eUZ">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="icons8-menu-24" id="KwS-Os-B9j">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" red="0.45098039220000002" green="0.63921568630000003" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="ffj-ZH-6uV" kind="presentation" id="fsB-YL-TFT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="mhM-DC-gcs">
+                            <color key="tintColor" red="0.45098039220000002" green="0.63921568630000003" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="launchGalleryForPhotos:" destination="vnq-hK-RH0" id="9PW-x3-CO5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -587,39 +604,25 @@
                                     <action selector="handleSignOut:" destination="qBQ-dH-AGt" eventType="touchUpInside" id="XpV-6J-gdQ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcM-ZY-g8z">
-                                <rect key="frame" x="16" y="164" width="343" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rs7-YO-vCA">
+                                <rect key="frame" x="16" y="331" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaB-ce-hrG">
-                                <rect key="frame" x="16" y="135" width="343" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Doggos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9r-h4-fQn">
+                                <rect key="frame" x="16" y="360" width="84" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9r-h4-fQn">
-                                <rect key="frame" x="16" y="360" width="39" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="22"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="27"/>
+                                <color key="textColor" red="0.1450980392" green="0.43921568630000002" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dog Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lB-iE-e95">
-                                <rect key="frame" x="16" y="407" width="81" height="21"/>
+                                <rect key="frame" x="37" y="407" width="244" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8O-TN-XuT">
-                                <rect key="frame" x="16" y="88" width="64" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="22"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dU5-LX-Spl">
@@ -636,18 +639,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pupcode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUG-1c-Pdg">
-                                <rect key="frame" x="16" y="436" width="69" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="insert_pupcode_here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUG-1c-Pdg">
+                                <rect key="frame" x="65" y="438" width="151" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
+                                <color key="textColor" red="0.1450980392" green="0.43921568630000002" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rs7-YO-vCA">
-                                <rect key="frame" x="16" y="193" width="343" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DogLover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8O-TN-XuT">
+                                <rect key="frame" x="118" y="88" width="139" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="32"/>
+                                <color key="textColor" red="0.1450980392" green="0.43921568630000002" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="picture-767-1518386325" translatesAutoresizingMaskIntoConstraints="NO" id="7Ae-8y-aEk">
+                                <rect key="frame" x="118" y="153" width="139" height="129"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="insert_pupcode_here" translatesAutoresizingMaskIntoConstraints="NO" id="2tc-ho-zGe">
+                                <rect key="frame" x="82" y="463" width="210" height="171"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaB-ce-hrG">
+                                <rect key="frame" x="16" y="282" width="343" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="29"/>
+                                <color key="textColor" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -661,12 +679,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ee9-WN-5TJ">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="icons8-qr-code-24 2" id="GEs-nj-EQs">
-                            <color key="tintColor" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.45098039220000002" green="0.63921568630000003" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="ffj-ZH-6uV" kind="presentation" id="6BZ-oJ-jqc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="3WP-Yv-dOW">
+                            <color key="tintColor" red="0.45098039220000002" green="0.63921568630000003" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="fhP-AL-hrJ" kind="show" id="pa0-Td-R2A"/>
                             </connections>
@@ -674,7 +693,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dogNameLabel" destination="1lB-iE-e95" id="9Xk-us-0gK"/>
-                        <outlet property="emailLabel" destination="ZcM-ZY-g8z" id="hlS-Un-Por"/>
                         <outlet property="lostDogToggle" destination="dU5-LX-Spl" id="0zc-4r-Fdd"/>
                         <outlet property="nameLabel" destination="MaB-ce-hrG" id="tKc-Ym-vsO"/>
                         <outlet property="phoneNumberLabel" destination="rs7-YO-vCA" id="7E0-CO-PcU"/>
@@ -747,7 +765,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKa-Yd-HF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9462" y="1267"/>
+            <point key="canvasLocation" x="9461.6000000000004" y="1266.5024630541873"/>
         </scene>
         <!--Pup Tab Bar Controller-->
         <scene sceneID="nTL-Qf-JKX">
@@ -805,6 +823,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BXc-JI-0qg">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <userDefinedRuntimeAttributes>
@@ -1027,11 +1046,13 @@
         <image name="icons8-house-stark-27" width="27" height="27"/>
         <image name="icons8-menu-24" width="24" height="24"/>
         <image name="icons8-qr-code-24 2" width="24" height="24"/>
+        <image name="insert_pupcode_here" width="446" height="408"/>
         <image name="pap_gradient_text" width="1066" height="1066"/>
+        <image name="picture-767-1518386325" width="200" height="300"/>
         <image name="screen-shot-2017-09-17-at-10-14-47-pm" width="638" height="517"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fsB-YL-TFT"/>
+        <segue reference="6BZ-oJ-jqc"/>
         <segue reference="MOY-Xf-Yrh"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,8 +14,9 @@ import Alamofire
 import CoreLocation
 import SwiftyJSON
 
+/*
 class CameraViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,
-                                               NetworkProtocolDelegate, UtilityDelegate {
+                                                UtilityDelegate {
     @IBOutlet weak var pictureFromCamera: UIImageView!
     @IBOutlet weak var breedTypeLabel: UILabel!
     @IBOutlet weak var breedInfoTextField: UITextView!
@@ -145,5 +146,6 @@ class CameraViewController : UIViewController, UIImagePickerControllerDelegate, 
  */
     }
 }
+ */
 
 

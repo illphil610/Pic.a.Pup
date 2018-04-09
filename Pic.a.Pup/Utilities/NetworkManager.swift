@@ -19,6 +19,7 @@ class NetworkManager: NSObject {
     
     func sendPostToServer(parameters: Dictionary<String, Any>) {
         Alamofire.request("http://18.188.145.20", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
+            .validate()
             .responseJSON { response in
                 switch response.result {
                 case .success:
@@ -28,12 +29,19 @@ class NetworkManager: NSObject {
                     }
                     break
                 case .failure(let error):
-                    print(error)
-            }
+                    print("error from Alamofire \(error)")
+                    
+                    if let errorType = response.response?.statusCode  {
+                        if errorType == 502 {
+                            self.delegate?.sendResponseError(errorType)
+                        }
+                    }
         }
     }
-}
+    }}
 
 protocol NetworkProtocolDelegate: class {
     func sendResponseJSONData(_ response: Any)
+    func sendResponseError(_ response: Int)
 }
+

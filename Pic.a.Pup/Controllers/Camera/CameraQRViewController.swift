@@ -15,13 +15,15 @@ import SwiftyJSON
 import Material
 import Cards
 import Firebase
+import MessageUI
 
-class CameraQRViewController: UIViewController {
+class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var resultsCard: CardHighlight!
     @IBOutlet weak var breedNameLabel: UILabel!
     @IBOutlet weak var pupPreviewImageView: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var defaultMessageForUser: UILabel!
     
     var card: CardHighlight!
     let locationManager = CLLocationManager()
@@ -61,6 +63,7 @@ class CameraQRViewController: UIViewController {
         
         utility.delegate = self
         networkManager.delegate = self
+        //composeVC.messageComposeDelegate = self
         //camera.delegate = self
         //camera.trackMetadata = true
         //camera.resolution = .highest
@@ -92,6 +95,7 @@ class CameraQRViewController: UIViewController {
         card?.isHidden = true
         pupPreviewImageView.isHidden = true
         submitButton.isHidden = true
+        defaultMessageForUser.isHidden = true
         
         // Launch Lumina
         let camera = LuminaViewController()
@@ -166,7 +170,7 @@ extension CameraQRViewController: NetworkProtocolDelegate {
             }
         }
         
-        if (breedInfo == nil) {
+        if (breed == nil || breedInfo == nil) {
             let alert = UIAlertController(title: "Not able to identify breed", message: "Press OK below to retake the picture", preferredStyle: .actionSheet)
             
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -175,6 +179,16 @@ extension CameraQRViewController: NetworkProtocolDelegate {
             }))
             self.present(alert, animated: true)
         }
+    }
+    
+    func sendResponseError(_ response: Int) {
+        let alert = UIAlertController(title: "Bad Gateway", message: "Press OK below to retake the picture", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            self.loadingView.hide()
+            self.setupCamera()
+        }))
+        self.present(alert, animated: true)
     }
 }
 
@@ -197,7 +211,6 @@ extension CameraQRViewController: LuminaDelegate {
                     dismiss(animated: false, completion: nil)
                     
                     let formattedMetadata = String(metadataString.filter { !" \n\t\r".contains($0) })
-                    
                     let ref = Database.database().reference(withPath: "LostPups").child(formattedMetadata)
                     ref.observeSingleEvent(of: .value, with: { (snapshot) in
                         print("\(snapshot)")
@@ -212,16 +225,40 @@ extension CameraQRViewController: LuminaDelegate {
                             
                             let dick = snapshot.value as! [String : Any]
                             let dogName = dick["dogName"] as! String
+                            let dogLover = dick["dogLover"] as! [String:Any]
                             print(dogName)
                             
                             let alert = UIAlertController(title: "You've found, \(dogName)!", message: "Your location has been sent to the owner. Would you like to send a message?", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+                                if !MFMessageComposeViewController.canSendText() {
+                                    print("SMS services are not available")
+                                }
+                                
+                                let composeVC = MFMessageComposeViewController()
+                                composeVC.messageComposeDelegate = self as? MFMessageComposeViewControllerDelegate
+                                
+                                // Configure the fields of the interface.
+                                composeVC.recipients = [dogLover["phoneNumber"] as! String]
+                                composeVC.body = "Hello, \(dogLover["name"] ?? "")! Good news, your dog, \(dogName) has been found! BUT WE REQUIRE 1,000,000 to retrieve your mut!! PAY UP FOR ELSE BITCH"
+                                
+                                // Present the view controller modally.
+                                self.present(composeVC, animated: true, completion: nil)
+                            }))
                             self.present(alert, animated: true)
                         }
                     })
                 }
             }
         }
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController,
+                                      didFinishWith result: MessageComposeResult) {
+        // Check the result or perform other tasks.
+        
+        // Dismiss the message compose view controller.
+        self.defaultMessageForUser.isHidden = false
+        controller.dismiss(animated: true, completion: nil)
     }
     
     func captured(stillImage: UIImage, livePhotoAt: URL?, depthData: Any?, from controller: LuminaViewController) {

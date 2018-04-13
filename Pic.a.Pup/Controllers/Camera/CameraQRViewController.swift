@@ -17,7 +17,7 @@ import Cards
 import Firebase
 import MessageUI
 
-class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDelegate, UIImagePickerControllerDelegate {
+class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDelegate,                        UIImagePickerControllerDelegate {
     
     @IBOutlet weak var resultsCard: CardHighlight!
     @IBOutlet weak var breedNameLabel: UILabel!
@@ -32,7 +32,6 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
     let networkManager = NetworkManager()
     let utility = Utility()
     let loadingView = RSLoadingView()
-    
     var breedInfoGlobal: String = "test"
     var breedNameGlobal: String = "test"
     
@@ -239,7 +238,7 @@ extension CameraQRViewController: LuminaDelegate {
                                 
                                 // Configure the fields of the interface.
                                 composeVC.recipients = [dogLover["phoneNumber"] as! String]
-                                composeVC.body = "Hello, \(dogLover["name"] ?? "")! Good news, your dog, \(dogName) has been found! BUT WE REQUIRE 1,000,000 to retrieve your mut!! PAY UP FOR ELSE BITCH"
+                                composeVC.body = "Hello, \(dogLover["name"] ?? "")! Good news, your dog, \(dogName) has been found!"
                                 
                                 // Present the view controller modally.
                                 self.present(composeVC, animated: true, completion: nil)

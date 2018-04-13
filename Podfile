@@ -6,19 +6,20 @@ target 'Pic.a.Pup' do
   use_frameworks!
 
   # Pods for Pic.a.Pup
-pod 'Lumina'
-pod 'SwiftyJSON’
-pod 'Firebase/Core'
-pod 'Firebase/Storage'
-pod 'Firebase/Auth'
-pod 'Firebase/Database'
-pod 'Firebase/Messaging'
-pod 'Alamofire', '~> 4.7'
-pod 'RSLoadingView'
-pod 'Material', '~> 2.0'
-pod 'Cards'
-pod 'SideMenu'
-pod 'Eureka'
+  pod 'Lumina'
+  pod 'SwiftyJSON’
+  pod 'Firebase/Core'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Messaging'
+  pod 'Alamofire', '~> 4.7'
+  pod 'RSLoadingView'
+  pod 'Material', '~> 2.0'
+  pod 'Cards'
+  pod 'SideMenu'
+  pod 'Eureka'
+  pod 'SwiftLocation', '~> 3.2.3'
 
 
   target 'Pic.a.PupTests' do

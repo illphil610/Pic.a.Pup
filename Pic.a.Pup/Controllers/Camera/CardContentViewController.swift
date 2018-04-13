@@ -11,7 +11,6 @@ import UIKit
 class CardContentViewController: UIViewController {
     
     @IBOutlet weak var breedInfoLabel: UILabel!
-    
     @IBOutlet weak var breedNameLabel: UILabel!
     
     var breedNameSent = ""

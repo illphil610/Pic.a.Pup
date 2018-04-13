@@ -45,6 +45,7 @@
 		D493DE452071804E00BF54FC /* CollarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493DE442071804E00BF54FC /* CollarViewController.swift */; };
 		D493DE472071848900BF54FC /* CameraQRExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493DE462071848900BF54FC /* CameraQRExtension.swift */; };
 		D4DA86E1206F6E1F003FA0CD /* PupTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA86E0206F6E1F003FA0CD /* PupTabBarController.swift */; };
+		D4DABCC520816E9700982EF6 /* DogPark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DABCC420816E9700982EF6 /* DogPark.swift */; };
 		D4E9256220770D6C00F95D90 /* LostPup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E9256120770D6C00F95D90 /* LostPup.swift */; };
 		D4E925642077412100F95D90 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E925632077412100F95D90 /* SideMenuTableViewController.swift */; };
 		D4E925662077580900F95D90 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E925652077580900F95D90 /* MapViewController.swift */; };
@@ -118,6 +119,7 @@
 		D493DE442071804E00BF54FC /* CollarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollarViewController.swift; sourceTree = "<group>"; };
 		D493DE462071848900BF54FC /* CameraQRExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraQRExtension.swift; sourceTree = "<group>"; };
 		D4DA86E0206F6E1F003FA0CD /* PupTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupTabBarController.swift; sourceTree = "<group>"; };
+		D4DABCC420816E9700982EF6 /* DogPark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogPark.swift; sourceTree = "<group>"; };
 		D4E9256120770D6C00F95D90 /* LostPup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPup.swift; sourceTree = "<group>"; };
 		D4E925632077412100F95D90 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		D4E925652077580900F95D90 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				D42D492A206EF07C002A0E34 /* ModelSearchRequest.swift */,
 				D42D492D206EF07C002A0E34 /* User.swift */,
 				D4E9256120770D6C00F95D90 /* LostPup.swift */,
+				D4DABCC420816E9700982EF6 /* DogPark.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RSLoadingView/RSLoadingView.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftLocation/SwiftLocation.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -598,6 +602,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSLoadingView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLocation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -657,6 +662,7 @@
 				D42D492F206EF07C002A0E34 /* DogSearchResult.swift in Sources */,
 				D42D491E206EF062002A0E34 /* CameraQRViewController.swift in Sources */,
 				D42D4943206EF0F1002A0E34 /* BaseRoundedCardCell.swift in Sources */,
+				D4DABCC520816E9700982EF6 /* DogPark.swift in Sources */,
 				D42D4934206EF07C002A0E34 /* User.swift in Sources */,
 				D42D4933206EF07C002A0E34 /* Lovable.swift in Sources */,
 				D443EF3A206EDC3B000C58CB /* AppDelegate.swift in Sources */,

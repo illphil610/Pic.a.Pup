@@ -755,6 +755,9 @@
                         <viewLayoutGuide key="safeArea" id="ndP-f7-20h"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="icons8-house-stark-27" id="xdy-2P-j72"/>
+                    <connections>
+                        <outlet property="mapView" destination="jaz-N8-uOw" id="dGn-GX-T5g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKa-Yd-HF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1004,22 +1007,30 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Hca-zO-Qwp">
-                                <rect key="frame" x="0.0" y="349" width="375" height="463"/>
+                                <rect key="frame" x="0.0" y="520" width="375" height="292"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZu-RG-PdA" customClass="View" customModule="Material">
+                                <rect key="frame" x="16" y="326" width="343" height="186"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HwG-Mg-8RC" firstAttribute="trailing" secondItem="nv0-rU-MaE" secondAttribute="trailing" id="0M8-A9-O6w"/>
                             <constraint firstItem="HwG-Mg-8RC" firstAttribute="leading" secondItem="nv0-rU-MaE" secondAttribute="leading" id="2AZ-Qw-NsC"/>
+                            <constraint firstItem="KZu-RG-PdA" firstAttribute="top" secondItem="nv0-rU-MaE" secondAttribute="bottom" constant="8" symbolic="YES" id="62E-fL-8kL"/>
                             <constraint firstItem="gCz-tg-LSw" firstAttribute="bottom" secondItem="nv0-rU-MaE" secondAttribute="bottom" constant="460" id="E6l-6l-ESb"/>
                             <constraint firstItem="HwG-Mg-8RC" firstAttribute="trailing" secondItem="QeQ-l1-caF" secondAttribute="trailingMargin" id="Kmy-Dv-7Ad"/>
                             <constraint firstItem="nv0-rU-MaE" firstAttribute="top" secondItem="HwG-Mg-8RC" secondAttribute="bottom" constant="8" id="Wda-Xg-pSl"/>
+                            <constraint firstItem="KZu-RG-PdA" firstAttribute="leading" secondItem="nv0-rU-MaE" secondAttribute="leading" id="bHc-F1-aFv"/>
                             <constraint firstItem="HwG-Mg-8RC" firstAttribute="leading" secondItem="QeQ-l1-caF" secondAttribute="leadingMargin" id="but-Pa-MWi"/>
                             <constraint firstItem="Hca-zO-Qwp" firstAttribute="trailing" secondItem="gCz-tg-LSw" secondAttribute="trailing" id="cKD-eQ-QPQ"/>
                             <constraint firstItem="Hca-zO-Qwp" firstAttribute="leading" secondItem="gCz-tg-LSw" secondAttribute="leading" id="fVA-EA-9XP"/>
-                            <constraint firstItem="Hca-zO-Qwp" firstAttribute="top" secondItem="nv0-rU-MaE" secondAttribute="bottom" constant="31" id="hv0-9m-h1Y"/>
+                            <constraint firstItem="Hca-zO-Qwp" firstAttribute="top" secondItem="nv0-rU-MaE" secondAttribute="bottom" constant="202" id="hv0-9m-h1Y"/>
                             <constraint firstAttribute="bottom" secondItem="Hca-zO-Qwp" secondAttribute="bottom" id="ihb-9D-16c"/>
                             <constraint firstItem="nv0-rU-MaE" firstAttribute="top" secondItem="HwG-Mg-8RC" secondAttribute="bottom" constant="8" id="jBw-pb-yXx"/>
+                            <constraint firstItem="Hca-zO-Qwp" firstAttribute="top" secondItem="KZu-RG-PdA" secondAttribute="bottom" constant="8" symbolic="YES" id="ncb-en-vc8"/>
+                            <constraint firstItem="KZu-RG-PdA" firstAttribute="trailing" secondItem="nv0-rU-MaE" secondAttribute="trailing" id="wAh-wy-X4g"/>
                             <constraint firstItem="HwG-Mg-8RC" firstAttribute="top" secondItem="gCz-tg-LSw" secondAttribute="top" constant="-44" id="zQM-HH-6ri"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gCz-tg-LSw"/>

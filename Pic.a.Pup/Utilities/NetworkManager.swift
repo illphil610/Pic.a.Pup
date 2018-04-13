@@ -36,9 +36,29 @@ class NetworkManager: NSObject {
                             self.delegate?.sendResponseError(errorType)
                         }
                     }
+                }
         }
     }
-    }}
+    
+    func getDogParksFromLocation(parameters: Dictionary<String, Any>, completionBlock: @escaping(Any) -> Void) {
+        Alamofire.request("https://maps.googleapis.com/maps/api/place/nearbysearch/json?",
+                          method: .get,
+                          parameters: parameters,
+                          encoding: JSONEncoding.default,
+                          headers: nil)
+            .validate()
+            .responseJSON { response in
+                switch response.result {
+                case .success(let JSON):
+                    let jsonDict = JSON as? NSDictionary ?? [:]
+                    completionBlock(jsonDict)
+                case .failure(let error):
+                    print("Request failed with error: \(error)")
+                }
+        }
+        
+    }
+}
 
 protocol NetworkProtocolDelegate: class {
     func sendResponseJSONData(_ response: Any)

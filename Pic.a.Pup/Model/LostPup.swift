@@ -11,4 +11,6 @@ import Foundation
 struct LostPup: Codable {
     var dogName: String
     var dogLover: DogLover
+    var found: Bool
+    var fcm_id: String
 }

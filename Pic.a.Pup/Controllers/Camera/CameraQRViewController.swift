@@ -220,12 +220,15 @@ extension CameraQRViewController: LuminaDelegate {
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(alert, animated: true)
                         } else {
-                            //let dogName = "dogName"
-                            
                             let dick = snapshot.value as! [String : Any]
                             let dogName = dick["dogName"] as! String
                             let dogLover = dick["dogLover"] as! [String:Any]
                             print(dogName)
+                            
+                            // Change the found boolean in the LostDog object to be true to send notifications
+                            let ref = Database.database().reference().root.child("LostPups").child(formattedMetadata)
+                            ref.updateChildValues(["found": true])
+                            
                             
                             let alert = UIAlertController(title: "You've found, \(dogName)!", message: "Your location has been sent to the owner. Would you like to send a message?", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
@@ -234,7 +237,7 @@ extension CameraQRViewController: LuminaDelegate {
                                 }
                                 
                                 let composeVC = MFMessageComposeViewController()
-                                composeVC.messageComposeDelegate = self as? MFMessageComposeViewControllerDelegate
+                                composeVC.messageComposeDelegate = self as MFMessageComposeViewControllerDelegate
                                 
                                 // Configure the fields of the interface.
                                 composeVC.recipients = [dogLover["phoneNumber"] as! String]

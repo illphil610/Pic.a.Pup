@@ -30,7 +30,7 @@ class MapViewController: UIViewController {
             
             let parameters = ["key" : "AIzaSyBYCg8qITAAD2iPqPWfKM-Qi_UaM4urjWY",
                               "location" : "\(lat),\(lon)",
-                              "radius" : "1600",
+                              "radius" : "16000",
                               "keyword" : "dog",
                               "type" : "park"]
             
@@ -38,6 +38,7 @@ class MapViewController: UIViewController {
                               method: .get, parameters: parameters, headers: nil).responseJSON { response in
                                 switch response.result {
                                 case .success(let responseJSON):
+                                    print(responseJSON)
                                     //let jsonDict = JSON as? NSDictionary ?? [:]
                                     let jsonDict = JSON(responseJSON)
                                     if let results = jsonDict["results"].array {

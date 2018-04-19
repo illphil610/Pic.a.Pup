@@ -34,6 +34,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.navigationController?.navigationBar.isTranslucent = true
         //picker.delegate = camera
         
+        let token = Messaging.messaging().fcmToken
+        print("TOKEN: \(token)")
+        
         SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
         
         SideMenuManager.default.menuAnimationBackgroundColor = UIColor.black

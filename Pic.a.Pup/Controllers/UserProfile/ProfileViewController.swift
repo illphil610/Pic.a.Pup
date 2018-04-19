@@ -80,7 +80,8 @@ class ProfileViewController: UIViewController {
             dogLover = tempOwner
             if let dogData = UserDefaults.standard.value(forKey: "dog") as? Data {
                 var dog = try! PropertyListDecoder().decode(Dog.self, from: dogData)
-                let lostPup = try? LostPup(dogName: dog.name, dogLover: dogLover).asDictionary()
+                let lostPup = try? LostPup(dogName: dog.name, dogLover: dogLover, found: false,
+                                           fcm_id: "duImqEbPPtQ:APA91bEmA7hggSzcyjZMuD7rmzdfKZHkVj7eIG_Xa4YC5U7rnh6GaQ7KSt3MiXqY4sFzUXGyV2D3Oq7ULzraW93x2cbEf20WRQNRqy3cqnG8uO3og-ItQzHC91exxLD2IccejVBXanN4").asDictionary()
                 let databaseReference = Database.database().reference().child("LostPups")
                 databaseReference.child("insert_pupcode_here").setValue(lostPup)
                 

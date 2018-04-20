@@ -8,15 +8,15 @@
 
 import Foundation
 import UIKit
-//import CameraManager
 import Firebase
 import Alamofire
 import CoreLocation
 import SwiftyJSON
+import Cards
 
-/*
 class CameraViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,
-                                                UtilityDelegate {
+UtilityDelegate, NetworkProtocolDelegate {
+    
     @IBOutlet weak var pictureFromCamera: UIImageView!
     @IBOutlet weak var breedTypeLabel: UILabel!
     @IBOutlet weak var breedInfoTextField: UITextView!
@@ -87,6 +87,7 @@ class CameraViewController : UIViewController, UIImagePickerControllerDelegate, 
     //MARK: - Delegates
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            /*
             pictureFromCamera.contentMode = .scaleAspectFill
             pictureFromCamera.clipsToBounds = true
             pictureFromCamera.image = chosenImage
@@ -105,7 +106,19 @@ class CameraViewController : UIViewController, UIImagePickerControllerDelegate, 
                     print("\(error)")
                 }
             })
+             */
+            print(chosenImage)
+            
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+            label.center = CGPoint(x: 160, y: 285)
+            label.textAlignment = .center
+            label.text = "I'am a test label"
+            self.view.addSubview(label)
+            
+            createCardForTheHoes(image: chosenImage)
+            dismiss(animated:true, completion: nil)
         }
+ 
         dismiss(animated:true, completion: nil)
     }
     
@@ -121,6 +134,10 @@ class CameraViewController : UIViewController, UIImagePickerControllerDelegate, 
     func sendLocationCoorData(_ locationCoords: CLLocation) {
         currentUserCoordinateLocation = locationCoords
         print(locationCoords.coordinate)
+    }
+    
+    func sendResponseError(_ response: Int) {
+        print(response)
     }
     
     func sendResponseJSONData(_ response: Any) {
@@ -139,13 +156,31 @@ class CameraViewController : UIViewController, UIImagePickerControllerDelegate, 
             //    fbManager.saveObjectToFirebase(breedType!, breedInfo!, location: String(describing: location.coordinate), url)
             //}
     
-        /*
         let breedType = json["breed"].string
         let breedInfo = json["breed_info"].string
-        fbManager.saveObjectToFirebase(breedType!, breedInfo!, currentUserCoordinateLocation?.coordinate, downloableUrlFromFirebase)
- */
+        //fbManager.saveObjectToFirebase(breedType!, breedInfo!, currentUserCoordinateLocation?.coordinate, downloableUrlFromFirebase)
+    }
+    
+    private func createCardForTheHoes(image: UIImage) -> CardHighlight {
+        let card = CardHighlight(frame: CGRect(x: 10, y: 112, width: 355, height: 595))
+        card.shadowColor = UIColor.gray
+        card.backgroundImage = image
+        card.itemTitle = ""
+        card.title = ""
+        card.itemSubtitle = ""
+        card.buttonText = "Details"
+        card.textColor = UIColor.white
+        card.hasParallax = false
+        
+        let cardContentVC = storyboard!.instantiateViewController(withIdentifier: "CardContent") as! CardContentViewController
+        //cardContentVC.breedInfoDetails = breedInfoGlobal
+        //cardContentVC.breedNameSent = breedNameGlobal
+        //cardContentVC.gaugeProbRating = CGFloat(probabilityRatingGlobal)
+        //print(breedInfoGlobal)
+        card.shouldPresent(cardContentVC, from: self, fullscreen: true)
+        return card
     }
 }
- */
+
 
 

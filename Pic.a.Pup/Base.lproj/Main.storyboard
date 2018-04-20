@@ -471,7 +471,7 @@
         <!--Collar-->
         <scene sceneID="NyG-ka-gww">
             <objects>
-                <viewController id="AIk-av-mJM" customClass="CollarViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AIk-av-mJM" customClass="CameraViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kV3-ES-gaH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -484,15 +484,22 @@
                                     <action selector="dismiss:" destination="AIk-av-mJM" eventType="touchUpInside" id="UQp-sp-0Vy"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8x4-tc-tZG">
+                                <rect key="frame" x="176" y="459" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.76174812619999999" green="0.75236108530000001" blue="0.94834481370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="aeo-iu-cjl"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Collar" image="icons8-qr-code-24 2" id="yKA-fn-unC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gLf-qU-CY0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7714" y="1267"/>
+            <point key="canvasLocation" x="4972" y="1785.960591133005"/>
         </scene>
         <!--Home-->
         <scene sceneID="CVd-i9-1lE">
@@ -594,7 +601,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smE-fM-U36">
-                                <rect key="frame" x="0.0" y="678" width="375" height="51"/>
+                                <rect key="frame" x="0.0" y="727" width="375" height="51"/>
                                 <color key="backgroundColor" red="0.85804803939999996" green="0.75236108530000001" blue="0.94834481370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="22"/>
                                 <state key="normal" title="Log Out">
@@ -673,9 +680,6 @@
                     <navigationItem key="navigationItem" title="User Profile" id="Ee9-WN-5TJ">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="icons8-qr-code-24 2" id="GEs-nj-EQs">
                             <color key="tintColor" red="0.1333333333" green="0.74901960779999999" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="ffj-ZH-6uV" kind="presentation" id="6BZ-oJ-jqc"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="3WP-Yv-dOW">
                             <color key="tintColor" red="0.1333333333" green="0.74901960779999999" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -693,7 +697,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnA-Q3-wu4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6252" y="493.5960591133005"/>
+            <point key="canvasLocation" x="8358" y="1231"/>
         </scene>
         <!--Title-->
         <scene sceneID="ezn-eb-ddX">
@@ -722,9 +726,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V12-rP-ler" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6252" y="1267"/>
+            <point key="canvasLocation" x="9362" y="1210"/>
         </scene>
-        <!--Map-->
+        <!--Item-->
         <scene sceneID="TWp-tF-jiL">
             <objects>
                 <viewController storyboardIdentifier="Map" id="Fd8-Tg-zDh" customClass="MapViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
@@ -733,15 +737,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="Map" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jaz-N8-uOw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="719"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUy-wg-Glo">
-                                <rect key="frame" x="23" y="45" width="33" height="33"/>
+                                <rect key="frame" x="23" y="89" width="33" height="33"/>
                                 <state key="normal" image="backArrow"/>
                                 <connections>
                                     <action selector="goBackToProfile:" destination="Fd8-Tg-zDh" eventType="touchUpInside" id="Spp-jr-NhU"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Vgq-Zg-KKF">
+                                <rect key="frame" x="0.0" y="685" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Shops" id="vko-lO-4Nf">
+                                        <color key="tintColor" red="0.45098039220000002" green="0.63921568630000003" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="shopsBarButtonPressed:" destination="Fd8-Tg-zDh" id="DYu-Es-qXK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="YCO-wD-n4I"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="FYg-Lr-Oxe"/>
+                                    <barButtonItem title="Parks" id="EN4-dB-d1t">
+                                        <color key="tintColor" red="0.45098039220000002" green="0.63921568630000003" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="parksBarButtonPressed:" destination="Fd8-Tg-zDh" id="bRs-b6-Uh7"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Bjh-RD-Gfc"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="G5v-Ow-HwY"/>
+                                    <barButtonItem title="Vets" id="vZP-0v-jLg">
+                                        <color key="tintColor" red="0.45098039220000002" green="0.63921568630000003" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="vetsBarButtonPressed:" destination="Fd8-Tg-zDh" id="OLb-dW-Vg2"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="k2g-Mw-JfI"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -754,14 +787,22 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ndP-f7-20h"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="icons8-house-stark-27" id="xdy-2P-j72"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="cDZ-PI-V8D"/>
+                    <navigationItem key="navigationItem" id="ByN-ec-dxH">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="ZZe-AV-xhc">
+                            <connections>
+                                <segue destination="ffj-ZH-6uV" kind="presentation" id="zgV-Xc-zyq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="jaz-N8-uOw" id="dGn-GX-T5g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKa-Yd-HF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9461.6000000000004" y="1266.5024630541873"/>
+            <point key="canvasLocation" x="6319" y="488"/>
         </scene>
         <!--Pup Tab Bar Controller-->
         <scene sceneID="nTL-Qf-JKX">
@@ -810,11 +851,11 @@
             </objects>
             <point key="canvasLocation" x="5311.1999999999998" y="-337.6847290640394"/>
         </scene>
-        <!--Profile-->
+        <!--Map-->
         <scene sceneID="eXL-wj-pPF">
             <objects>
                 <navigationController storyboardIdentifier="ProfileNavigation" automaticallyAdjustsScrollViewInsets="NO" id="AJU-jU-2y0" customClass="NavigationController" customModule="Material" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="icons8-dog-paw-filled" id="QjG-Mh-f3L"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="icons8-dog-paw-filled" id="QjG-Mh-f3L"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BXc-JI-0qg">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -830,7 +871,7 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="qBQ-dH-AGt" kind="relationship" relationship="rootViewController" id="MOY-Xf-Yrh"/>
+                        <segue destination="Fd8-Tg-zDh" kind="relationship" relationship="rootViewController" id="Ees-C6-i8a"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qh-7c-6Ms" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -906,9 +947,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="AIk-av-mJM" kind="presentation" id="lwK-Fq-IkJ"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="UQP-m6-PWF" style="IBUITableViewCellStyleDefault" id="bIS-iP-fg1" customClass="UITableViewVibrantCell" customModule="SideMenu">
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
@@ -926,9 +964,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Fd8-Tg-zDh" kind="presentation" id="uSA-0K-8Q1"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="eMy-cm-zMy" style="IBUITableViewCellStyleDefault" id="kHB-dO-GS2" customClass="UITableViewVibrantCell" customModule="SideMenu">
                                         <rect key="frame" x="0.0" y="132" width="375" height="44"/>
@@ -986,13 +1021,12 @@
         <!--Card Content View Controller-->
         <scene sceneID="tYg-hs-mMa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a8D-5D-tIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CardContent" id="tw6-9R-05A" customClass="CardContentViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QeQ-l1-caF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwG-Mg-8RC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwG-Mg-8RC">
                                 <rect key="frame" x="16" y="0.0" width="343" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="28"/>
@@ -1010,7 +1044,7 @@
                                 <rect key="frame" x="0.0" y="520" width="375" height="292"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3j-W7-SBL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3j-W7-SBL">
                                 <rect key="frame" x="105" y="361" width="165" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="46"/>
@@ -1048,6 +1082,7 @@
                         <outlet property="probLabel" destination="N3j-W7-SBL" id="5o1-Mr-P55"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a8D-5D-tIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4024.8000000000002" y="1785.960591133005"/>
         </scene>
@@ -1058,7 +1093,6 @@
         <image name="icons8-checkmark-yes-64" width="64" height="64"/>
         <image name="icons8-dog-house-26" width="26" height="26"/>
         <image name="icons8-dog-paw-filled" width="25" height="25"/>
-        <image name="icons8-house-stark-27" width="27" height="27"/>
         <image name="icons8-menu-24" width="24" height="24"/>
         <image name="icons8-qr-code-24 2" width="24" height="24"/>
         <image name="insert_pupcode_here" width="446" height="408"/>
@@ -1067,7 +1101,6 @@
         <image name="screen-shot-2017-09-17-at-10-14-47-pm" width="638" height="517"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6BZ-oJ-jqc"/>
-        <segue reference="MOY-Xf-Yrh"/>
+        <segue reference="zgV-Xc-zyq"/>
     </inferredMetricsTieBreakers>
 </document>

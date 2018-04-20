@@ -53,9 +53,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         print(userInfo)
-        let map = UIStoryboard(name: "Main", bundle: nil)
-        let mapViewController = map.instantiateViewController(withIdentifier: "Map")
-        self.window?.rootViewController = mapViewController
+        //let map = UIStoryboard(name: "Main", bundle: nil)
+        //let mapViewController = map.instantiateViewController(withIdentifier: "Map")
+        //self.window?.rootViewController = mapViewController
+        
+        if let mainTabController = self.window?.rootViewController as? PupTabBarController {
+            mainTabController.selectedIndex = 2
+        }
     }
     
     // The callback to handle data message received via FCM for devices running iOS 10 or above.

@@ -17,7 +17,7 @@ import Cards
 import Firebase
 import MessageUI
 
-class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDelegate,                        UIImagePickerControllerDelegate {
+class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDelegate,                        UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var resultsCard: CardHighlight!
     @IBOutlet weak var breedNameLabel: UILabel!

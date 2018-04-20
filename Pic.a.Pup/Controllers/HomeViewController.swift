@@ -12,10 +12,9 @@ import Firebase
 import UIKit
 import SideMenu
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var recentSearchCollectionView: UICollectionView!
-    
     @IBAction func launchGalleryForPhotos(_ sender: UIBarButtonItem) {
         picker.allowsEditing = false
         picker.sourceType = .photoLibrary
@@ -26,16 +25,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     let picker = UIImagePickerController()
-    let camera = CameraQRViewController()
-    
+    let camera = CameraViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = true
-        //picker.delegate = camera
+        
+        picker.delegate = self
         
         let token = Messaging.messaging().fcmToken
-        print("TOKEN: \(token)")
+        //print("TOKEN: \(token)")
         
         SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
         
@@ -45,12 +44,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
     }
     
+    /*
     @IBAction func handleLogOut(_ sender: UIButton) {
         try! Auth.auth().signOut()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
         self.present(initialViewController, animated: false)
     }
+    */
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         get { return .lightContent }
@@ -84,4 +85,19 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         return cell
     }
+    
+    
+    // UIImagePickerDelegatee
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: - Delegates
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        }
+        
+    }
+    
+    
 }

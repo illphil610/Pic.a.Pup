@@ -12,6 +12,7 @@ import Lumina
 import UIKit
 import Firebase
 import SideMenu
+import SwiftLocation
 
 class ProfileViewController: UIViewController {
     
@@ -19,23 +20,16 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
-    
     @IBOutlet weak var dogNameLabel: UILabel!
-    
     @IBOutlet weak var lostDogToggle: UISwitch!
     
     
     override func viewDidLoad() {
-        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
-        
         SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
         
         SideMenuManager.default.menuAnimationBackgroundColor = UIColor.black
         SideMenuManager.default.menuPresentMode = .menuSlideIn
-        //SideMenuManager.default.menuBlurEffectStyle = .dark
         SideMenuManager.default.menuFadeStatusBar = false
-        
-        
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
     }
@@ -46,7 +40,6 @@ class ProfileViewController: UIViewController {
         if let data = UserDefaults.standard.value(forKey:"owner") as? Data {
             let owner2 = try? PropertyListDecoder().decode(DogLover.self, from: data)
             nameLabel.text = owner2?.name
-            //emailLabel.text = owner2?.email
             phoneNumberLabel.text = owner2?.phoneNumber
         
         }
@@ -70,18 +63,37 @@ class ProfileViewController: UIViewController {
     
     @IBAction func lostDogTogglePressed(_ sender: UISwitch) {
         
-        // create LostPup object and save to firebase
-        
         var dogLover: DogLover
-        //var dog: Dog
-        
         if let data = UserDefaults.standard.value(forKey:"owner") as? Data {
             let tempOwner = try! PropertyListDecoder().decode(DogLover.self, from: data)
             dogLover = tempOwner
             if let dogData = UserDefaults.standard.value(forKey: "dog") as? Data {
                 var dog = try! PropertyListDecoder().decode(Dog.self, from: dogData)
+                
+                Locator.currentPosition(accuracy: .neighborhood, onSuccess: { location in
+                    print(location)
+                    let lostPup = try? LostPup(dogName: dog.name, dogLover: dogLover, found: false,
+                                               fcm_id: "duImqEbPPtQ:APA91bEmA7hggSzcyjZMuD7rmzdfKZHkVj7eIG_Xa4YC5U7rnh6GaQ7KSt3MiXqY4sFzUXGyV2D3Oq7ULzraW93x2cbEf20WRQNRqy3cqnG8uO3og-ItQzHC91exxLD2IccejVBXanN4",
+                                               latitude: location.coordinate.latitude,
+                                               longtitude: location.coordinate.longitude).asDictionary()
+                    let databaseReference = Database.database().reference().child("LostPups")
+                    databaseReference.child("insert_pupcode_here").setValue(lostPup)
+                    
+                    let alert = UIAlertController(title: "Lost Dog", message: "You just reported your dog is lost", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    
+                    self.present(alert, animated: true)
+                }, onFail: { error, location  in
+                    print(error)
+                    print("We cant find your location")
+                })
+                
+                
+                /*
                 let lostPup = try? LostPup(dogName: dog.name, dogLover: dogLover, found: false,
-                                           fcm_id: "duImqEbPPtQ:APA91bEmA7hggSzcyjZMuD7rmzdfKZHkVj7eIG_Xa4YC5U7rnh6GaQ7KSt3MiXqY4sFzUXGyV2D3Oq7ULzraW93x2cbEf20WRQNRqy3cqnG8uO3og-ItQzHC91exxLD2IccejVBXanN4").asDictionary()
+                                           fcm_id: "duImqEbPPtQ:APA91bEmA7hggSzcyjZMuD7rmzdfKZHkVj7eIG_Xa4YC5U7rnh6GaQ7KSt3MiXqY4sFzUXGyV2D3Oq7ULzraW93x2cbEf20WRQNRqy3cqnG8uO3og-ItQzHC91exxLD2IccejVBXanN4",
+                                           ).asDictionary()
                 let databaseReference = Database.database().reference().child("LostPups")
                 databaseReference.child("insert_pupcode_here").setValue(lostPup)
                 
@@ -91,6 +103,7 @@ class ProfileViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 
                 self.present(alert, animated: true)
+ */
             }
         }
     }

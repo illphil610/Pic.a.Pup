@@ -588,7 +588,7 @@
         <!--Profile-->
         <scene sceneID="nsj-Zq-UZU">
             <objects>
-                <viewController storyboardIdentifier="Profile" id="qBQ-dH-AGt" userLabel="Profile" customClass="ProfileViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeProfileController" id="qBQ-dH-AGt" userLabel="Profile" customClass="ProfileViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4mf-h9-snS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -727,12 +727,12 @@
         <!--Map-->
         <scene sceneID="TWp-tF-jiL">
             <objects>
-                <viewController id="Fd8-Tg-zDh" customClass="MapViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Map" id="Fd8-Tg-zDh" customClass="MapViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="01J-H9-cZh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jaz-N8-uOw">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="Map" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jaz-N8-uOw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUy-wg-Glo">
@@ -813,7 +813,7 @@
         <!--Profile-->
         <scene sceneID="eXL-wj-pPF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AJU-jU-2y0" customClass="NavigationController" customModule="Material" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ProfileNavigation" automaticallyAdjustsScrollViewInsets="NO" id="AJU-jU-2y0" customClass="NavigationController" customModule="Material" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="icons8-dog-paw-filled" id="QjG-Mh-f3L"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BXc-JI-0qg">
@@ -986,61 +986,68 @@
         <!--Card Content View Controller-->
         <scene sceneID="tYg-hs-mMa">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a8D-5D-tIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CardContent" id="tw6-9R-05A" customClass="CardContentViewController" customModule="Pic_a_Pup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QeQ-l1-caF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwG-Mg-8RC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwG-Mg-8RC">
                                 <rect key="frame" x="16" y="0.0" width="343" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="P8S-Na-0GS"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nv0-rU-MaE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nv0-rU-MaE">
                                 <rect key="frame" x="16" y="72" width="343" height="246"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Hca-zO-Qwp">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Hca-zO-Qwp">
                                 <rect key="frame" x="0.0" y="520" width="375" height="292"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZu-RG-PdA" customClass="View" customModule="Material">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3j-W7-SBL">
+                                <rect key="frame" x="105" y="361" width="165" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="46"/>
+                                <color key="textColor" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a33-jh-YfK" customClass="Gauge" customModule="GaugeKit">
                                 <rect key="frame" x="16" y="326" width="343" height="186"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="0.1333333333" green="0.74901960779999999" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gaugeTypeInt">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.33333333329999998" green="0.062745098040000002" blue="0.32549019610000002" alpha="0.77274186643835618" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="HwG-Mg-8RC" firstAttribute="trailing" secondItem="nv0-rU-MaE" secondAttribute="trailing" id="0M8-A9-O6w"/>
-                            <constraint firstItem="HwG-Mg-8RC" firstAttribute="leading" secondItem="nv0-rU-MaE" secondAttribute="leading" id="2AZ-Qw-NsC"/>
-                            <constraint firstItem="KZu-RG-PdA" firstAttribute="top" secondItem="nv0-rU-MaE" secondAttribute="bottom" constant="8" symbolic="YES" id="62E-fL-8kL"/>
-                            <constraint firstItem="gCz-tg-LSw" firstAttribute="bottom" secondItem="nv0-rU-MaE" secondAttribute="bottom" constant="460" id="E6l-6l-ESb"/>
-                            <constraint firstItem="HwG-Mg-8RC" firstAttribute="trailing" secondItem="QeQ-l1-caF" secondAttribute="trailingMargin" id="Kmy-Dv-7Ad"/>
-                            <constraint firstItem="nv0-rU-MaE" firstAttribute="top" secondItem="HwG-Mg-8RC" secondAttribute="bottom" constant="8" id="Wda-Xg-pSl"/>
-                            <constraint firstItem="KZu-RG-PdA" firstAttribute="leading" secondItem="nv0-rU-MaE" secondAttribute="leading" id="bHc-F1-aFv"/>
-                            <constraint firstItem="HwG-Mg-8RC" firstAttribute="leading" secondItem="QeQ-l1-caF" secondAttribute="leadingMargin" id="but-Pa-MWi"/>
-                            <constraint firstItem="Hca-zO-Qwp" firstAttribute="trailing" secondItem="gCz-tg-LSw" secondAttribute="trailing" id="cKD-eQ-QPQ"/>
-                            <constraint firstItem="Hca-zO-Qwp" firstAttribute="leading" secondItem="gCz-tg-LSw" secondAttribute="leading" id="fVA-EA-9XP"/>
-                            <constraint firstItem="Hca-zO-Qwp" firstAttribute="top" secondItem="nv0-rU-MaE" secondAttribute="bottom" constant="202" id="hv0-9m-h1Y"/>
-                            <constraint firstAttribute="bottom" secondItem="Hca-zO-Qwp" secondAttribute="bottom" id="ihb-9D-16c"/>
-                            <constraint firstItem="nv0-rU-MaE" firstAttribute="top" secondItem="HwG-Mg-8RC" secondAttribute="bottom" constant="8" id="jBw-pb-yXx"/>
-                            <constraint firstItem="Hca-zO-Qwp" firstAttribute="top" secondItem="KZu-RG-PdA" secondAttribute="bottom" constant="8" symbolic="YES" id="ncb-en-vc8"/>
-                            <constraint firstItem="KZu-RG-PdA" firstAttribute="trailing" secondItem="nv0-rU-MaE" secondAttribute="trailing" id="wAh-wy-X4g"/>
-                            <constraint firstItem="HwG-Mg-8RC" firstAttribute="top" secondItem="gCz-tg-LSw" secondAttribute="top" constant="-44" id="zQM-HH-6ri"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gCz-tg-LSw"/>
                     </view>
                     <connections>
                         <outlet property="breedInfoLabel" destination="nv0-rU-MaE" id="taR-qa-bNs"/>
                         <outlet property="breedNameLabel" destination="HwG-Mg-8RC" id="M4s-V1-ot7"/>
+                        <outlet property="gaugeView" destination="a33-jh-YfK" id="7Ce-f7-DBF"/>
+                        <outlet property="mapView" destination="Hca-zO-Qwp" id="4EU-Jd-aeN"/>
+                        <outlet property="probLabel" destination="N3j-W7-SBL" id="5o1-Mr-P55"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a8D-5D-tIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4024.8000000000002" y="1785.960591133005"/>
         </scene>

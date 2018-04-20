@@ -20,6 +20,7 @@ target 'Pic.a.Pup' do
   pod 'SideMenu'
   pod 'Eureka'
   pod 'SwiftLocation', '~> 3.2.3'
+  pod 'GaugeKit'
 
 
   target 'Pic.a.PupTests' do

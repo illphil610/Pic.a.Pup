@@ -35,6 +35,7 @@
 		D42D4943206EF0F1002A0E34 /* BaseRoundedCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D4942206EF0F1002A0E34 /* BaseRoundedCardCell.swift */; };
 		D42D4945206EF0F3002A0E34 /* PupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D4944206EF0F3002A0E34 /* PupCollectionViewCell.swift */; };
 		D42D4947206EF0F5002A0E34 /* SectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D4946206EF0F5002A0E34 /* SectionHeaderCollectionReusableView.swift */; };
+		D4343C1E20896A930077DFEA /* DogShelter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4343C1D20896A930077DFEA /* DogShelter.swift */; };
 		D443EF3A206EDC3B000C58CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443EF39206EDC3B000C58CB /* AppDelegate.swift */; };
 		D443EF3F206EDC3B000C58CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D443EF3D206EDC3B000C58CB /* Main.storyboard */; };
 		D443EF41206EDC3B000C58CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D443EF40206EDC3B000C58CB /* Assets.xcassets */; };
@@ -104,6 +105,7 @@
 		D42D4942206EF0F1002A0E34 /* BaseRoundedCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoundedCardCell.swift; sourceTree = "<group>"; };
 		D42D4944206EF0F3002A0E34 /* PupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupCollectionViewCell.swift; sourceTree = "<group>"; };
 		D42D4946206EF0F5002A0E34 /* SectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		D4343C1D20896A930077DFEA /* DogShelter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogShelter.swift; sourceTree = "<group>"; };
 		D443EF36206EDC3B000C58CB /* Pic.a.Pup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pic.a.Pup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D443EF39206EDC3B000C58CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D443EF3E206EDC3B000C58CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				D42D492D206EF07C002A0E34 /* User.swift */,
 				D4E9256120770D6C00F95D90 /* LostPup.swift */,
 				D4DABCC420816E9700982EF6 /* DogPark.swift */,
+				D4343C1D20896A930077DFEA /* DogShelter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				"${BUILT_PRODUCTS_DIR}/Cards/Cards.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GaugeKit/GaugeKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Lumina/Lumina.framework",
 				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
@@ -601,6 +605,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cards.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GaugeKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lumina.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
@@ -686,6 +691,7 @@
 				D42D4935206EF07C002A0E34 /* Dog.swift in Sources */,
 				D42D491F206EF062002A0E34 /* CameraViewController.swift in Sources */,
 				D42D493C206EF089002A0E34 /* RoundedWhiteButton.swift in Sources */,
+				D4343C1E20896A930077DFEA /* DogShelter.swift in Sources */,
 				D42D4920206EF062002A0E34 /* MenuViewController.swift in Sources */,
 				D42D4930206EF07C002A0E34 /* Admin.swift in Sources */,
 				D42D4927206EF06D002A0E34 /* UtilityExtension.swift in Sources */,

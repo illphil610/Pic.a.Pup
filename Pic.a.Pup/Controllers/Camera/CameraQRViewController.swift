@@ -27,15 +27,14 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
     
     var card: CardHighlight!
     let locationManager = CLLocationManager()
-    //let camera = LuminaViewController()
     let firebaseManager = FirebaseManager()
     let networkManager = NetworkManager()
     let utility = Utility()
     let loadingView = RSLoadingView()
+    
     var breedInfoGlobal: String = "test"
     var breedNameGlobal: String = "test"
-    
-    // Location info to be updated by utility delegate **should maybe change utility to LocationUtility haha
+    var probabilityRatingGlobal: Float = 0.0
     var currentUserCoordinateLocation: CLLocation?
     var currentUserPlacemark: CLPlacemark?
     var downloableUrlFromFirebase: URL?
@@ -44,29 +43,20 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
         tabBarController?.tabBar.isHidden = false
         pupPreviewImageView.image = nil
         submitButton.isHidden = true
-        
-        //card?.isHidden = true
-        //breedNameLabel.text = ""
-        //view.backgroundColor = UIColor.black
-        //breedNameLabel.isHidden = true
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Add those colorz
         view.backgroundColor = UIColor.black
         breedNameLabel.isHidden = true
-        
         card?.isHidden = true
         
+        // Set delegates
         utility.delegate = self
         networkManager.delegate = self
-        //composeVC.messageComposeDelegate = self
-        //camera.delegate = self
-        //camera.trackMetadata = true
-        //camera.resolution = .highest
-        
         locationManager.delegate = utility
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -81,7 +71,6 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        print("viewDidAppear")
         submitButton.isHidden = true
         pupPreviewImageView.isHidden = false
         tabBarController?.tabBar.isHidden = false
@@ -104,7 +93,6 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
         
         tabBarController?.tabBar.isHidden = true
         present(camera, animated: true, completion: nil)
-        //tabBarController?.tabBar.isHidden = false
     }
     
     @IBAction func submitPhotoForAnalysis(_ sender: Any) {
@@ -141,9 +129,19 @@ extension CameraQRViewController: UtilityDelegate {
 
 extension CameraQRViewController: NetworkProtocolDelegate {
     func sendResponseJSONData(_ response: Any) {
+        
         let responseJSON = JSON(response)
+        
+        // parse the json for what i need, ya feel me fam?
         let breed = responseJSON["breed"].string
         let breedInfo = responseJSON["breed_info"].string
+        let probabilityRating = responseJSON["prob"].float
+        let shelterAddress = responseJSON["shelter Contact"]
+        
+        if let probability = probabilityRating {
+            probabilityRatingGlobal = probability
+        }
+    
         print(responseJSON)
         print(breed ?? "nah")
         breedNameLabel.isHidden = true
@@ -203,6 +201,7 @@ extension CameraQRViewController: LuminaDelegate {
     
     func detected(metadata: [Any], from controller: LuminaViewController) {
         if (metadata.count == 0 ) { return }
+        
         if  let metadataObj = metadata[0] as? AVMetadataMachineReadableCodeObject  {
             if metadataObj.type == AVMetadataObject.ObjectType.qr {
                 if let metadataString = metadataObj.stringValue {
@@ -228,7 +227,6 @@ extension CameraQRViewController: LuminaDelegate {
                             // Change the found boolean in the LostDog object to be true to send notifications
                             let ref = Database.database().reference().root.child("LostPups").child(formattedMetadata)
                             ref.updateChildValues(["found": true])
-                            
                             
                             let alert = UIAlertController(title: "You've found, \(dogName)!", message: "Your location has been sent to the owner. Would you like to send a message?", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
@@ -256,7 +254,6 @@ extension CameraQRViewController: LuminaDelegate {
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController,
                                       didFinishWith result: MessageComposeResult) {
-        // Check the result or perform other tasks.
         
         // Dismiss the message compose view controller.
         self.defaultMessageForUser.isHidden = false
@@ -279,7 +276,6 @@ extension CameraQRViewController: LuminaDelegate {
 extension CameraQRViewController {
     private func createCardForTheHoes(title: String, image: UIImage) -> CardHighlight {
         let card = CardHighlight(frame: CGRect(x: 10, y: 112, width: 355, height: 595))
-        //card.backgroundColor = UIColor(red: 0, green: 94/255, blue: 112/255, alpha: 1)
         card.shadowColor = UIColor.gray
         card.backgroundImage = image
         card.itemTitle = ""
@@ -292,6 +288,7 @@ extension CameraQRViewController {
         let cardContentVC = storyboard!.instantiateViewController(withIdentifier: "CardContent") as! CardContentViewController
         cardContentVC.breedInfoDetails = breedInfoGlobal
         cardContentVC.breedNameSent = breedNameGlobal
+        cardContentVC.gaugeProbRating = CGFloat(probabilityRatingGlobal)
         print(breedInfoGlobal)
         card.shouldPresent(cardContentVC, from: self, fullscreen: true)
         return card

@@ -26,7 +26,7 @@ class FirebaseManager: NSObject {
         let imageName = "\(Date().timeIntervalSince1970).jpg"
         let imagesReference = storageReference.child(Constants.Pups.imagesFolder).child(imageName)
         
-        if let imageData = UIImageJPEGRepresentation(image, 0.5) {
+        if let imageData = UIImageJPEGRepresentation(image, 0.2) {
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             let _ = imagesReference.putData(imageData, metadata: metadata, completion: { (metadata, error) in

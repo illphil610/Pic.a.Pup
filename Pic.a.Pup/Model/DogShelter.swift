@@ -1,15 +1,7 @@
-//
-//  DogPark.swift
-//  Pic.a.Pup
-//
-//  Created by Philip on 4/13/18.
-//  Copyright © 2018 Philip. All rights reserved.
-//
-
 import Foundation
 import MapKit
 
-class DogPark: NSObject, MKAnnotation {
+class DogShelter: NSObject, MKAnnotation {
     let title: String?
     var coordinate: CLLocationCoordinate2D
     
@@ -19,3 +11,4 @@ class DogPark: NSObject, MKAnnotation {
         super.init()
     }
 }
+

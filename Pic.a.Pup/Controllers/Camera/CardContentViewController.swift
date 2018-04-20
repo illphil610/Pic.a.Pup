@@ -7,38 +7,30 @@
 //
 
 import UIKit
+import GaugeKit
+import MapKit
 
 class CardContentViewController: UIViewController {
     
     @IBOutlet weak var breedInfoLabel: UILabel!
     @IBOutlet weak var breedNameLabel: UILabel!
+    @IBOutlet weak var gaugeView: Gauge!
+    @IBOutlet weak var probLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     
     var breedNameSent = ""
     var breedInfoDetails = ""
+    var gaugeProbRating: CGFloat = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         breedInfoLabel.text = breedInfoDetails
         breedNameLabel.text = breedNameSent
-
-        // Do any additional setup after loading the view.
+        gaugeView.rate = gaugeProbRating * 10
+        //gaugeView.animateRate(1.0, newValue: gaugeProbRating * 10, completion: { (finished) in
+        //    print("Gauge animation completed !")
+        //})
+        probLabel.text = "\( Double((gaugeProbRating * 100)).rounded(toPlaces: 2))%"
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

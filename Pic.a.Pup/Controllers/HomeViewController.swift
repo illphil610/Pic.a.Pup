@@ -41,37 +41,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         SideMenuManager.default.menuAnimationBackgroundColor = UIColor.black
         SideMenuManager.default.menuPresentMode = .menuSlideIn
-        //SideMenuManager.default.menuBlurEffectStyle = .light
-        //SideMenuManager.default.menuFadeStatusBar = false
-        
-        
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
-        
-        
     }
-        
-    
-
-/*
-    func gradientWithFrametoImage(frame: CGRect, colors: [CGColor]) -> UIImage? {
-        let gradient: CAGradientLayer  = CAGradientLayer(layer: self.view.layer)
-        gradient.frame = frame
-        gradient.colors = colors
-        UIGraphicsBeginImageContext(frame.size)
-        gradient.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
-    }
- */
     
     @IBAction func handleLogOut(_ sender: UIButton) {
         try! Auth.auth().signOut()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
         self.present(initialViewController, animated: false)
-
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -84,7 +62,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = recentSearchCollectionView.dequeueReusableCell(withReuseIdentifier: "pupCollectionViewCell", for: indexPath) as! PupCollectionViewCell
-        //cell.layer.backgroundColor = UIColor.black.cgColor
         cell.layer.cornerRadius = 20
         cell.layer.cornerRadius = 20
         cell.layer.masksToBounds = true

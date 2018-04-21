@@ -75,7 +75,7 @@ class ProfileViewController: UIViewController {
                     let lostPup = try? LostPup(dogName: dog.name, dogLover: dogLover, found: false,
                                                fcm_id: "duImqEbPPtQ:APA91bEmA7hggSzcyjZMuD7rmzdfKZHkVj7eIG_Xa4YC5U7rnh6GaQ7KSt3MiXqY4sFzUXGyV2D3Oq7ULzraW93x2cbEf20WRQNRqy3cqnG8uO3og-ItQzHC91exxLD2IccejVBXanN4",
                                                latitude: location.coordinate.latitude,
-                                               longtitude: location.coordinate.longitude).asDictionary()
+                                               longitude: location.coordinate.longitude).asDictionary()
                     let databaseReference = Database.database().reference().child("LostPups")
                     databaseReference.child("insert_pupcode_here").setValue(lostPup)
                     

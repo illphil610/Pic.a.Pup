@@ -14,5 +14,5 @@ struct LostPup: Codable {
     var found: Bool
     var fcm_id: String
     var latitude: Double
-    var longtitude: Double
+    var longitude: Double
 }

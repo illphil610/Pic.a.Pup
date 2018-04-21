@@ -11,6 +11,7 @@ import Firebase
 import UserNotifications
 import FirebaseInstanceID
 import FirebaseMessaging
+import MapKit
 
 let primaryColor = UIColor(red: 30/255, green: 129/255, blue: 150/255, alpha: 1)
 let secondaryColor = UIColor(red: 85/255, green: 16/255, blue: 83/255, alpha: 1)
@@ -52,13 +53,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        print(userInfo)
-        //let map = UIStoryboard(name: "Main", bundle: nil)
-        //let mapViewController = map.instantiateViewController(withIdentifier: "Map")
-        //self.window?.rootViewController = mapViewController
         
-        if let mainTabController = self.window?.rootViewController as? PupTabBarController {
-            mainTabController.selectedIndex = 2
+        let latData = userInfo["locationLat"]
+        let latString = latData as! String
+        let latDouble = Double(latString)
+        print(latDouble ?? "NO LAT BITCH ASS")
+        
+        let longData = userInfo["locationLon"]
+        let lonString = longData as! String
+        let lonDouble = Double(lonString)
+        print(lonDouble ?? "NO LONG DONG BITCH")
+        
+        if let fuckingWork = latDouble {
+            if let pleaseFuckingWork = lonDouble {
+                let coordinates = CLLocation(latitude: fuckingWork, longitude: pleaseFuckingWork)
+                print(coordinates)
+                
+                if let mainTabController = self.window?.rootViewController as? PupTabBarController {
+                    mainTabController.selectedIndex = 2
+                    if let nav = mainTabController.viewControllers![2] as? UINavigationController {
+                        if let mapViewController = nav.viewControllers.first as? MapViewController {
+                            mapViewController.lat = coordinates.coordinate.latitude
+                            mapViewController.lon = coordinates.coordinate.longitude
+                        }
+                    }
+                }
+            }
         }
     }
     

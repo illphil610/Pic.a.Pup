@@ -27,36 +27,30 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //let bar:UINavigationBar! =  self.navigationController?.navigationBar
-        //self.title = "Pic-a-Map"
-        //bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        //bar.shadowImage = UIImage()
-        //bar.alpha = 0.0
-        
         self.navigationController?.navigationBar.isHidden = true
-        
         self.mapView.frame = self.view.bounds
-        removeAllAnnotations()
         
+        removeAllAnnotations()
         Locator.currentPosition(accuracy: .neighborhood, onSuccess: { location in
             print(location)
             self.centerMapOnLocation(location: location)
             self.lat = location.coordinate.latitude
             self.lon = location.coordinate.longitude
-            
         }, onFail: { error, location  in
             print(error)
         })
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        if lat != nil {
+            if lon != nil {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
+                mapView.addAnnotation(annotation)
+                print("made it here")
+            }
+        }
     }
     
     @IBAction func goBackToProfile(_ sender: UIButton) {
-        //self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -106,7 +100,6 @@ class MapViewController: UIViewController {
                             switch response.result {
                             case .success(let responseJSON):
                                 print(responseJSON)
-                                //let jsonDict = JSON as? NSDictionary ?? [:]
                                 let jsonDict = JSON(responseJSON)
                                 if let results = jsonDict["results"].array {
                                     print(results)
@@ -114,7 +107,6 @@ class MapViewController: UIViewController {
                                         let name = places["name"].string
                                         let lat = places["geometry"]["location"]["lat"].double
                                         let lon = places["geometry"]["location"]["lng"].double
-                                        //print(lat, lon)
                                         let coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
                                         let dogPark = DogPark(title: name!, coordinate: coordinate)
                                         self.mapView.addAnnotation(dogPark)

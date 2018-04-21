@@ -32,6 +32,8 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
     let utility = Utility()
     let loadingView = RSLoadingView()
     
+    var photoFromFileSystem: UIImage?
+    
     var breedInfoGlobal: String = "test"
     var breedNameGlobal: String = "test"
     var probabilityRatingGlobal: Float = 0.0
@@ -41,8 +43,13 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
-        pupPreviewImageView.image = nil
-        submitButton.isHidden = true
+        
+        if (photoFromFileSystem == nil) {
+            pupPreviewImageView.image = nil
+            submitButton.isHidden = true
+        }
+        //pupPreviewImageView.image = nil
+        //submitButton.isHidden = true
     }
     
     
@@ -71,7 +78,9 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        submitButton.isHidden = true
+        if (photoFromFileSystem == nil) {
+            submitButton.isHidden = true
+        }
         pupPreviewImageView.isHidden = false
         tabBarController?.tabBar.isHidden = false
     }
@@ -179,6 +188,18 @@ extension CameraQRViewController: NetworkProtocolDelegate {
     }
     
     func sendResponseError(_ response: Int) {
+        
+        if response == 500 {
+            let alert = UIAlertController(title: "Server is down", message: "Press OK below to retake the picture", preferredStyle: .actionSheet)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                self.loadingView.hide()
+                self.setupCamera()
+            }))
+            self.present(alert, animated: true)
+        }
+        
+        
         let alert = UIAlertController(title: "Bad Gateway", message: "Press OK below to retake the picture", preferredStyle: .actionSheet)
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -226,7 +247,9 @@ extension CameraQRViewController: LuminaDelegate {
                             
                             // Change the found boolean in the LostDog object to be true to send notifications
                             let ref = Database.database().reference().root.child("LostPups").child(formattedMetadata)
-                            ref.updateChildValues(["found": true])
+                            ref.updateChildValues(["found" : true])
+                            ref.updateChildValues(["latitude" : self.currentUserCoordinateLocation?.coordinate.latitude])
+                            ref.updateChildValues(["longitude" : self.currentUserCoordinateLocation?.coordinate.longitude])
                             
                             let alert = UIAlertController(title: "You've found, \(dogName)!", message: "Your location has been sent to the owner. Would you like to send a message?", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
@@ -284,6 +307,9 @@ extension CameraQRViewController {
         card.buttonText = "Details"
         card.textColor = UIColor.white
         card.hasParallax = false
+        
+        // set the photo sent from the UIImagePicker to be nil so it doesnt make the UI awful 
+        photoFromFileSystem = nil
         
         let cardContentVC = storyboard!.instantiateViewController(withIdentifier: "CardContent") as! CardContentViewController
         cardContentVC.breedInfoDetails = breedInfoGlobal

@@ -95,9 +95,27 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //MARK: - Delegates
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            print("got the image")
+            if let navController = navigationController {
+                print("got to the nav controller at least")
+                if let pupTabBarController = navController.tabBarController as? PupTabBarController {
+                    pupTabBarController.selectedIndex = 1
+                    
+                    if let camera = pupTabBarController.viewControllers![1] as? CameraQRViewController {
+                        print("i made it to the camera vc")
+                        camera.view.backgroundColor = UIColor.black
+                        camera.breedNameLabel.isHidden = true
+                        if camera.card != nil {
+                            camera.card.isHidden = true
+                        }
+                        camera.photoFromFileSystem = chosenImage
+                        camera.pupPreviewImageView.image = chosenImage
+                        camera.submitButton.isHidden = false
+                    }
+                }
+                dismiss(animated:true, completion: nil)
+            }
         }
-        
     }
-    
-    
 }
+

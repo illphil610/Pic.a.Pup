@@ -32,6 +32,11 @@ class NetworkManager: NSObject {
                     print("error from Alamofire \(error)")
                     
                     if let errorType = response.response?.statusCode  {
+                        
+                        if errorType == 500 {
+                            self.delegate?.sendResponseError(errorType)
+                        }
+                        
                         if errorType == 502 {
                             self.delegate?.sendResponseError(errorType)
                         }

@@ -15,6 +15,7 @@ import Firebase
 struct Constants {
     struct Pups {
         static let imagesFolder: String = "PupImages"
+        static let feedResult: String = "FeedDogSearchResult"
     }
 }
 
@@ -41,15 +42,58 @@ class FirebaseManager: NSObject {
         }
     }
     
-    func saveObjectToFirebase(_ breed: String, _ breedInfo: String, location: CLLocation, _ url: URL) {
+    func saveObjectToFirebase(_ breed: String, _ breedInfo: String, location: CLLocation, _ url: String) {
         let databaseReference = Database.database().reference().child("DogSearchResult")
         let key = databaseReference.childByAutoId().key
         
         //create object to save
-        let dogSearchResult = try? DogSearchResult(breed: breed,
-                                                   wikiBreedInfo: breedInfo,
-                                                   location: String(describing: location.coordinate),
-                                                   url: url).asDictionary()
+        let dogSearchResult = try? DogSearchResult(breed: breed, url: url).asDictionary()
         databaseReference.child(key).setValue(dogSearchResult)
+    }
+    
+    func getFeedSearchResultList() -> Array<DogSearchResult> {
+        var searchFeedList: Array<DogSearchResult> = Array()
+        let dbRef = Database.database().reference().child(Constants.Pups.feedResult)
+        dbRef.observe(.value, with: { (snapshot) in
+            //print(snapshot)
+            for child in snapshot.children {
+                let snap = child as! DataSnapshot
+                if snap.value != nil {
+                    let dict = snap.value as! [String: String]
+                    //print(dict)
+                    let breedName = dict["breed"]
+                    let downloadUrl = dict["dogImageSent"]
+                    let result = DogSearchResult(breed: breedName!, url: downloadUrl!)
+                    print(result)
+                    searchFeedList.append(result)
+                }
+            }
+        })
+        print(searchFeedList.count)
+        return searchFeedList
+        
+    }
+    
+    func getImageFromFirebase(_ urlString: String, closure: @escaping (UIImage?) -> ()) {
+        guard let url = URL(string: urlString) else {
+            return closure(nil)
+        }
+        let task = URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
+            guard error == nil else {
+                print("error: \(String(describing: error))")
+                return closure(nil)
+            }
+            guard response != nil else {
+                print("no response")
+                return closure(nil)
+            }
+            guard data != nil else {
+                print("no data")
+                return closure(nil)
+            }
+            DispatchQueue.main.async {
+                closure(UIImage(data: data!))
+            }
+        }; task.resume()
     }
 }

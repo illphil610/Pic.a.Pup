@@ -52,6 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        
+    }
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         
         let latData = userInfo["locationLat"]
@@ -73,8 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     mainTabController.selectedIndex = 2
                     if let nav = mainTabController.viewControllers![2] as? UINavigationController {
                         if let mapViewController = nav.viewControllers.first as? MapViewController {
-                            mapViewController.lat = coordinates.coordinate.latitude
-                            mapViewController.lon = coordinates.coordinate.longitude
+                            mapViewController.lostPupLat = coordinates.coordinate.latitude
+                            mapViewController.lostPupLon = coordinates.coordinate.longitude
                         }
                     }
                 }

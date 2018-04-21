@@ -17,6 +17,11 @@ class MapViewController: UIViewController {
     var lat: CLLocationDegrees?
     var lon: CLLocationDegrees?
     
+    var lostPupLat: CLLocationDegrees?
+    var lostPupLon: CLLocationDegrees?
+    
+    var locationOfUser: CLLocation?
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var parksTabBarItem: UITabBarItem!
     @IBOutlet weak var shopsTabBarItem: UITabBarItem!
@@ -24,12 +29,39 @@ class MapViewController: UIViewController {
     
     let googleAPIKEY = "AIzaSyBYCg8qITAAD2iPqPWfKM-Qi_UaM4urjWY"
     let googlePlacesEndpoint = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
+    
+    override func viewWillAppear(_ animated: Bool) {
+        removeAllAnnotations()
+        Locator.currentPosition(accuracy: .neighborhood, onSuccess: { location in
+            print(location)
+            self.locationOfUser = location
+            
+            if ((self.lostPupLat == nil) && self.lostPupLon == nil) {
+                self.centerMapOnLocation(location: location)
+            }
+            self.lat = location.coordinate.latitude
+            self.lon = location.coordinate.longitude
+        }, onFail: { error, location  in
+            print(error)
+        })
+        
+        if lostPupLat != nil {
+            if lostPupLon != nil {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: lostPupLat!, longitude: lostPupLon!)
+                mapView.addAnnotation(annotation)
+                mapView.setCenter(annotation.coordinate, animated: true)
+                print("made it here")
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         self.mapView.frame = self.view.bounds
         
+        /*
         removeAllAnnotations()
         Locator.currentPosition(accuracy: .neighborhood, onSuccess: { location in
             print(location)
@@ -48,6 +80,7 @@ class MapViewController: UIViewController {
                 print("made it here")
             }
         }
+ */
     }
     
     @IBAction func goBackToProfile(_ sender: UIButton) {
@@ -61,6 +94,8 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func shopsBarButtonPressed(_ sender: Any) {
+        setLostPupStuffToNil()
+        centerMapOnLocation(location: locationOfUser!)
         let parameters = ["key" : "AIzaSyBYCg8qITAAD2iPqPWfKM-Qi_UaM4urjWY",
                           "location" : "\(lat ?? 0.0),\(lon ?? 0.0)",
                           "radius" : "16000",
@@ -70,6 +105,8 @@ class MapViewController: UIViewController {
         makeGooglePlacesNetworkCall(parameter: parameters)
     }
     @IBAction func parksBarButtonPressed(_ sender: Any) {
+        setLostPupStuffToNil()
+        centerMapOnLocation(location: locationOfUser!)
         let parameters = ["key" : "AIzaSyBYCg8qITAAD2iPqPWfKM-Qi_UaM4urjWY",
                           "location" : "\(lat ?? 0.0),\(lon ?? 0.0)",
                           "radius" : "16000",
@@ -80,6 +117,8 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func vetsBarButtonPressed(_ sender: Any) {
+        setLostPupStuffToNil()
+        centerMapOnLocation(location: locationOfUser!)
         let parameters = ["key" : "AIzaSyBYCg8qITAAD2iPqPWfKM-Qi_UaM4urjWY",
                           "location" : "\(lat ?? 0.0),\(lon ?? 0.0)",
                           "radius" : "16000",
@@ -92,6 +131,11 @@ class MapViewController: UIViewController {
         for annotation in self.mapView.annotations {
             self.mapView.removeAnnotation(annotation)
         }
+    }
+    
+    func setLostPupStuffToNil() {
+        lostPupLat = nil
+        lostPupLon = nil
     }
     
     func makeGooglePlacesNetworkCall(parameter: [String : String]) {

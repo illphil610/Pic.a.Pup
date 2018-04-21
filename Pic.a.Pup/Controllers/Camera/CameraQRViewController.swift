@@ -145,7 +145,7 @@ extension CameraQRViewController: NetworkProtocolDelegate {
         let breed = responseJSON["breed"].string
         let breedInfo = responseJSON["breed_info"].string
         let probabilityRating = responseJSON["prob"].float
-        let shelterAddress = responseJSON["shelter Contact"]
+        let shelterContact = responseJSON["shelter_contact"].array
         
         if let probability = probabilityRating {
             probabilityRatingGlobal = probability
@@ -290,6 +290,7 @@ extension CameraQRViewController: LuminaDelegate {
             self.card.isHidden = true
         }
         controller.dismiss(animated: false) {
+            self.pupPreviewImageView.contentMode = .scaleToFill
             self.pupPreviewImageView.image = stillImage
             self.submitButton.isHidden = false
         }
@@ -308,7 +309,7 @@ extension CameraQRViewController {
         card.textColor = UIColor.white
         card.hasParallax = false
         
-        // set the photo sent from the UIImagePicker to be nil so it doesnt make the UI awful 
+        // set the photo sent from the UIImagePicker to be nil so it doesnt make the UI awful
         photoFromFileSystem = nil
         
         let cardContentVC = storyboard!.instantiateViewController(withIdentifier: "CardContent") as! CardContentViewController

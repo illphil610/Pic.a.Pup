@@ -43,25 +43,19 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
-        
         if (photoFromFileSystem == nil) {
             pupPreviewImageView.image = nil
             submitButton.isHidden = true
         }
-        //pupPreviewImageView.image = nil
-        //submitButton.isHidden = true
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Add those colorz
         view.backgroundColor = UIColor.black
         breedNameLabel.isHidden = true
         card?.isHidden = true
         
-        // Set delegates
         utility.delegate = self
         networkManager.delegate = self
         locationManager.delegate = utility
@@ -94,7 +88,6 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
         submitButton.isHidden = true
         defaultMessageForUser.isHidden = true
         
-        // Launch Lumina
         let camera = LuminaViewController()
         camera.delegate = self
         camera.trackMetadata = true
@@ -206,7 +199,6 @@ extension CameraQRViewController: NetworkProtocolDelegate {
             }))
             self.present(alert, animated: true)
         }
-        
         
         let alert = UIAlertController(title: "Bad Gateway", message: "Press OK below to retake the picture", preferredStyle: .actionSheet)
         

@@ -534,18 +534,54 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bAL-1h-4NF">
                                                     <rect key="frame" x="0.0" y="1" width="267" height="298"/>
                                                 </imageView>
+                                                <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JS3-2L-m16">
+                                                    <rect key="frame" x="9" y="265" width="250" height="21"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLe-FD-T88">
+                                                            <rect key="frame" x="3" y="1" width="0.0" height="19"/>
+                                                            <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzG-6o-gOY">
+                                                            <rect key="frame" x="242" y="0.0" width="0.0" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="Lc6-iG-KoR"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.80329623287671237" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="KLe-FD-T88" firstAttribute="top" secondItem="JS3-2L-m16" secondAttribute="top" constant="1" id="5ih-KX-41V"/>
+                                                        <constraint firstItem="KLe-FD-T88" firstAttribute="leading" secondItem="JS3-2L-m16" secondAttribute="leading" constant="3" id="Jm4-uU-wUl"/>
+                                                        <constraint firstItem="lzG-6o-gOY" firstAttribute="trailing" secondItem="JS3-2L-m16" secondAttribute="trailingMargin" id="Qeo-Pu-7Sg"/>
+                                                        <constraint firstItem="lzG-6o-gOY" firstAttribute="top" secondItem="JS3-2L-m16" secondAttribute="top" id="Yem-NS-2sM"/>
+                                                        <constraint firstItem="lzG-6o-gOY" firstAttribute="centerY" secondItem="KLe-FD-T88" secondAttribute="centerY" id="d7c-d9-keQ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="KLe-FD-T88" secondAttribute="bottom" constant="1" id="xYB-4b-L8r"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="JS3-2L-m16" firstAttribute="trailing" secondItem="bAL-1h-4NF" secondAttribute="trailing" constant="-8" id="ABb-oK-m8G"/>
                                             <constraint firstItem="bAL-1h-4NF" firstAttribute="top" secondItem="zQf-Wy-DTX" secondAttribute="topMargin" constant="-8" id="UVW-D6-7GT"/>
+                                            <constraint firstItem="JS3-2L-m16" firstAttribute="bottom" secondItem="bAL-1h-4NF" secondAttribute="bottom" constant="-12" id="WfM-F0-61q"/>
+                                            <constraint firstItem="JS3-2L-m16" firstAttribute="top" secondItem="zQf-Wy-DTX" secondAttribute="top" constant="265" id="fFl-bc-lAZ"/>
+                                            <constraint firstItem="JS3-2L-m16" firstAttribute="leading" secondItem="bAL-1h-4NF" secondAttribute="leading" constant="9" id="gid-RJ-rs4"/>
                                             <constraint firstItem="bAL-1h-4NF" firstAttribute="leading" secondItem="zQf-Wy-DTX" secondAttribute="leadingMargin" constant="-8" id="soW-O8-qPX"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="bAL-1h-4NF" secondAttribute="bottom" constant="-7" id="tl1-nl-lag"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="bAL-1h-4NF" secondAttribute="trailing" constant="-8" id="ylM-Uj-os9"/>
                                         </constraints>
                                         <size key="customSize" width="267" height="299"/>
                                         <connections>
+                                            <outlet property="breedNameLabel" destination="KLe-FD-T88" id="XRT-gU-Gdq"/>
+                                            <outlet property="descriptionDetail" destination="JS3-2L-m16" id="ud7-lm-wVB"/>
+                                            <outlet property="probabilityLabel" destination="lzG-6o-gOY" id="WSe-Lf-hP7"/>
                                             <outlet property="pupCardImageView" destination="bAL-1h-4NF" id="uBI-24-A7Y"/>
                                         </connections>
                                     </collectionViewCell>
@@ -1034,7 +1070,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nv0-rU-MaE">
                                 <rect key="frame" x="16" y="72" width="343" height="246"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Farah" family="Farah" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

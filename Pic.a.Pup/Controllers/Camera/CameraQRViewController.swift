@@ -36,10 +36,10 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
     
     var breedInfoGlobal: String = "test"
     var breedNameGlobal: String = "test"
-    var probabilityRatingGlobal: Float = 0.0
+    var probabilityRatingGlobal: Double = 0.0
     var currentUserCoordinateLocation: CLLocation?
     var currentUserPlacemark: CLPlacemark?
-    var downloableUrlFromFirebase: URL?
+    var downloableUrlFromFirebase: String?
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
@@ -109,6 +109,7 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
         if let dogPictureTakenFromCamera = pupPreviewImageView.image {
             firebaseManager.uploadImageToFirebase(dogPictureTakenFromCamera, completionBlock: { (fileUrl, errorMessage) in
                 if let url = fileUrl {
+                    self.downloableUrlFromFirebase = url.absoluteString
                     if let zipcode = self.currentUserPlacemark?.postalCode {
                         let modelSearchRequest = ModelSearchRequest(location: zipcode, url: "\(url)")
                         let dick = try? modelSearchRequest.asDictionary()
@@ -144,9 +145,17 @@ extension CameraQRViewController: NetworkProtocolDelegate {
         // parse the json for what i need, ya feel me fam?
         let breed = responseJSON["breed"].string
         let breedInfo = responseJSON["breed_info"].string
-        let probabilityRating = responseJSON["prob"].float
+        let probabilityRating = responseJSON["prob"].double
         let shelterContact = responseJSON["shelter_contact"].array
         
+        if let url = downloableUrlFromFirebase {
+            if let breedName = breed {
+                if let prob = probabilityRating {
+                    firebaseManager.saveObjectToFirebase(breedName, url, prob)
+                }
+            }
+        }
+       
         if let probability = probabilityRating {
             probabilityRatingGlobal = probability
         }
@@ -156,27 +165,27 @@ extension CameraQRViewController: NetworkProtocolDelegate {
         breedNameLabel.isHidden = true
         
         if let breedNameAsString = breed {
-            if let breedInfoAsString = breedInfo {
-                
-                breedInfoGlobal = breedInfoAsString
-                breedNameGlobal = breedNameAsString
-
-                view.backgroundColor = UIColor.white
-                pupPreviewImageView.isHidden = true
-                submitButton.isHidden = true
-                breedNameLabel.isHidden = false
-                breedNameLabel.text = breedNameAsString
-                
-                // create card to display results
-                card = createCardForTheHoes(title: breedNameAsString, image: (pupPreviewImageView?.image)!)
-                view.addSubview(card)
-                
-                // hide the animation
-                loadingView.hide()
+            breedNameGlobal = breedNameAsString
+            
+            if (breedInfo != nil) {
+                breedInfoGlobal = breedInfo!
             }
+            
+            view.backgroundColor = UIColor.white
+            pupPreviewImageView.isHidden = true
+            submitButton.isHidden = true
+            breedNameLabel.isHidden = false
+            breedNameLabel.text = breedNameAsString
+            
+            // create card to display results
+            card = createCardForTheHoes(title: breedNameAsString, image: (pupPreviewImageView?.image)!)
+            view.addSubview(card)
+            
+            // hide the animation
+            loadingView.hide()
         }
         
-        if (breed == nil || breedInfo == nil) {
+        if (breed == nil) {
             let alert = UIAlertController(title: "Not able to identify breed", message: "Press OK below to retake the picture", preferredStyle: .actionSheet)
             
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -188,7 +197,6 @@ extension CameraQRViewController: NetworkProtocolDelegate {
     }
     
     func sendResponseError(_ response: Int) {
-        
         if response == 500 {
             let alert = UIAlertController(title: "Server is down", message: "Press OK below to retake the picture", preferredStyle: .actionSheet)
             

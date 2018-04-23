@@ -42,13 +42,12 @@ class FirebaseManager: NSObject {
         }
     }
     
-    func saveObjectToFirebase(_ breed: String, _ breedInfo: String, location: CLLocation, _ url: String) {
-        let databaseReference = Database.database().reference().child("DogSearchResult")
+    func saveObjectToFirebase(_ breed: String, _ dogImageSent: String, _ probability: Double) {
+        let databaseReference = Database.database().reference().child("FeedDogSearchResult")
         let key = databaseReference.childByAutoId().key
         
-        //create object to save
-        let dogSearchResult = try? DogSearchResult(breed: breed, url: url).asDictionary()
-        databaseReference.child(key).setValue(dogSearchResult)
+        let feedDogSearchResult = try? FeedDogSearchResult(breed: breed, dogImageSent: dogImageSent, probability: probability).asDictionary()
+        databaseReference.child(key).setValue(feedDogSearchResult)
     }
     
     func getFeedSearchResultList() -> Array<DogSearchResult> {

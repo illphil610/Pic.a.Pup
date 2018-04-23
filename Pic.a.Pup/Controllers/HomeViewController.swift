@@ -28,66 +28,43 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let picker = UIImagePickerController()
     let camera = CameraViewController()
     let firebaseManager = FirebaseManager()
-    var searchFeedList: Array<DogSearchResult> = Array()
+    var searchFeedList: Array<FeedDogSearchResult> = Array()
+    var photoImageArray: Array<UIImage> = Array()
     
     override func viewWillAppear(_ animated: Bool) {
         //searchFeedList.removeAll()
         searchFeedList.removeAll()
-        //recentSearchCollectionView.reloadData()
+        recentSearchCollectionView.reloadData()
         let dbRef = Database.database().reference().child(Constants.Pups.feedResult)
         dbRef.observe(.value, with: { (snapshot) in
+            self.searchFeedList.removeAll()
             //print(snapshot)
             for child in snapshot.children {
                 let snap = child as! DataSnapshot
                 if snap.value != nil {
-                    let dict = snap.value as! [String: String]
+                    let dict = snap.value as! [String: Any]
                     //print(dict)
-                    let breedName = dict["breed"]
-                    let downloadUrl = dict["dogImageSent"]
-                    let result = DogSearchResult(breed: breedName!, url: downloadUrl!)
+                    let breedName = dict["breed"] as? String
+                    let downloadUrl = dict["dogImageSent"] as? String
+                    let probability = dict["probability"] as? Double
+                    let result = FeedDogSearchResult(breed: breedName!, dogImageSent: downloadUrl!, probability: probability!)
                     print(result)
                     self.searchFeedList.append(result)
                     self.recentSearchCollectionView.reloadData()
                 }
             }
+            self.searchFeedList.reverse()
         })
-        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = true
-        
         picker.delegate = self
         recentSearchCollectionView.dataSource = self
-        /*
-        searchFeedList.removeAll()
-        let dbRef = Database.database().reference().child(Constants.Pups.feedResult)
-        dbRef.observe(.value, with: { (snapshot) in
-            //print(snapshot)
-            for child in snapshot.children {
-                let snap = child as! DataSnapshot
-                if snap.value != nil {
-                    let dict = snap.value as! [String: String]
-                    //print(dict)
-                    let breedName = dict["breed"]
-                    let downloadUrl = dict["dogImageSent"]
-                    let result = DogSearchResult(breed: breedName!, url: downloadUrl!)
-                    print(result)
-                    self.searchFeedList.append(result)
-                    self.recentSearchCollectionView.reloadData()
-                }
-            }
-        })
- */
-        
-        
-        
-        
-        
         
         let token = Messaging.messaging().fcmToken
-        //print("TOKEN: \(token)")
+        print("TOKEN: \(token)")
         
         SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
         
@@ -96,15 +73,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
     }
-    
-    /*
-    @IBAction func handleLogOut(_ sender: UIButton) {
-        try! Auth.auth().signOut()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
-        self.present(initialViewController, animated: false)
-    }
-    */
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         get { return .lightContent }
@@ -117,6 +85,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = recentSearchCollectionView.dequeueReusableCell(withReuseIdentifier: "pupCollectionViewCell", for: indexPath) as! PupCollectionViewCell
+        cell.pupCardImageView.image = nil
+        cell.breedNameLabel.text = ""
+        cell.probabilityLabel.text = ""
+        
         cell.layer.cornerRadius = 20
         cell.layer.cornerRadius = 20
         cell.layer.masksToBounds = true
@@ -126,27 +98,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.layer.shadowOpacity = 1.0
         cell.layer.masksToBounds = false
         
-        /*
-        if (indexPath.row == 1) {
-            cell.pupCardImageView.image = UIImage(named: "funny-dog-8-e1500643440478")
-            //firebaseManager.getImageFromFirebase(downloadUrl, closure:{ (image) in
-                //cell.pupCardImageView.image = image
-            //})
-        } else if (indexPath.row == 2) {
-            cell.pupCardImageView.image = UIImage(named: "corgdashian-funny-picture-388x220")
-        } else if (indexPath.row == 3) {
-            cell.pupCardImageView.image = UIImage(named: "Funny-Dog-Face-During-Selfie")
-        } else if (indexPath.row == 4) { 
-            cell.pupCardImageView.image = UIImage(named: "maxresdefault")
-        } else if (indexPath.row == 5) {
-            cell.pupCardImageView.image = UIImage(named: "maxresdefault")
-        }
-         */
-        
-        firebaseManager.getImageFromFirebase(searchFeedList[indexPath.row].url, closure:{ (image) in
-            print("poop" + self.searchFeedList[indexPath.row].url)
+        firebaseManager.getImageFromFirebase(searchFeedList[indexPath.row].dogImageSent, closure:{ (image) in
+            print("poop" + self.searchFeedList[indexPath.row].dogImageSent)
             cell.pupCardImageView.image = image
+            cell.breedNameLabel.text = self.searchFeedList[indexPath.row].breed
+            let prob = "\( Double((self.searchFeedList[indexPath.row].probability * 100)).rounded(toPlaces: 2))%"
+            cell.probabilityLabel.text = prob
         })
+ 
+        //cell.pupCardImageView.image = searchFeedList[indexPath.row].dogImageSent
+        //cell.breedNameLabel.text = searchFeedList[indexPath.row].breed
+        //let prob = "\( Double((searchFeedList[indexPath.row].probability * 100)).rounded(toPlaces: 2))%"
+        //cell.probabilityLabel.text = prob
         
         return cell
     }

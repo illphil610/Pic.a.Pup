@@ -35,6 +35,7 @@
 		D42D4943206EF0F1002A0E34 /* BaseRoundedCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D4942206EF0F1002A0E34 /* BaseRoundedCardCell.swift */; };
 		D42D4945206EF0F3002A0E34 /* PupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D4944206EF0F3002A0E34 /* PupCollectionViewCell.swift */; };
 		D42D4947206EF0F5002A0E34 /* SectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D4946206EF0F5002A0E34 /* SectionHeaderCollectionReusableView.swift */; };
+		D4313A20208DB16B00ADA39B /* FeedDogSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4313A1F208DB16B00ADA39B /* FeedDogSearchResult.swift */; };
 		D4343C1E20896A930077DFEA /* DogShelter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4343C1D20896A930077DFEA /* DogShelter.swift */; };
 		D443EF3A206EDC3B000C58CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443EF39206EDC3B000C58CB /* AppDelegate.swift */; };
 		D443EF3F206EDC3B000C58CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D443EF3D206EDC3B000C58CB /* Main.storyboard */; };
@@ -105,6 +106,7 @@
 		D42D4942206EF0F1002A0E34 /* BaseRoundedCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoundedCardCell.swift; sourceTree = "<group>"; };
 		D42D4944206EF0F3002A0E34 /* PupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupCollectionViewCell.swift; sourceTree = "<group>"; };
 		D42D4946206EF0F5002A0E34 /* SectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		D4313A1F208DB16B00ADA39B /* FeedDogSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDogSearchResult.swift; sourceTree = "<group>"; };
 		D4343C1D20896A930077DFEA /* DogShelter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogShelter.swift; sourceTree = "<group>"; };
 		D443EF36206EDC3B000C58CB /* Pic.a.Pup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pic.a.Pup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D443EF39206EDC3B000C58CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				D4E9256120770D6C00F95D90 /* LostPup.swift */,
 				D4DABCC420816E9700982EF6 /* DogPark.swift */,
 				D4343C1D20896A930077DFEA /* DogShelter.swift */,
+				D4313A1F208DB16B00ADA39B /* FeedDogSearchResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				D42D4933206EF07C002A0E34 /* Lovable.swift in Sources */,
 				D443EF3A206EDC3B000C58CB /* AppDelegate.swift in Sources */,
 				D42D4921206EF062002A0E34 /* ProfileViewController.swift in Sources */,
+				D4313A20208DB16B00ADA39B /* FeedDogSearchResult.swift in Sources */,
 				D493DE452071804E00BF54FC /* CollarViewController.swift in Sources */,
 				D4E9256220770D6C00F95D90 /* LostPup.swift in Sources */,
 				D4ED24D720782DB30066DA8A /* EditProfileViewController.swift in Sources */,

@@ -613,7 +613,7 @@
                                 <segue destination="ffj-ZH-6uV" kind="presentation" id="fsB-YL-TFT"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="mhM-DC-gcs">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="icons8-ios-photos-25" id="mhM-DC-gcs">
                             <color key="tintColor" red="0.45098039220000002" green="0.63921568630000003" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="launchGalleryForPhotos:" destination="vnq-hK-RH0" id="9PW-x3-CO5"/>
@@ -1065,10 +1065,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Hca-zO-Qwp">
-                                <rect key="frame" x="0.0" y="520" width="375" height="292"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3j-W7-SBL">
                                 <rect key="frame" x="105" y="361" width="165" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1103,7 +1099,6 @@
                         <outlet property="breedInfoLabel" destination="nv0-rU-MaE" id="taR-qa-bNs"/>
                         <outlet property="breedNameLabel" destination="HwG-Mg-8RC" id="M4s-V1-ot7"/>
                         <outlet property="gaugeView" destination="a33-jh-YfK" id="7Ce-f7-DBF"/>
-                        <outlet property="mapView" destination="Hca-zO-Qwp" id="4EU-Jd-aeN"/>
                         <outlet property="probLabel" destination="N3j-W7-SBL" id="5o1-Mr-P55"/>
                     </connections>
                 </viewController>
@@ -1118,6 +1113,7 @@
         <image name="icons8-checkmark-yes-64" width="64" height="64"/>
         <image name="icons8-dog-house-26" width="26" height="26"/>
         <image name="icons8-dog-paw-filled" width="25" height="25"/>
+        <image name="icons8-ios-photos-25" width="25" height="25"/>
         <image name="icons8-menu-24" width="24" height="24"/>
         <image name="icons8-qr-code-24 2" width="24" height="24"/>
         <image name="insert_pupcode_here" width="446" height="408"/>

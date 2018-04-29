@@ -30,31 +30,21 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let firebaseManager = FirebaseManager()
     var searchFeedList: Array<FeedDogSearchResult> = Array()
     var photoImageArray: Array<UIImage> = Array()
+    var  dbRef: DatabaseReference?
+    var handler: DatabaseHandle?
     
     override func viewWillAppear(_ animated: Bool) {
-        //searchFeedList.removeAll()
         searchFeedList.removeAll()
         recentSearchCollectionView.reloadData()
-        let dbRef = Database.database().reference().child(Constants.Pups.feedResult)
-        dbRef.observe(.value, with: { (snapshot) in
-            self.searchFeedList.removeAll()
-            //print(snapshot)
-            for child in snapshot.children {
-                let snap = child as! DataSnapshot
-                if snap.value != nil {
-                    let dict = snap.value as! [String: Any]
-                    //print(dict)
-                    let breedName = dict["breed"] as? String
-                    let downloadUrl = dict["dogImageSent"] as? String
-                    let probability = dict["probability"] as? Double
-                    let result = FeedDogSearchResult(breed: breedName!, dogImageSent: downloadUrl!, probability: probability!)
-                    print(result)
-                    self.searchFeedList.append(result)
-                    self.recentSearchCollectionView.reloadData()
-                }
-            }
-            self.searchFeedList.reverse()
-        })
+        dbRef = Database.database().reference().child(Constants.Pups.feedResult)
+        loadDoggosIntoCellCages()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if let handle = handler {
+            dbRef?.removeObserver(withHandle: handle)
+            print("removed observer")
+        }
     }
 
     override func viewDidLoad() {
@@ -63,8 +53,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         picker.delegate = self
         recentSearchCollectionView.dataSource = self
         
-        let token = Messaging.messaging().fcmToken
-        print("TOKEN: \(token)")
+        //let token = Messaging.messaging().fcmToken
+        //print("TOKEN: \(token)")
         
         SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
         
@@ -105,11 +95,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let prob = "\( Double((self.searchFeedList[indexPath.row].probability * 100)).rounded(toPlaces: 2))%"
             cell.probabilityLabel.text = prob
         })
- 
-        //cell.pupCardImageView.image = searchFeedList[indexPath.row].dogImageSent
-        //cell.breedNameLabel.text = searchFeedList[indexPath.row].breed
-        //let prob = "\( Double((searchFeedList[indexPath.row].probability * 100)).rounded(toPlaces: 2))%"
-        //cell.probabilityLabel.text = prob
         
         return cell
     }
@@ -118,6 +103,28 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // UIImagePickerDelegatee
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func loadDoggosIntoCellCages() {
+        handler = dbRef?.observe(.value, with: { (snapshot) in
+            self.searchFeedList.removeAll()
+            //print(snapshot)
+        
+            for child in snapshot.children {
+                let snap = child as! DataSnapshot
+                if snap.value != nil {
+                    let dict = snap.value as! [String: Any]
+                    let breedName = dict["breed"] as? String
+                    let downloadUrl = dict["dogImageSent"] as? String
+                    let probability = dict["probability"] as? Double
+                    let result = FeedDogSearchResult(breed: breedName!, dogImageSent: downloadUrl!, probability: probability!)
+                    print(result)
+                    self.searchFeedList.append(result)
+                    self.recentSearchCollectionView.reloadData()
+                }
+            }
+            self.searchFeedList.reverse()
+        })
     }
     
     //MARK: - Delegates
@@ -144,6 +151,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
                 dismiss(animated:true, completion: nil)
             }
+        }
+    }
+    
+    deinit {
+        if let handle = handler {
+            dbRef?.removeObserver(withHandle: handle)
         }
     }
 }

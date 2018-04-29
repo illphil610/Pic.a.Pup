@@ -40,6 +40,7 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
     var currentUserCoordinateLocation: CLLocation?
     var currentUserPlacemark: CLPlacemark?
     var downloableUrlFromFirebase: String?
+    var hasQRMetadataBeenScanned: Bool?
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
@@ -48,7 +49,6 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
             submitButton.isHidden = true
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +66,7 @@ class CameraQRViewController: UIViewController, MFMessageComposeViewControllerDe
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        hasQRMetadataBeenScanned = false
         
         locationManager.delegate = utility
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -223,53 +224,58 @@ extension CameraQRViewController: LuminaDelegate {
     func detected(metadata: [Any], from controller: LuminaViewController) {
         if (metadata.count == 0 ) { return }
         
-        if  let metadataObj = metadata[0] as? AVMetadataMachineReadableCodeObject  {
-            if metadataObj.type == AVMetadataObject.ObjectType.qr {
-                if let metadataString = metadataObj.stringValue {
-                    print(metadataString)
-                    dismiss(animated: false, completion: nil)
-                    
-                    let formattedMetadata = String(metadataString.filter { !" \n\t\r".contains($0) })
-                    let ref = Database.database().reference(withPath: "LostPups").child(formattedMetadata)
-                    ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                        print("\(snapshot)")
+        if (hasQRMetadataBeenScanned != true) {
+            print("Trump: Youre fired")
+            hasQRMetadataBeenScanned = true
+            
+            if  let metadataObj = metadata[0] as? AVMetadataMachineReadableCodeObject  {
+                if metadataObj.type == AVMetadataObject.ObjectType.qr {
+                    if let metadataString = metadataObj.stringValue {
+                        print(metadataString)
+                        dismiss(animated: false, completion: nil)
                         
-                        if (!snapshot.exists()) {
-                            print("This dog has not been reported lost.")
-                            let alert = UIAlertController(title: "Dog is not lost", message: "This dog has not been reported lost by its owner", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                            self.present(alert, animated: true)
-                        } else {
-                            let dick = snapshot.value as! [String : Any]
-                            let dogName = dick["dogName"] as! String
-                            let dogLover = dick["dogLover"] as! [String:Any]
-                            print(dogName)
+                        let formattedMetadata = String(metadataString.filter { !" \n\t\r".contains($0) })
+                        let ref = Database.database().reference(withPath: "LostPups").child(formattedMetadata)
+                        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                            print("\(snapshot)")
                             
-                            // Change the found boolean in the LostDog object to be true to send notifications
-                            let ref = Database.database().reference().root.child("LostPups").child(formattedMetadata)
-                            ref.updateChildValues(["found" : true])
-                            ref.updateChildValues(["latitude" : self.currentUserCoordinateLocation?.coordinate.latitude])
-                            ref.updateChildValues(["longitude" : self.currentUserCoordinateLocation?.coordinate.longitude])
-                            
-                            let alert = UIAlertController(title: "You've found, \(dogName)!", message: "Your location has been sent to the owner. Would you like to send a message?", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
-                                if !MFMessageComposeViewController.canSendText() {
-                                    print("SMS services are not available")
-                                }
+                            if (!snapshot.exists()) {
+                                print("This dog either doesn't exist or has not been reported lost.")
+                                let alert = UIAlertController(title: "Dog is not lost", message: "This dog either does not exist in our system or has not been reported lost by its owner", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                self.present(alert, animated: true)
+                            } else {
+                                let dick = snapshot.value as! [String : Any]
+                                let dogName = dick["dogName"] as! String
+                                let dogLover = dick["dogLover"] as! [String:Any]
+                                print(dogName)
                                 
-                                let composeVC = MFMessageComposeViewController()
-                                composeVC.messageComposeDelegate = self as MFMessageComposeViewControllerDelegate
+                                // Change the found boolean in the LostDog object to be true to send notifications
+                                let ref = Database.database().reference().root.child("LostPups").child(formattedMetadata)
+                                ref.updateChildValues(["found" : true])
+                                ref.updateChildValues(["latitude" : self.currentUserCoordinateLocation?.coordinate.latitude])
+                                ref.updateChildValues(["longitude" : self.currentUserCoordinateLocation?.coordinate.longitude])
                                 
-                                // Configure the fields of the interface.
-                                composeVC.recipients = [dogLover["phoneNumber"] as! String]
-                                composeVC.body = "Hello, \(dogLover["name"] ?? "")! Good news, your dog, \(dogName) has been found!"
-                                
-                                // Present the view controller modally.
-                                self.present(composeVC, animated: true, completion: nil)
-                            }))
-                            self.present(alert, animated: true)
-                        }
-                    })
+                                let alert = UIAlertController(title: "You've found, \(dogName)!", message: "Your location has been sent to the owner. Would you like to send a message?", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+                                    if !MFMessageComposeViewController.canSendText() {
+                                        print("SMS services are not available")
+                                    }
+                                    
+                                    let composeVC = MFMessageComposeViewController()
+                                    composeVC.messageComposeDelegate = self as MFMessageComposeViewControllerDelegate
+                                    
+                                    // Configure the fields of the interface.
+                                    composeVC.recipients = [dogLover["phoneNumber"] as! String]
+                                    composeVC.body = "Hello, \(dogLover["name"] ?? "")! Good news, your dog, \(dogName) has been found!"
+                                    
+                                    // Present the view controller modally.
+                                    self.present(composeVC, animated: true, completion: nil)
+                                }))
+                                self.present(alert, animated: true)
+                            }
+                        })
+                    }
                 }
             }
         }

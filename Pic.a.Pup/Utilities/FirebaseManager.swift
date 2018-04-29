@@ -46,7 +46,7 @@ class FirebaseManager: NSObject {
         let databaseReference = Database.database().reference().child("FeedDogSearchResult")
         let key = databaseReference.childByAutoId().key
         
-        let feedDogSearchResult = try? FeedDogSearchResult(breed: breed, dogImageSent: dogImageSent, probability: probability).asDictionary()
+        let feedDogSearchResult = try? FeedDogSearchResult(breed: breed, dogImageSent: dogImageSent, probability:probability).asDictionary()
         databaseReference.child(key).setValue(feedDogSearchResult)
     }
     

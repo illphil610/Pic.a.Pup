@@ -11,19 +11,60 @@ import XCTest
 
 class Pic_a_PupTests: XCTestCase {
     
+    var dogLover: DogLover!
+    var utility: Utility!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        utility = Utility()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        dogLover = nil
+        utility = nil
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testDogLoverNotCreated() {
+        XCTAssertNil(dogLover)
+    }
+    
+    func testDogLoverIscreated() {
+        let testDogLover = DogLover(name: "Phil", phoneNumber: "610-955-5752", fcm_id: "asljdkhjf;lkjerl;fjrlkfjrl;kf")
+        
+        XCTAssertNotNil(testDogLover)
+    }
+    
+    func testEmailIsInProperFormat() {
+        let testEmail = "phil@picapup.com"
+        XCTAssertTrue(utility.isValidEmail(testEmail))
+    }
+    
+    // This is testing that its returning false, but the test will return true if that makes sense....
+    func testEmailIsNotInProperFormat() {
+        let testEmail = "@Philpicapup"
+        XCTAssertFalse(utility.isValidEmail(testEmail))
+    }
+    
+    func testFireBaseLogInSuccess() {
+        let result = true
+        XCTAssertTrue(result)
+    }
+    
+    // Password Condition:
+    //      - must contains one digit from 0-9
+    //      - must contains one lowercase characters
+    //      - must contains one uppercase characters
+    //      - must contains one special symbols in the list "@#$%"
+    //      - length at least 6 characters and maximum of 20
+    func testPasswordIsInProperFormat() {
+        let testPassword = "Password1015!"
+        XCTAssertTrue(utility.isValidPassword(testPassword))
+    }
+    
+    func testPasswordWithIncorrectFormat() {
+        let testPassword = "Password"
+        XCTAssertFalse(utility.isValidPassword(testPassword))
     }
     
     func testPerformanceExample() {
@@ -32,5 +73,5 @@ class Pic_a_PupTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
 }
+

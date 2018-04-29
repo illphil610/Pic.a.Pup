@@ -33,4 +33,9 @@ class Pic_a_PupUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    func testDidViewAppear() {
+        let result = true
+        XCTAssertTrue(result)
+    }
+    
 }

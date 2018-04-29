@@ -32,16 +32,15 @@ class ProfileViewController: UIViewController {
         SideMenuManager.default.menuFadeStatusBar = false
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
         SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         
-        lostDogToggle.isOn = false
+        // determine log dog toggle state
+        lostDogToggle.isOn = UserDefaults.standard.bool(forKey: "toggleState")
+            
+    
         if let data = UserDefaults.standard.value(forKey:"owner") as? Data {
             let owner2 = try? PropertyListDecoder().decode(DogLover.self, from: data)
             nameLabel.text = owner2?.name
             phoneNumberLabel.text = owner2?.phoneNumber
-        
         }
         
         if let dogData = UserDefaults.standard.value(forKey: "dog") as? Data {
@@ -63,48 +62,38 @@ class ProfileViewController: UIViewController {
     
     @IBAction func lostDogTogglePressed(_ sender: UISwitch) {
         
-        var dogLover: DogLover
-        if let data = UserDefaults.standard.value(forKey:"owner") as? Data {
-            let tempOwner = try! PropertyListDecoder().decode(DogLover.self, from: data)
-            dogLover = tempOwner
-            if let dogData = UserDefaults.standard.value(forKey: "dog") as? Data {
-                var dog = try! PropertyListDecoder().decode(Dog.self, from: dogData)
-                
-                Locator.currentPosition(accuracy: .neighborhood, onSuccess: { location in
-                    print(location)
-                    let lostPup = try? LostPup(dogName: dog.name, dogLover: dogLover, found: false,
-                                               fcm_id: "duImqEbPPtQ:APA91bEmA7hggSzcyjZMuD7rmzdfKZHkVj7eIG_Xa4YC5U7rnh6GaQ7KSt3MiXqY4sFzUXGyV2D3Oq7ULzraW93x2cbEf20WRQNRqy3cqnG8uO3og-ItQzHC91exxLD2IccejVBXanN4",
-                                               latitude: location.coordinate.latitude,
-                                               longitude: location.coordinate.longitude).asDictionary()
-                    let databaseReference = Database.database().reference().child("LostPups")
-                    databaseReference.child("insert_pupcode_here").setValue(lostPup)
+        if (lostDogToggle.isOn) {
+            UserDefaults.standard.set(true, forKey: "toggleState")
+            print("its on bitch")
+            var dogLover: DogLover
+            if let data = UserDefaults.standard.value(forKey:"owner") as? Data {
+                let tempOwner = try! PropertyListDecoder().decode(DogLover.self, from: data)
+                dogLover = tempOwner
+                if let dogData = UserDefaults.standard.value(forKey: "dog") as? Data {
+                    let dog = try! PropertyListDecoder().decode(Dog.self, from: dogData)
                     
-                    let alert = UIAlertController(title: "Lost Dog", message: "You just reported your dog is lost", preferredStyle: .alert)
-                    
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    
-                    self.present(alert, animated: true)
-                }, onFail: { error, location  in
-                    print(error)
-                    print("We cant find your location")
-                })
-                
-                
-                /*
-                let lostPup = try? LostPup(dogName: dog.name, dogLover: dogLover, found: false,
-                                           fcm_id: "duImqEbPPtQ:APA91bEmA7hggSzcyjZMuD7rmzdfKZHkVj7eIG_Xa4YC5U7rnh6GaQ7KSt3MiXqY4sFzUXGyV2D3Oq7ULzraW93x2cbEf20WRQNRqy3cqnG8uO3og-ItQzHC91exxLD2IccejVBXanN4",
-                                           ).asDictionary()
-                let databaseReference = Database.database().reference().child("LostPups")
-                databaseReference.child("insert_pupcode_here").setValue(lostPup)
-                
-                
-                let alert = UIAlertController(title: "Lost Dog", message: "You just reported your dog is lost", preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                
-                self.present(alert, animated: true)
- */
+                    Locator.currentPosition(accuracy: .neighborhood, onSuccess: { location in
+                        print(location)
+                        let lostPup = try? LostPup(dogName: dog.name, dogLover: dogLover, found: false,
+                                                   fcm_id: InstanceID.instanceID().token()!,
+                                                   latitude: location.coordinate.latitude,
+                                                   longitude: location.coordinate.longitude).asDictionary()
+                        let databaseReference = Database.database().reference().child("LostPups")
+                        databaseReference.child("insert_pupcode_here").setValue(lostPup)
+                        
+                        let alert = UIAlertController(title: "Lost Dog", message: "You just reported your dog is lost", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }, onFail: { error, location  in
+                        print(error)
+                        print("We cant find your location")
+                    })
+                }
             }
+        } else {
+            UserDefaults.standard.set(false, forKey: "toggleState")
+            let databaseReference = Database.database().reference().child("LostPups")
+            databaseReference.child("insert_pupcode_here").removeValue()
         }
     }
     

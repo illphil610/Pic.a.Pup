@@ -21,6 +21,7 @@ class CardContentViewController: UIViewController {
     var breedNameSent = ""
     var breedInfoDetails = ""
     var gaugeProbRating: CGFloat = 0.0
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +29,6 @@ class CardContentViewController: UIViewController {
         breedInfoLabel.text = breedInfoDetails
         breedNameLabel.text = breedNameSent
         gaugeView.rate = gaugeProbRating * 10
-        //gaugeView.animateRate(1.0, newValue: gaugeProbRating * 10, completion: { (finished) in
-        //    print("Gauge animation completed !")
-        //})
         probLabel.text = "\( Double((gaugeProbRating * 100)).rounded(toPlaces: 2))%"
     }
 }

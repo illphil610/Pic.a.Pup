@@ -21,6 +21,7 @@ target 'Pic.a.Pup' do
   pod 'Eureka'
   pod 'SwiftLocation', '~> 3.2.3'
   pod 'GaugeKit'
+  pod 'RevealingSplashView'
 
 
   target 'Pic.a.PupTests' do

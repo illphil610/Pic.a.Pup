@@ -21,7 +21,6 @@ class Utility: NSObject, CLLocationManagerDelegate  {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: email)
-        
     }
     
     func isValidPassword(_ password: String) -> Bool {
@@ -67,7 +66,6 @@ class Utility: NSObject, CLLocationManagerDelegate  {
                     return
                 }
             }
-            
             completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
         }
     }

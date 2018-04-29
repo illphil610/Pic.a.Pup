@@ -87,7 +87,7 @@ class MapViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    let regionRadius: CLLocationDistance = 16000
+    let regionRadius: CLLocationDistance = 22000
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)

@@ -30,7 +30,6 @@
 		D42D493D206EF089002A0E34 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D4937206EF089002A0E34 /* FirebaseManager.swift */; };
 		D42D493E206EF089002A0E34 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D4938206EF089002A0E34 /* Utility.swift */; };
 		D42D493F206EF089002A0E34 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D4939206EF089002A0E34 /* NetworkManager.swift */; };
-		D42D4940206EF089002A0E34 /* ViewUtilities in Resources */ = {isa = PBXBuildFile; fileRef = D42D493A206EF089002A0E34 /* ViewUtilities */; };
 		D42D4941206EF089002A0E34 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D493B206EF089002A0E34 /* CameraManager.swift */; };
 		D42D4943206EF0F1002A0E34 /* BaseRoundedCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D4942206EF0F1002A0E34 /* BaseRoundedCardCell.swift */; };
 		D42D4945206EF0F3002A0E34 /* PupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D4944206EF0F3002A0E34 /* PupCollectionViewCell.swift */; };
@@ -43,6 +42,11 @@
 		D443EF44206EDC3B000C58CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D443EF42206EDC3B000C58CB /* LaunchScreen.storyboard */; };
 		D443EF4F206EDC3B000C58CB /* Pic_a_PupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443EF4E206EDC3B000C58CB /* Pic_a_PupTests.swift */; };
 		D443EF5A206EDC3B000C58CB /* Pic_a_PupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443EF59206EDC3B000C58CB /* Pic_a_PupUITests.swift */; };
+		D46AF38A2092833600E2F6FC /* FirebaseManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46AF3892092833600E2F6FC /* FirebaseManagerTests.swift */; };
+		D46AF38C209284A300E2F6FC /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46AF38B209284A300E2F6FC /* NetworkManagerTests.swift */; };
+		D46AF38E209284C400E2F6FC /* UtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46AF38D209284C400E2F6FC /* UtilityTests.swift */; };
+		D46AF390209284E200E2F6FC /* CameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46AF38F209284E200E2F6FC /* CameraTests.swift */; };
+		D46AF39220928A1100E2F6FC /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46AF39120928A1100E2F6FC /* DatabaseManager.swift */; };
 		D493DE432070BE9600BF54FC /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D493DE422070BE3B00BF54FC /* Pacifico-Regular.ttf */; };
 		D493DE452071804E00BF54FC /* CollarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493DE442071804E00BF54FC /* CollarViewController.swift */; };
 		D493DE472071848900BF54FC /* CameraQRExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493DE462071848900BF54FC /* CameraQRExtension.swift */; };
@@ -101,7 +105,6 @@
 		D42D4937206EF089002A0E34 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		D42D4938206EF089002A0E34 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		D42D4939206EF089002A0E34 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		D42D493A206EF089002A0E34 /* ViewUtilities */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ViewUtilities; sourceTree = "<group>"; };
 		D42D493B206EF089002A0E34 /* CameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		D42D4942206EF0F1002A0E34 /* BaseRoundedCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRoundedCardCell.swift; sourceTree = "<group>"; };
 		D42D4944206EF0F3002A0E34 /* PupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -120,6 +123,11 @@
 		D443EF55206EDC3B000C58CB /* Pic.a.PupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Pic.a.PupUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D443EF59206EDC3B000C58CB /* Pic_a_PupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pic_a_PupUITests.swift; sourceTree = "<group>"; };
 		D443EF5B206EDC3B000C58CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D46AF3892092833600E2F6FC /* FirebaseManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManagerTests.swift; sourceTree = "<group>"; };
+		D46AF38B209284A300E2F6FC /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		D46AF38D209284C400E2F6FC /* UtilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityTests.swift; sourceTree = "<group>"; };
+		D46AF38F209284E200E2F6FC /* CameraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTests.swift; sourceTree = "<group>"; };
+		D46AF39120928A1100E2F6FC /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		D493DE422070BE3B00BF54FC /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		D493DE442071804E00BF54FC /* CollarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollarViewController.swift; sourceTree = "<group>"; };
 		D493DE462071848900BF54FC /* CameraQRExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraQRExtension.swift; sourceTree = "<group>"; };
@@ -260,7 +268,6 @@
 				D42D4942206EF0F1002A0E34 /* BaseRoundedCardCell.swift */,
 				D42D4944206EF0F3002A0E34 /* PupCollectionViewCell.swift */,
 				D42D4946206EF0F5002A0E34 /* SectionHeaderCollectionReusableView.swift */,
-				D42D493A206EF089002A0E34 /* ViewUtilities */,
 				D4E925632077412100F95D90 /* SideMenuTableViewController.swift */,
 			);
 			path = Utilities;
@@ -312,6 +319,11 @@
 			children = (
 				D443EF4E206EDC3B000C58CB /* Pic_a_PupTests.swift */,
 				D443EF50206EDC3B000C58CB /* Info.plist */,
+				D46AF3892092833600E2F6FC /* FirebaseManagerTests.swift */,
+				D46AF38B209284A300E2F6FC /* NetworkManagerTests.swift */,
+				D46AF38D209284C400E2F6FC /* UtilityTests.swift */,
+				D46AF38F209284E200E2F6FC /* CameraTests.swift */,
+				D46AF39120928A1100E2F6FC /* DatabaseManager.swift */,
 			);
 			path = Pic.a.PupTests;
 			sourceTree = "<group>";
@@ -460,7 +472,6 @@
 			files = (
 				D493DE432070BE9600BF54FC /* Pacifico-Regular.ttf in Resources */,
 				D443EF44206EDC3B000C58CB /* LaunchScreen.storyboard in Resources */,
-				D42D4940206EF089002A0E34 /* ViewUtilities in Resources */,
 				D42D4915206EEFBE002A0E34 /* GoogleService-Info.plist in Resources */,
 				D443EF41206EDC3B000C58CB /* Assets.xcassets in Resources */,
 				D443EF3F206EDC3B000C58CB /* Main.storyboard in Resources */,
@@ -599,6 +610,7 @@
 				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RSLoadingView/RSLoadingView.framework",
+				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftLocation/SwiftLocation.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -619,6 +631,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSLoadingView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLocation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -713,6 +726,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D46AF38E209284C400E2F6FC /* UtilityTests.swift in Sources */,
+				D46AF38C209284A300E2F6FC /* NetworkManagerTests.swift in Sources */,
+				D46AF39220928A1100E2F6FC /* DatabaseManager.swift in Sources */,
+				D46AF390209284E200E2F6FC /* CameraTests.swift in Sources */,
+				D46AF38A2092833600E2F6FC /* FirebaseManagerTests.swift in Sources */,
 				D443EF4F206EDC3B000C58CB /* Pic_a_PupTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

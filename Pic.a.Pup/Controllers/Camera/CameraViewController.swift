@@ -87,26 +87,6 @@ UtilityDelegate, NetworkProtocolDelegate {
     //MARK: - Delegates
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            /*
-            pictureFromCamera.contentMode = .scaleAspectFill
-            pictureFromCamera.clipsToBounds = true
-            pictureFromCamera.image = chosenImage
-            
-            // Send image to firebase and retrieve downloadable url
-            fbManager.uploadImageToFirebase(chosenImage, completionBlock: { (fileUrl, errorMessage) in
-                if let url = fileUrl {
-                    self.downloableUrlFromFirebase = url
-                    // Creating a temp ModelSearchRequest object
-                    let modelSearchRequest = ModelSearchRequest(location: "19426", url: "\(url)")
-                    let dick = try? modelSearchRequest.asDictionary()
-                    if let dicktionary = dick {
-                        self.networkManager.sendPostToServer(parameters: dicktionary)
-                    }
-                } else if let error = errorMessage {
-                    print("\(error)")
-                }
-            })
-             */
             print(chosenImage)
             
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))

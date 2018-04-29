@@ -61,7 +61,6 @@ class NetworkManager: NSObject {
                     print("Request failed with error: \(error)")
                 }
         }
-        
     }
 }
 
